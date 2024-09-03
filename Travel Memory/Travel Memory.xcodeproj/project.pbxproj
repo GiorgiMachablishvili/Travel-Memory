@@ -13,6 +13,13 @@
 		E31261DE2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E31261DC2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld */; };
 		E31261E02C86E66600E1DAA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31261DF2C86E66600E1DAA9 /* Assets.xcassets */; };
 		E31261E32C86E66600E1DAA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E31261E12C86E66600E1DAA9 /* LaunchScreen.storyboard */; };
+		E31261F12C86F33900E1DAA9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F02C86F33800E1DAA9 /* SignUpViewController.swift */; };
+		E31261F32C8707B500E1DAA9 /* UIColor+Extantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F22C8707B500E1DAA9 /* UIColor+Extantion.swift */; };
+		E31261F52C8707C600E1DAA9 /* UIFont+Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F42C8707C600E1DAA9 /* UIFont+Extansion.swift */; };
+		E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F72C87084E00E1DAA9 /* Constraints.swift */; };
+		E31261FB2C8708E800E1DAA9 /* KronaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */; };
+		E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FD2C8710AC00E1DAA9 /* SnapKit */; };
+		E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,11 @@
 		E31261DF2C86E66600E1DAA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E31261E22C86E66600E1DAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E31261E42C86E66600E1DAA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E31261F02C86F33800E1DAA9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		E31261F22C8707B500E1DAA9 /* UIColor+Extantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extantion.swift"; sourceTree = "<group>"; };
+		E31261F42C8707C600E1DAA9 /* UIFont+Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extansion.swift"; sourceTree = "<group>"; };
+		E31261F72C87084E00E1DAA9 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KronaOne-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */,
+				E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +92,7 @@
 		E31261EB2C86F09C00E1DAA9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E31261EF2C86F2F200E1DAA9 /* Sign Up View */,
 				E31261D72C86E66300E1DAA9 /* ViewController.swift */,
 			);
 			path = Scenes;
@@ -86,7 +101,9 @@
 		E31261EC2C86F0E700E1DAA9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E31261F92C8708D600E1DAA9 /* Font */,
 				E31261ED2C86F10A00E1DAA9 /* Extensions */,
+				E31261F62C87083C00E1DAA9 /* Constraints */,
 				E31261DF2C86E66600E1DAA9 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -95,6 +112,8 @@
 		E31261ED2C86F10A00E1DAA9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E31261F22C8707B500E1DAA9 /* UIColor+Extantion.swift */,
+				E31261F42C8707C600E1DAA9 /* UIFont+Extansion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -105,6 +124,30 @@
 				E31261E12C86E66600E1DAA9 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E31261EF2C86F2F200E1DAA9 /* Sign Up View */ = {
+			isa = PBXGroup;
+			children = (
+				E31261F02C86F33800E1DAA9 /* SignUpViewController.swift */,
+			);
+			path = "Sign Up View";
+			sourceTree = "<group>";
+		};
+		E31261F62C87083C00E1DAA9 /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				E31261F72C87084E00E1DAA9 /* Constraints.swift */,
+			);
+			path = Constraints;
+			sourceTree = "<group>";
+		};
+		E31261F92C8708D600E1DAA9 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +166,10 @@
 			dependencies = (
 			);
 			name = "Travel Memory";
+			packageProductDependencies = (
+				E31261FD2C8710AC00E1DAA9 /* SnapKit */,
+				E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */,
+			);
 			productName = "Travel Memory";
 			productReference = E31261D02C86E66300E1DAA9 /* Travel Memory.app */;
 			productType = "com.apple.product-type.application";
@@ -151,6 +198,9 @@
 				Base,
 			);
 			mainGroup = E31261C72C86E66300E1DAA9;
+			packageReferences = (
+				E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = E31261D12C86E66300E1DAA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -166,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E31261E32C86E66600E1DAA9 /* LaunchScreen.storyboard in Resources */,
+				E31261FB2C8708E800E1DAA9 /* KronaOne-Regular.ttf in Resources */,
 				E31261E02C86E66600E1DAA9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +232,10 @@
 				E31261D82C86E66300E1DAA9 /* ViewController.swift in Sources */,
 				E31261D42C86E66300E1DAA9 /* AppDelegate.swift in Sources */,
 				E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */,
+				E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */,
+				E31261F32C8707B500E1DAA9 /* UIColor+Extantion.swift in Sources */,
+				E31261F52C8707C600E1DAA9 /* UIFont+Extansion.swift in Sources */,
+				E31261F12C86F33900E1DAA9 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +446,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E31261FD2C8710AC00E1DAA9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E31261DC2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld */ = {
