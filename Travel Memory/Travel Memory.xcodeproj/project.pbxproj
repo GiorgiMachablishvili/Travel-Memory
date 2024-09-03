@@ -18,6 +18,8 @@
 		E31261F52C8707C600E1DAA9 /* UIFont+Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F42C8707C600E1DAA9 /* UIFont+Extansion.swift */; };
 		E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F72C87084E00E1DAA9 /* Constraints.swift */; };
 		E31261FB2C8708E800E1DAA9 /* KronaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */; };
+		E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FD2C8710AC00E1DAA9 /* SnapKit */; };
+		E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */,
+				E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +166,10 @@
 			dependencies = (
 			);
 			name = "Travel Memory";
+			packageProductDependencies = (
+				E31261FD2C8710AC00E1DAA9 /* SnapKit */,
+				E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */,
+			);
 			productName = "Travel Memory";
 			productReference = E31261D02C86E66300E1DAA9 /* Travel Memory.app */;
 			productType = "com.apple.product-type.application";
@@ -190,6 +198,9 @@
 				Base,
 			);
 			mainGroup = E31261C72C86E66300E1DAA9;
+			packageReferences = (
+				E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = E31261D12C86E66300E1DAA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -435,6 +446,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E31261FD2C8710AC00E1DAA9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E31261DC2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld */ = {
