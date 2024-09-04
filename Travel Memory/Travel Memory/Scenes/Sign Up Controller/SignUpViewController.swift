@@ -16,7 +16,7 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = UIColor.init(hexString: "0371F2").withAlphaComponent(25)
         return view
     }()
-
+    
     private lazy var logoImage: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.image = UIImage(named: "FLIGHT")
@@ -74,7 +74,15 @@ class SignUpViewController: UIViewController {
         view.font = UIFont.KoronaOneRegular(size: 15)
         view.backgroundColor = UIColor.init(hexString: "CDE3FC")
         view.layer.cornerRadius = 8
-        view.delegate = self
+        return view
+    }()
+    
+    private lazy var fullNameAlarmLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 9)
+        view.textColor = UIColor.init(hexString: "F80D0D")
+        view.textAlignment = .left
+        view.isHidden = true
         return view
     }()
     
@@ -92,8 +100,16 @@ class SignUpViewController: UIViewController {
         view.font = UIFont.KoronaOneRegular(size: 15)
         view.backgroundColor = UIColor.init(hexString: "CDE3FC")
         view.layer.cornerRadius = 8
-        view.delegate = self
         view.keyboardType = .emailAddress
+        return view
+    }()
+    
+    private lazy var emailAlarmLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 9)
+        view.textColor = UIColor.init(hexString: "F80D0D")
+        view.textAlignment = .left
+        view.isHidden = true
         return view
     }()
     
@@ -112,7 +128,15 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = UIColor.init(hexString: "CDE3FC")
         view.layer.cornerRadius = 8
         view.isSecureTextEntry = true
-        view.delegate = self
+        return view
+    }()
+    
+    private lazy var passwordAlarmLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 9)
+        view.textColor = UIColor.init(hexString: "F80D0D")
+        view.textAlignment = .left
+        view.isHidden = true
         return view
     }()
     
@@ -131,7 +155,15 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = UIColor.init(hexString: "CDE3FC")
         view.layer.cornerRadius = 8
         view.isSecureTextEntry = true
-        view.delegate = self
+        return view
+    }()
+    
+    private lazy var confirmPswAlarmLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 9)
+        view.textColor = UIColor.init(hexString: "F80D0D")
+        view.textAlignment = .left
+        view.isHidden = true
         return view
     }()
     
@@ -147,6 +179,7 @@ class SignUpViewController: UIViewController {
         view.setTitleColor(UIColor.init(hexString: "000000"), for: .normal)
         view.backgroundColor = UIColor.init(hexString: "CDE3FC").withAlphaComponent(25)
         view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
         return view
     }()
     
@@ -173,7 +206,7 @@ class SignUpViewController: UIViewController {
         setup()
         layout()
         view.backgroundColor = .systemBackground
-
+        
     }
     
     private func setup() {
@@ -185,12 +218,16 @@ class SignUpViewController: UIViewController {
         view.addSubview(infoLabel)
         view.addSubview(fullNameLabel)
         view.addSubview(fullNameTextField)
+        view.addSubview(fullNameAlarmLabel)
         view.addSubview(emailLabel)
         view.addSubview(emailTextField)
+        view.addSubview(emailAlarmLabel)
         view.addSubview(passwordLabel)
         view.addSubview(passwordTextField)
+        view.addSubview(passwordAlarmLabel)
         view.addSubview(confirmPswLabel)
         view.addSubview(confirmPswTextField)
+        view.addSubview(confirmPswAlarmLabel)
         view.addSubview(bottomColorView)
         bottomColorView.addSubview(createAccountButton)
         bottomColorView.addSubview(questionLabel)
@@ -249,6 +286,12 @@ class SignUpViewController: UIViewController {
             make.width.equalTo(191)
         }
         
+        fullNameAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(fullNameLabel.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
+        }
+        
         emailLabel.snp.remakeConstraints { make in
             make.top.equalTo(fullNameLabel.snp.bottom).offset(30)
             make.leading.equalTo(view.snp.leading).offset(37)
@@ -261,6 +304,12 @@ class SignUpViewController: UIViewController {
             make.centerY.equalTo(emailLabel.snp.centerY)
             make.height.equalTo(19)
             make.width.equalTo(191)
+        }
+        
+        emailAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(emailLabel.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
         }
         
         passwordLabel.snp.remakeConstraints { make in
@@ -277,6 +326,12 @@ class SignUpViewController: UIViewController {
             make.width.equalTo(191)
         }
         
+        passwordAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(passwordLabel.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
+        }
+        
         confirmPswLabel.snp.remakeConstraints { make in
             make.top.equalTo(passwordLabel.snp.bottom).offset(30)
             make.leading.equalTo(view.snp.leading).offset(37)
@@ -289,6 +344,12 @@ class SignUpViewController: UIViewController {
             make.centerY.equalTo(confirmPswLabel.snp.centerY)
             make.height.equalTo(19)
             make.width.equalTo(191)
+        }
+        
+        confirmPswAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(confirmPswLabel.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
         }
         
         bottomColorView.snp.remakeConstraints { make in
@@ -315,8 +376,157 @@ class SignUpViewController: UIViewController {
             make.height.equalTo(15)
         }
     }
-}
-
-extension SignUpViewController: UITextFieldDelegate {
     
+    @objc private func pressButton() {
+        fullNameTextFieldInfo()
+        emailTextFieldInfo()
+        passwordTextFieldInfo()
+    }
+    
+    func fullNameTextFieldInfo() {
+        guard let fullName = fullNameTextField.text, !fullName.isEmpty else {
+            fullNameAlarmLabel.isHidden = false
+            fullNameAlarmLabel.text = "Please enter some text"
+            return
+        }
+        if !isValidFullName(fullName) {
+            fullNameAlarmLabel.isHidden = false
+            fullNameAlarmLabel.text = "Please enter English letters"
+        } else {
+            fullNameAlarmLabel.isHidden = true
+            print("Account creation process initiated")
+        }
+    }
+    private func isValidFullName(_ name: String) -> Bool {
+        let allowedCharacters = CharacterSet.letters
+        let characterSet = CharacterSet(charactersIn: name)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
+    
+    func emailTextFieldInfo() {
+        guard let email = emailTextField.text, !email.isEmpty else {
+            emailAlarmLabel.isHidden = false
+            emailAlarmLabel.text = "Enter email address."
+            return
+        }
+        
+        if !isValidEmail(email) {
+            emailAlarmLabel.isHidden = false
+            emailAlarmLabel.text = "Please enter a valid email address."
+        } else {
+            emailAlarmLabel.isHidden = true
+            print("Account creation process initiated")
+        }
+    }
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    func passwordTextFieldInfo() {
+        // Validate password field is not empty
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            passwordAlarmLabel.isHidden = false
+            passwordAlarmLabel.text = "Please enter a password."
+            return
+        }
+        
+        // Validate password length
+        if password.count < 6 {
+            passwordAlarmLabel.isHidden = false
+            passwordAlarmLabel.text = "Password should be more than 5 letters."
+            return
+        }
+        
+        // Validate password contains at least one capital letter
+        if !containsCapitalLetter(password) {
+            passwordAlarmLabel.isHidden = false
+            passwordAlarmLabel.text = "Password should include at least one capital letter."
+            return
+        }
+        
+        // Validate password contains at least one number
+        if !containsNumber(password) {
+            passwordAlarmLabel.isHidden = false
+            passwordAlarmLabel.text = "Password should include at least one number."
+            return
+        }
+        
+        passwordAlarmLabel.isHidden = true
+        
+        // Validate confirm password field is not empty
+        guard let confirmPassword = confirmPswTextField.text, !confirmPassword.isEmpty else {
+            confirmPswAlarmLabel.isHidden = false
+            confirmPswAlarmLabel.text = "Please confirm your password."
+            return
+        }
+        
+        // Validate passwords match
+        if password != confirmPassword {
+            confirmPswAlarmLabel.isHidden = false
+            confirmPswAlarmLabel.text = "Passwords do not match."
+            return
+        }
+        
+        confirmPswAlarmLabel.isHidden = true
+        
+        // Proceed with account creation
+        print("Account creation process initiated")
+    }
+    private func containsCapitalLetter(_ password: String) -> Bool {
+        let capitalLetterRegEx = ".*[A-Z]+.*"
+        let capitalLetterTest = NSPredicate(format: "SELF MATCHES %@", capitalLetterRegEx)
+        return capitalLetterTest.evaluate(with: password)
+    }
+    
+    private func containsNumber(_ password: String) -> Bool {
+        let numberRegEx = ".*[0-9]+.*"
+        let numberTest = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
+        return numberTest.evaluate(with: password)
+        
+        //        guard let password = passwordTextField.text, !password.isEmpty else {
+        //            passwordAlarmLabel.isHidden = false
+        //            passwordAlarmLabel.text = "Please enter a password."
+        //            return
+        //        }
+        //
+        //        guard let confirmPassword = confirmPswTextField.text, !confirmPassword.isEmpty else {
+        //            confirmPswAlarmLabel.isHidden = false
+        //            confirmPswAlarmLabel.text = "Please confirm your password."
+        //            return
+        //        }
+        //
+        //        if password.count < 6 {
+        //            passwordAlarmLabel.isHidden = false
+        //            passwordAlarmLabel.text = "Chapters should be more than 5 letters."
+        //        } else if !containsCapitalLetter(password) {
+        //            passwordAlarmLabel.isHidden = false
+        //            passwordAlarmLabel.text = "Chapters should include capital letters."
+        //        } else if !containsNumber(password) {
+        //            passwordAlarmLabel.isHidden = false
+        //            passwordAlarmLabel.text = "Chapters should include at least one number."
+        //        } else if password != confirmPassword {
+        //            confirmPswAlarmLabel.isHidden = false
+        //            confirmPswAlarmLabel.text = "Passwords do not match."
+        //        } else {
+        //            passwordAlarmLabel.isHidden = true
+        //            confirmPswAlarmLabel.isHidden = true
+        //            print("Account creation process initiated")
+        //        }
+        //    }
+        //
+        //    private func containsCapitalLetter(_ password: String) -> Bool {
+        //        let capitalLetterRegEx = ".*[A-Z]+.*"
+        //        let capitalLetterTest = NSPredicate(format: "SELF MATCHES %@", capitalLetterRegEx)
+        //        return capitalLetterTest.evaluate(with: password)
+        //    }
+        //
+        //    private func containsNumber(_ password: String) -> Bool {
+        //        let numberRegEx = ".*[0-9]+.*"
+        //        let numberTest = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
+        //        return numberTest.evaluate(with: password)
+        //    }
+    }
 }
