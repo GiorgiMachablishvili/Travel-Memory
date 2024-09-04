@@ -485,48 +485,5 @@ class SignUpViewController: UIViewController {
         let numberRegEx = ".*[0-9]+.*"
         let numberTest = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
         return numberTest.evaluate(with: password)
-        
-        //        guard let password = passwordTextField.text, !password.isEmpty else {
-        //            passwordAlarmLabel.isHidden = false
-        //            passwordAlarmLabel.text = "Please enter a password."
-        //            return
-        //        }
-        //
-        //        guard let confirmPassword = confirmPswTextField.text, !confirmPassword.isEmpty else {
-        //            confirmPswAlarmLabel.isHidden = false
-        //            confirmPswAlarmLabel.text = "Please confirm your password."
-        //            return
-        //        }
-        //
-        //        if password.count < 6 {
-        //            passwordAlarmLabel.isHidden = false
-        //            passwordAlarmLabel.text = "Chapters should be more than 5 letters."
-        //        } else if !containsCapitalLetter(password) {
-        //            passwordAlarmLabel.isHidden = false
-        //            passwordAlarmLabel.text = "Chapters should include capital letters."
-        //        } else if !containsNumber(password) {
-        //            passwordAlarmLabel.isHidden = false
-        //            passwordAlarmLabel.text = "Chapters should include at least one number."
-        //        } else if password != confirmPassword {
-        //            confirmPswAlarmLabel.isHidden = false
-        //            confirmPswAlarmLabel.text = "Passwords do not match."
-        //        } else {
-        //            passwordAlarmLabel.isHidden = true
-        //            confirmPswAlarmLabel.isHidden = true
-        //            print("Account creation process initiated")
-        //        }
-        //    }
-        //
-        //    private func containsCapitalLetter(_ password: String) -> Bool {
-        //        let capitalLetterRegEx = ".*[A-Z]+.*"
-        //        let capitalLetterTest = NSPredicate(format: "SELF MATCHES %@", capitalLetterRegEx)
-        //        return capitalLetterTest.evaluate(with: password)
-        //    }
-        //
-        //    private func containsNumber(_ password: String) -> Bool {
-        //        let numberRegEx = ".*[0-9]+.*"
-        //        let numberTest = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
-        //        return numberTest.evaluate(with: password)
-        //    }
     }
 }
