@@ -123,6 +123,7 @@
 			children = (
 				CF7216562C8733EA00AAE830 /* Welcome */,
 				CF7216532C872F3100AAE830 /* Launch */,
+				E351DFAD2C87945C008B2E04 /* Sign Up Controller */,
 				E31261EF2C86F2F200E1DAA9 /* Sign Up View */,
 				E31261D72C86E66300E1DAA9 /* ViewController.swift */,
 			);
@@ -159,7 +160,6 @@
 		E31261EF2C86F2F200E1DAA9 /* Sign Up View */ = {
 			isa = PBXGroup;
 			children = (
-				E31261F02C86F33800E1DAA9 /* SignUpViewController.swift */,
 			);
 			path = "Sign Up View";
 			sourceTree = "<group>";
@@ -178,6 +178,14 @@
 				E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		E351DFAD2C87945C008B2E04 /* Sign Up Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E31261F02C86F33800E1DAA9 /* SignUpViewController.swift */,
+			);
+			path = "Sign Up Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
