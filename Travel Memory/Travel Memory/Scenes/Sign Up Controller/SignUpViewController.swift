@@ -393,73 +393,49 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func pressButton() {
-        viewModel.user.fullName = fullNameTextField.text ?? ""
-        viewModel.user.email = emailTextField.text ?? ""
-        viewModel.user.password = passwordTextField.text ?? ""
-        viewModel.user.confirmPassword = confirmPswTextField.text ?? ""
-        
-        if viewModel.validateFullName() {
-            fullNameAlarmLabel.isHidden = true
-        } else {
-            fullNameAlarmLabel.isHidden = false
-            fullNameAlarmLabel.text = viewModel.fullNameAlarmMessage
-        }
-        
-        viewModel.validateEmail()
-        emailAlarmLabel.isHidden = viewModel.emailAlarmMessage == nil
-        emailAlarmLabel.text = viewModel.emailAlarmMessage
-        
-        viewModel.validatePassword()
-        passwordAlarmLabel.isHidden = viewModel.passwordAlarmMessage == nil
-        passwordAlarmLabel.text = viewModel.passwordAlarmMessage
-        
-        viewModel.validateConfirmPassword()
-        confirmPswAlarmLabel.isHidden = viewModel.confirmPasswordAlarmMessage == nil
-        confirmPswAlarmLabel.text = viewModel.confirmPasswordAlarmMessage
-        
-        if viewModel.validateFullName() && viewModel.validateEmail() && viewModel.validatePassword() && viewModel.validateConfirmPassword() {
+            viewModel.user.fullName = fullNameTextField.text ?? ""
+            viewModel.user.email = emailTextField.text ?? ""
+            viewModel.user.password = passwordTextField.text ?? ""
+            viewModel.user.confirmPassword = confirmPswTextField.text ?? ""
             
-            // Firebase user registration
-            Auth.auth().createUser(withEmail: viewModel.user.email, password: viewModel.user.password) { authResult, error in
-                if let error = error {
-                    // Error handling
-                    if let errorCode = AuthErrorCode(rawValue: error._code) {
-                        switch errorCode {
-                        case .emailAlreadyInUse:
-                            print("Email already in use.")
-                        case .weakPassword:
-                            print("Password is too weak.")
-                        default:
-                            print("Error: \(error.localizedDescription)")
-                        }
-                    }
-                    return
-                }
-                
-                // If no error, proceed with optional tasks like setting display name
-                if let authResult = authResult {
-                    let changeRequest = authResult.user.createProfileChangeRequest()
-                    changeRequest.displayName = self.viewModel.user.fullName
-                    changeRequest.commitChanges { error in
-                        if let error = error {
-                            print("Failed to set display name: \(error.localizedDescription)")
-                        } else {
-                            print("Display name set successfully")
-                        }
-                    }
-                }
-                
-                print("User registered successfully")
-                
-                // Navigate to the "SignInController" after successful registration
-//                let signInController = SignInController() //MARK: Replace with new viewController
-//                self.navigationController?.pushViewController(signInController, animated: true)
+            if viewModel.validateFullName() {
+                fullNameAlarmLabel.isHidden = true
+            } else {
+                fullNameAlarmLabel.isHidden = false
+                fullNameAlarmLabel.text = viewModel.fullNameAlarmMessage
             }
-        } else {
-            // Handle validation errors and display messages
-            print("Validation failed")
+            
+            viewModel.validateEmail()
+            emailAlarmLabel.isHidden = viewModel.emailAlarmMessage == nil
+            emailAlarmLabel.text = viewModel.emailAlarmMessage
+            
+            viewModel.validatePassword()
+            passwordAlarmLabel.isHidden = viewModel.passwordAlarmMessage == nil
+            passwordAlarmLabel.text = viewModel.passwordAlarmMessage
+            
+            viewModel.validateConfirmPassword()
+            confirmPswAlarmLabel.isHidden = viewModel.confirmPasswordAlarmMessage == nil
+            confirmPswAlarmLabel.text = viewModel.confirmPasswordAlarmMessage
+            
+            if viewModel.validateFullName() && viewModel.validateEmail() && viewModel.validatePassword() && viewModel.validateConfirmPassword() {
+                
+                // Use AuthManager to create a new account
+                authManager.createAccount(withEmail: viewModel.user.email, password: viewModel.user.password, name: viewModel.user.fullName) { [weak self] error in
+                    if let error = error {
+                        print("Failed to create account: \(error.localizedDescription)")
+                        // Handle error cases (e.g., email already in use, weak password)
+                    } else {
+                        print("Account created successfully")
+                        // Navigate to sign-in controller after successful registration
+                        //MARK: add signInController name
+//                        let signInController = SignInController()
+//                        self?.navigationController?.pushViewController(signInController, animated: true)
+                    }
+                }
+            } else {
+                print("Validation failed")
+            }
         }
-    }
 }
 
 
