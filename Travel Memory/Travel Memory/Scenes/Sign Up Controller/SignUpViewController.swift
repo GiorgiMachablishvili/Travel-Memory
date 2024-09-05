@@ -8,11 +8,13 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     
     // ViewModel
     private var viewModel = SignUpViewModel()
+    private let authManager = AuthManager()
     
     //MARK: -UI components
     private lazy var topColorView: UIView = {
@@ -416,8 +418,48 @@ class SignUpViewController: UIViewController {
         confirmPswAlarmLabel.text = viewModel.confirmPasswordAlarmMessage
         
         if viewModel.validateFullName() && viewModel.validateEmail() && viewModel.validatePassword() && viewModel.validateConfirmPassword() {
-            print("Account creation process initiated")
+            
+            // Firebase user registration
+            Auth.auth().createUser(withEmail: viewModel.user.email, password: viewModel.user.password) { authResult, error in
+                if let error = error {
+                    // Error handling
+                    if let errorCode = AuthErrorCode(rawValue: error._code) {
+                        switch errorCode {
+                        case .emailAlreadyInUse:
+                            print("Email already in use.")
+                        case .weakPassword:
+                            print("Password is too weak.")
+                        default:
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    }
+                    return
+                }
+                
+                // If no error, proceed with optional tasks like setting display name
+                if let authResult = authResult {
+                    let changeRequest = authResult.user.createProfileChangeRequest()
+                    changeRequest.displayName = self.viewModel.user.fullName
+                    changeRequest.commitChanges { error in
+                        if let error = error {
+                            print("Failed to set display name: \(error.localizedDescription)")
+                        } else {
+                            print("Display name set successfully")
+                        }
+                    }
+                }
+                
+                print("User registered successfully")
+                
+                // Navigate to the "SignInController" after successful registration
+//                let signInController = SignInController() //MARK: Replace with new viewController
+//                self.navigationController?.pushViewController(signInController, animated: true)
+            }
+        } else {
+            // Handle validation errors and display messages
+            print("Validation failed")
         }
     }
 }
+
 
