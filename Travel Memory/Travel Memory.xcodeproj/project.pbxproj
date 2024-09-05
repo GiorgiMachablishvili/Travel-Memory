@@ -98,8 +98,8 @@
 		E31261D22C86E66300E1DAA9 /* Travel Memory */ = {
 			isa = PBXGroup;
 			children = (
-				CF7216592C8736B000AAE830 /* Components */,
 				E31261EA2C86F07400E1DAA9 /* App */,
+				CF7216592C8736B000AAE830 /* Components */,
 				E31261EB2C86F09C00E1DAA9 /* Scenes */,
 				E31261EC2C86F0E700E1DAA9 /* Resources */,
 				E31261EE2C86F14D00E1DAA9 /* Supporting Files */,
@@ -153,6 +153,7 @@
 		E31261EE2C86F14D00E1DAA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E396AAF02C899D0D004D7BE5 /* New Group */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -186,6 +187,14 @@
 				E31261F02C86F33800E1DAA9 /* SignUpViewController.swift */,
 			);
 			path = "Sign Up Controller";
+			sourceTree = "<group>";
+		};
+		E396AAF02C899D0D004D7BE5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			path = "Travel Memory/Supporting Files/New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

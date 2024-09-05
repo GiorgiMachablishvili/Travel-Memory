@@ -207,8 +207,15 @@ class SignUpViewController: UIViewController {
         layout()
         view.backgroundColor = .systemBackground
         
+        passwordTextField.addObserver(self, forKeyPath: "isSecureTextEntry",options: .new, context: nil)
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "isSecureTextEntry" {
+            passwordTextField.backgroundColor = .white
+        }
+    }
+        
     private func setup() {
         view.addSubview(topColorView)
         topColorView.addSubview(logoImage)
@@ -378,12 +385,12 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func pressButton() {
-        fullNameTextFieldInfo()
+        validateFullNameTextFieldInfo()
         emailTextFieldInfo()
         passwordTextFieldInfo()
     }
     
-    func fullNameTextFieldInfo() {
+    func validateFullNameTextFieldInfo() {
         guard let fullName = fullNameTextField.text, !fullName.isEmpty else {
             fullNameAlarmLabel.isHidden = false
             fullNameAlarmLabel.text = "Please enter some text"
@@ -456,14 +463,14 @@ class SignUpViewController: UIViewController {
         
         passwordAlarmLabel.isHidden = true
         
-        // Validate confirm password field is not empty
+//         Validate confirm password field is not empty
         guard let confirmPassword = confirmPswTextField.text, !confirmPassword.isEmpty else {
             confirmPswAlarmLabel.isHidden = false
             confirmPswAlarmLabel.text = "Please confirm your password."
             return
         }
         
-        // Validate passwords match
+//         Validate passwords match
         if password != confirmPassword {
             confirmPswAlarmLabel.isHidden = false
             confirmPswAlarmLabel.text = "Passwords do not match."
