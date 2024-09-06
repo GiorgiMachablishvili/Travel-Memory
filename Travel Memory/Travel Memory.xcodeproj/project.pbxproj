@@ -22,6 +22,8 @@
 		E31261FB2C8708E800E1DAA9 /* KronaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */; };
 		E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FD2C8710AC00E1DAA9 /* SnapKit */; };
 		E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */; };
+		E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */; };
+		E390302A2C8A3FB900E9BA6F /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030292C8A3FB900E9BA6F /* SignInController.swift */; };
 		E396AAF72C899EB0004D7BE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF62C899EB0004D7BE5 /* User.swift */; };
 		E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */; };
 		E396AAFB2C89C72B004D7BE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E396AAFA2C89C72B004D7BE5 /* GoogleService-Info.plist */; };
@@ -67,6 +69,8 @@
 		E31261F42C8707C600E1DAA9 /* UIFont+Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extansion.swift"; sourceTree = "<group>"; };
 		E31261F72C87084E00E1DAA9 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KronaOne-Regular.ttf"; sourceTree = "<group>"; };
+		E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryWelcomeView.swift; sourceTree = "<group>"; };
+		E39030292C8A3FB900E9BA6F /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		E396AAF62C899EB0004D7BE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E396AAFA2C89C72B004D7BE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -178,9 +182,11 @@
 		E31261EB2C86F09C00E1DAA9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CF7216562C8733EA00AAE830 /* Welcome */,
 				CF7216532C872F3100AAE830 /* Launch */,
+				CF7216562C8733EA00AAE830 /* Welcome */,
 				E351DFAD2C87945C008B2E04 /* Sign Up Controller */,
+				E39030282C8A3F7D00E9BA6F /* Sign In Controller */,
+				E35A969F2C8AD02D00328BF4 /* TravelMemoryWelcome */,
 				E31261EF2C86F2F200E1DAA9 /* Sign Up View */,
 				E31261D72C86E66300E1DAA9 /* ViewController.swift */,
 			);
@@ -244,6 +250,24 @@
 				E31261F02C86F33800E1DAA9 /* SignUpViewController.swift */,
 			);
 			path = "Sign Up Controller";
+			sourceTree = "<group>";
+		};
+		E35A969F2C8AD02D00328BF4 /* TravelMemoryWelcome */ = {
+			isa = PBXGroup;
+			children = (
+				E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */,
+			);
+			name = TravelMemoryWelcome;
+			path = "New Group/TravelMemoryWelcome";
+			sourceTree = "<group>";
+		};
+		E39030282C8A3F7D00E9BA6F /* Sign In Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E39030292C8A3FB900E9BA6F /* SignInController.swift */,
+			);
+			name = "Sign In Controller";
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		E396AAF52C899E86004D7BE5 /* User Model */ = {
@@ -359,8 +383,10 @@
 				E31261DE2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld in Sources */,
 				E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */,
 				CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */,
+				E390302A2C8A3FB900E9BA6F /* SignInController.swift in Sources */,
 				CF72165B2C8736DF00AAE830 /* LogoView.swift in Sources */,
 				E31261D82C86E66300E1DAA9 /* ViewController.swift in Sources */,
+				E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */,
 				E31261D42C86E66300E1DAA9 /* AppDelegate.swift in Sources */,
 				E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */,
 				E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */,

@@ -52,6 +52,7 @@ class WelcomeViewController: UIViewController {
         
         view.backgroundColor = UIColor.init(hexString: "0371F2").withAlphaComponent(25)
         signUpButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(goToSignInPage), for: .touchUpInside)
         
         setup()
         layout()
@@ -106,5 +107,11 @@ class WelcomeViewController: UIViewController {
         if let navigationController = navigationController {
             navigationController.pushViewController(signupVC, animated: true)
         }
+    }
+    
+    @objc private func goToSignInPage() {
+        let signInVC = SignInController()
+        
+        navigationController?.pushViewController(signInVC, animated: true)
     }
 }

@@ -393,49 +393,49 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func pressButton() {
-            viewModel.user.fullName = fullNameTextField.text ?? ""
-            viewModel.user.email = emailTextField.text ?? ""
-            viewModel.user.password = passwordTextField.text ?? ""
-            viewModel.user.confirmPassword = confirmPswTextField.text ?? ""
-            
-            if viewModel.validateFullName() {
-                fullNameAlarmLabel.isHidden = true
-            } else {
-                fullNameAlarmLabel.isHidden = false
-                fullNameAlarmLabel.text = viewModel.fullNameAlarmMessage
-            }
-            
-            viewModel.validateEmail()
-            emailAlarmLabel.isHidden = viewModel.emailAlarmMessage == nil
-            emailAlarmLabel.text = viewModel.emailAlarmMessage
-            
-            viewModel.validatePassword()
-            passwordAlarmLabel.isHidden = viewModel.passwordAlarmMessage == nil
-            passwordAlarmLabel.text = viewModel.passwordAlarmMessage
-            
-            viewModel.validateConfirmPassword()
-            confirmPswAlarmLabel.isHidden = viewModel.confirmPasswordAlarmMessage == nil
-            confirmPswAlarmLabel.text = viewModel.confirmPasswordAlarmMessage
-            
-            if viewModel.validateFullName() && viewModel.validateEmail() && viewModel.validatePassword() && viewModel.validateConfirmPassword() {
-                
-                // Use AuthManager to create a new account
-                authManager.createAccount(withEmail: viewModel.user.email, password: viewModel.user.password, name: viewModel.user.fullName) { [weak self] error in
-                    if let error = error {
-                        print("Failed to create account: \(error.localizedDescription)")
-                        // Handle error cases (e.g., email already in use, weak password)
-                    } else {
-                        print("Account created successfully")
-                        // Navigate to sign-in controller after successful registration
-                        //MARK: add signInController name
-//                        let signInController = SignInController()
-//                        self?.navigationController?.pushViewController(signInController, animated: true)
-                    }
-                }
-            } else {
-                print("Validation failed")
-            }
+        viewModel.user.fullName = fullNameTextField.text ?? ""
+        viewModel.user.email = emailTextField.text ?? ""
+        viewModel.user.password = passwordTextField.text ?? ""
+        viewModel.user.confirmPassword = confirmPswTextField.text ?? ""
+        
+        if viewModel.validateFullName() {
+            fullNameAlarmLabel.isHidden = true
+        } else {
+            fullNameAlarmLabel.isHidden = false
+            fullNameAlarmLabel.text = viewModel.fullNameAlarmMessage
         }
+        
+        viewModel.validateEmail()
+        emailAlarmLabel.isHidden = viewModel.emailAlarmMessage == nil
+        emailAlarmLabel.text = viewModel.emailAlarmMessage
+        
+        viewModel.validatePassword()
+        passwordAlarmLabel.isHidden = viewModel.passwordAlarmMessage == nil
+        passwordAlarmLabel.text = viewModel.passwordAlarmMessage
+        
+        viewModel.validateConfirmPassword()
+        confirmPswAlarmLabel.isHidden = viewModel.confirmPasswordAlarmMessage == nil
+        confirmPswAlarmLabel.text = viewModel.confirmPasswordAlarmMessage
+        
+        if viewModel.validateFullName() && viewModel.validateEmail() && viewModel.validatePassword() && viewModel.validateConfirmPassword() {
+            
+            // Use AuthManager to create a new account
+            authManager.createAccount(withEmail: viewModel.user.email, password: viewModel.user.password, name: viewModel.user.fullName) { [weak self] error in
+                if let error = error {
+                    print("Failed to create account: \(error.localizedDescription)")
+                    // Handle error cases (e.g., email already in use, weak password)
+                } else {
+                    print("Account created successfully")
+                    // Navigate to sign-in controller after successful registration
+                    //MARK: add signInController name
+                    let signInController = TravelMemoryWelcomeView()
+                    self?.navigationController?.pushViewController(signInController, animated: true)
+                }
+            }
+        } else {
+            print("Validation failed")
+        }
+    }
 }
 
 
