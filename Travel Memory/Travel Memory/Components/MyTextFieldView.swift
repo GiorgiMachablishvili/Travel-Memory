@@ -67,7 +67,6 @@ class MyTextFieldView: UIView {
         addSubview(textField)
         addSubview(visibilityToggleButton)
         
-        self.backgroundColor = .red
     }
     
     private func setupConstraints() {
@@ -76,15 +75,7 @@ class MyTextFieldView: UIView {
             make.trailing.greaterThanOrEqualTo(textField.snp.leading).offset(5)
             make.bottom.equalTo(self.snp.bottom)
             make.top.equalTo(self.snp.top)
-            make.height.equalTo(18)
-        }
-        
-        textField.snp.remakeConstraints { make in
-            make.width.equalTo(self.snp.width).multipliedBy(0.5)
-            make.trailing.equalTo(self.snp.trailing).offset(0)
-            make.bottom.equalTo(self.snp.bottom)
-            make.top.equalTo(self.snp.top)
-            make.height.equalTo(18)
+            make.height.equalTo(20)
         }
         
         visibilityToggleButton.snp.makeConstraints { make in
@@ -92,6 +83,15 @@ class MyTextFieldView: UIView {
             make.trailing.equalTo(self.snp.trailing).offset(-5)
             make.width.height.equalTo(20)
         }
+        
+        textField.snp.remakeConstraints { make in
+            make.width.equalTo(self.snp.width).multipliedBy(0.6)
+            make.trailing.equalTo(self.snp.trailing).offset(0)
+            make.bottom.equalTo(self.snp.bottom)
+            make.top.equalTo(self.snp.top)
+        }
+        
+
     }
     
     private func setupPasswordVisibilityToggle() {

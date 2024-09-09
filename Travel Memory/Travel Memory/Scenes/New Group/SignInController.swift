@@ -69,6 +69,8 @@ class SignInController: UIViewController {
         return view
     }()
     
+    private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
+    
     private lazy var passwordLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
@@ -137,12 +139,14 @@ class SignInController: UIViewController {
         topColorView.addSubview(signInLabel)
         view.addSubview(emailLabel)
         view.addSubview(emailTextField)
-        view.addSubview(passwordLabel)
-        view.addSubview(passwordTextField)
+//        view.addSubview(passwordLabel)
+//        view.addSubview(passwordTextField)
         view.addSubview(bottomColorView)
         bottomColorView.addSubview(signIntEnterButton)
         bottomColorView.addSubview(questionLabel)
         bottomColorView.addSubview(signInButton)
+        
+        view.addSubview(passwordField)
     }
     
     func setupLayout() {
@@ -176,10 +180,11 @@ class SignInController: UIViewController {
             make.height.equalTo(30)
             make.width.equalTo(123)
         }
-        
+
         emailLabel.snp.remakeConstraints { make in
             make.top.equalTo(topColorView.snp.bottom).offset(52)
             make.leading.equalTo(view.snp.leading).offset(38)
+
             make.width.equalTo(105)
             make.height.equalTo(20)
         }
@@ -187,23 +192,32 @@ class SignInController: UIViewController {
         emailTextField.snp.remakeConstraints { make in
             make.centerY.equalTo(emailLabel.snp.centerY)
             make.leading.equalTo(emailLabel.snp.trailing).offset(35)
+            make.trailing.equalTo(view.snp.trailing).offset(-20)
             make.height.equalTo(24)
             make.width.equalTo(191)
         }
         
-        passwordLabel.snp.remakeConstraints { make in
+        
+        passwordField.snp.remakeConstraints { make in
             make.top.equalTo(emailLabel.snp.bottom).offset(58)
             make.leading.equalTo(view.snp.leading).offset(38)
-            make.width.equalTo(105)
-            make.height.equalTo(20)
+            make.trailing.equalTo(view.snp.trailing).offset(-20)
+            make.height.equalTo(24)
         }
         
-        passwordTextField.snp.remakeConstraints { make in
-            make.centerY.equalTo(passwordLabel.snp.centerY)
-            make.leading.equalTo(passwordLabel.snp.trailing).offset(35)
-            make.height.equalTo(24)
-            make.width.equalTo(191)
-        }
+//        passwordLabel.snp.remakeConstraints { make in
+//            make.top.equalTo(emailLabel.snp.bottom).offset(58)
+//            make.leading.equalTo(view.snp.leading).offset(38)
+//            make.width.equalTo(105)
+//            make.height.equalTo(20)
+//        }
+//        
+//        passwordTextField.snp.remakeConstraints { make in
+//            make.centerY.equalTo(passwordLabel.snp.centerY)
+//            make.leading.equalTo(passwordLabel.snp.trailing).offset(35)
+//            make.height.equalTo(24)
+//            make.width.equalTo(191)
+//        }
         
         signIntEnterButton.snp.remakeConstraints { make in
             make.height.equalTo(26)
