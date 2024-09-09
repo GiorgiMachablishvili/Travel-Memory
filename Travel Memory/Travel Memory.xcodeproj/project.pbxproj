@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF2DE1E12C8B5EAE004AC5F4 /* MyTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */; };
 		CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216542C872F4400AAE830 /* LaunchViewController.swift */; };
 		CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216572C8733F400AAE830 /* WelcomeViewController.swift */; };
 		CF72165B2C8736DF00AAE830 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72165A2C8736DF00AAE830 /* LogoView.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextFieldView.swift; sourceTree = "<group>"; };
 		CF7216542C872F4400AAE830 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		CF7216572C8733F400AAE830 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		CF72165A2C8736DF00AAE830 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				CF72165A2C8736DF00AAE830 /* LogoView.swift */,
+				E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */,
+				CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */,
 				E384C0102C8B578700ADAA69 /* TestFieldWithLabel.swift */,
 			);
 			path = Components;
@@ -397,6 +401,7 @@
 				E31261F32C8707B500E1DAA9 /* UIColor+Extantion.swift in Sources */,
 				E396AAF72C899EB0004D7BE5 /* User.swift in Sources */,
 				E31261F52C8707C600E1DAA9 /* UIFont+Extansion.swift in Sources */,
+				CF2DE1E12C8B5EAE004AC5F4 /* MyTextFieldView.swift in Sources */,
 				CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */,
 				E31261F12C86F33900E1DAA9 /* SignUpViewController.swift in Sources */,
 				E396AB2C2C89D204004D7BE5 /* MyAuthManager.swift in Sources */,
