@@ -13,7 +13,7 @@ class TravelMemoryWelcomeView: UIViewController {
     //MARK: -UI components
     private lazy var topColorView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = UIColor.init(hexString: "0371F2").withAlphaComponent(25)
+        view.backgroundColor = .background
         return view
     }()
     
@@ -26,7 +26,7 @@ class TravelMemoryWelcomeView: UIViewController {
     private lazy var nameLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 20)
-        view.textColor = UIColor.init(hexString: "000000")
+        view.textColor = .black
         view.textAlignment = .center
         view.text = "TRAVEL MEMORY"
         return view
@@ -35,7 +35,7 @@ class TravelMemoryWelcomeView: UIViewController {
     private lazy var sloganLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
-        view.textColor = UIColor.init(hexString: "000000")
+        view.textColor = .black
         view.textAlignment = .center
         view.text = "Welcome to Travel Memory Journal!"
         return view
@@ -44,7 +44,7 @@ class TravelMemoryWelcomeView: UIViewController {
     private lazy var signInApproveLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
-        view.textColor = UIColor.init(hexString: "000000")
+        view.textColor = .black
         view.textAlignment = .center
         view.numberOfLines = 2
         view.text = "Congratulations, your account has been successfully created"
@@ -54,7 +54,7 @@ class TravelMemoryWelcomeView: UIViewController {
     private lazy var infoLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
-        view.textColor = UIColor.init(hexString: "000000")
+        view.textColor = .black
         view.textAlignment = .center
         view.numberOfLines = 3
         view.text = "You are now ready to start capturing, organizing, and sharing your travel memories with our app."
@@ -63,14 +63,14 @@ class TravelMemoryWelcomeView: UIViewController {
     
     private lazy var bottomColorView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = UIColor.init(hexString: "0371F2")
+        view.backgroundColor = .background
         return view
     }()
     
     private lazy var getStartedButton: UIButton = {
         let view = UIButton(frame: .zero)
         view.setTitle("Get Started", for: .normal)
-        view.setTitleColor(UIColor.init(hexString: "000000"), for: .normal)
+        view.setTitleColor(.black, for: .normal)
         view.titleLabel?.font = UIFont.KoronaOneRegular(size: 12)
         view.clipsToBounds = true
         return view

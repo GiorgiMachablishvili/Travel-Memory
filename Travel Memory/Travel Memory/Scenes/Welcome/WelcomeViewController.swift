@@ -50,7 +50,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.init(hexString: "0371F2").withAlphaComponent(25)
+        view.backgroundColor = .background
         signUpButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
         signInButton.addTarget(self, action: #selector(goToSignInPage), for: .touchUpInside)
         
