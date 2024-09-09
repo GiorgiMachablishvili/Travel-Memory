@@ -18,7 +18,7 @@ class LaunchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.init(hexString: "0371F2").withAlphaComponent(25)
+        view.backgroundColor = .background
         
         setup()
         layout()

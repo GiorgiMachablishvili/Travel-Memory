@@ -11,7 +11,7 @@ class LogoView: UIView {
     private lazy var nameLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 20)
-        view.textColor = UIColor(hexString: "000000")
+        view.textColor = .black
         view.textAlignment = .center
         view.text = "TRAVEL MEMORY"
         return view
@@ -20,7 +20,7 @@ class LogoView: UIView {
     private lazy var sloganLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = UIColor(hexString: "000000")
+        view.textColor = .black
         view.textAlignment = .center
         view.text = "JOURNAL"
         return view

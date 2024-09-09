@@ -4,7 +4,7 @@ import SnapKit
 class MyTextFieldView: UIView {
     private lazy var labelView: UILabel = {
         let view = UILabel(frame: .zero)
-        view.textColor = UIColor.init(hexString: "000000")
+        view.textColor = .black
         view.textAlignment = .left
         return view
     }()
@@ -12,7 +12,7 @@ class MyTextFieldView: UIView {
     private lazy var textField: UITextField = {
         let view = UITextField(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
-        view.backgroundColor = UIColor.init(hexString: "CDE3FC")
+        view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
         return view
     }()
@@ -81,7 +81,7 @@ class MyTextFieldView: UIView {
         
         textField.snp.remakeConstraints { make in
             make.width.equalTo(self.snp.width).multipliedBy(0.5)
-            make.trailing.equalTo(self.snp.trailing).offset(0) // Make space for the visibility toggle button
+            make.trailing.equalTo(self.snp.trailing).offset(0)
             make.bottom.equalTo(self.snp.bottom)
             make.top.equalTo(self.snp.top)
             make.height.equalTo(18)
