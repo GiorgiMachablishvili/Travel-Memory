@@ -24,6 +24,7 @@
 		E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FD2C8710AC00E1DAA9 /* SnapKit */; };
 		E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */; };
 		E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */; };
+		E384C0112C8B578700ADAA69 /* TestFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E384C0102C8B578700ADAA69 /* TestFieldWithLabel.swift */; };
 		E390302A2C8A3FB900E9BA6F /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030292C8A3FB900E9BA6F /* SignInController.swift */; };
 		E396AAF72C899EB0004D7BE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF62C899EB0004D7BE5 /* User.swift */; };
 		E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */; };
@@ -72,6 +73,7 @@
 		E31261F72C87084E00E1DAA9 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KronaOne-Regular.ttf"; sourceTree = "<group>"; };
 		E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryWelcomeView.swift; sourceTree = "<group>"; };
+		E384C0102C8B578700ADAA69 /* TestFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFieldWithLabel.swift; sourceTree = "<group>"; };
 		E39030292C8A3FB900E9BA6F /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		E396AAF62C899EB0004D7BE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				CF72165A2C8736DF00AAE830 /* LogoView.swift */,
 				E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */,
 				CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */,
+				E384C0102C8B578700ADAA69 /* TestFieldWithLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -164,6 +167,8 @@
 				CF7216592C8736B000AAE830 /* Components */,
 				E31261EB2C86F09C00E1DAA9 /* Scenes */,
 				E31261EE2C86F14D00E1DAA9 /* Supporting Files */,
+				E384C00E2C8B54A800ADAA69 /* Models */,
+				E384C00F2C8B54DB00ADAA69 /* Managers */,
 				E31261EC2C86F0E700E1DAA9 /* Resources */,
 				E31261E42C86E66600E1DAA9 /* Info.plist */,
 				E31261DC2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld */,
@@ -177,7 +182,6 @@
 			children = (
 				E31261D32C86E66300E1DAA9 /* AppDelegate.swift */,
 				E31261D52C86E66300E1DAA9 /* SceneDelegate.swift */,
-				E396AB2B2C89D204004D7BE5 /* MyAuthManager.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -187,10 +191,9 @@
 			children = (
 				CF7216532C872F3100AAE830 /* Launch */,
 				CF7216562C8733EA00AAE830 /* Welcome */,
-				E351DFAD2C87945C008B2E04 /* Sign Up Controller */,
-				E39030282C8A3F7D00E9BA6F /* Sign In Controller */,
+				E351DFAD2C87945C008B2E04 /* Sign Up */,
+				E39030282C8A3F7D00E9BA6F /* Sign In */,
 				E35A969F2C8AD02D00328BF4 /* TravelMemoryWelcome */,
-				E31261EF2C86F2F200E1DAA9 /* Sign Up View */,
 				E31261D72C86E66300E1DAA9 /* ViewController.swift */,
 			);
 			path = Scenes;
@@ -219,16 +222,8 @@
 		E31261EE2C86F14D00E1DAA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E396AAF52C899E86004D7BE5 /* User Model */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E31261EF2C86F2F200E1DAA9 /* Sign Up View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Sign Up View";
 			sourceTree = "<group>";
 		};
 		E31261F62C87083C00E1DAA9 /* Constraints */ = {
@@ -247,12 +242,13 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		E351DFAD2C87945C008B2E04 /* Sign Up Controller */ = {
+		E351DFAD2C87945C008B2E04 /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
+				E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */,
 				E31261F02C86F33800E1DAA9 /* SignUpViewController.swift */,
 			);
-			path = "Sign Up Controller";
+			path = "Sign Up";
 			sourceTree = "<group>";
 		};
 		E35A969F2C8AD02D00328BF4 /* TravelMemoryWelcome */ = {
@@ -264,21 +260,29 @@
 			path = "New Group/TravelMemoryWelcome";
 			sourceTree = "<group>";
 		};
-		E39030282C8A3F7D00E9BA6F /* Sign In Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E39030292C8A3FB900E9BA6F /* SignInController.swift */,
-			);
-			name = "Sign In Controller";
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		E396AAF52C899E86004D7BE5 /* User Model */ = {
+		E384C00E2C8B54A800ADAA69 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				E396AAF62C899EB0004D7BE5 /* User.swift */,
 			);
-			path = "User Model";
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E384C00F2C8B54DB00ADAA69 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E396AB2B2C89D204004D7BE5 /* MyAuthManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E39030282C8A3F7D00E9BA6F /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				E39030292C8A3FB900E9BA6F /* SignInController.swift */,
+			);
+			name = "Sign In";
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +396,7 @@
 				E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */,
 				E31261D42C86E66300E1DAA9 /* AppDelegate.swift in Sources */,
 				E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */,
+				E384C0112C8B578700ADAA69 /* TestFieldWithLabel.swift in Sources */,
 				E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */,
 				E31261F32C8707B500E1DAA9 /* UIColor+Extantion.swift in Sources */,
 				E396AAF72C899EB0004D7BE5 /* User.swift in Sources */,
