@@ -51,43 +51,12 @@ class SignInController: UIViewController {
         return view
     }()
     
-    private lazy var emailLabel: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = .black
-        view.textAlignment = .left
-        view.text = "Email:"
-        return view
-    }()
     
-    private lazy var emailTextField: UITextField = {
-        let view = UITextField(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.backgroundColor = .skyBlue
-        view.layer.cornerRadius = 8
-        view.keyboardType = .emailAddress
-        return view
-    }()
+    private let emailField = MyTextFieldView(label: "Email")
     
     private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
     
-    private lazy var passwordLabel: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = .black
-        view.textAlignment = .left
-        view.text = "Password:"
-        return view
-    }()
     
-    private lazy var passwordTextField: UITextField = {
-        let view = UITextField(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.backgroundColor = .skyBlue
-        view.layer.cornerRadius = 8
-        view.isSecureTextEntry = true
-        return view
-    }()
     
     private lazy var signIntEnterButton: UIButton = {
         let view = UIButton(frame: .zero)
@@ -137,16 +106,12 @@ class SignInController: UIViewController {
         topColorView.addSubview(nameLabel)
         topColorView.addSubview(sloganLabel)
         topColorView.addSubview(signInLabel)
-        view.addSubview(emailLabel)
-        view.addSubview(emailTextField)
-//        view.addSubview(passwordLabel)
-//        view.addSubview(passwordTextField)
+        view.addSubview(passwordField)
+        view.addSubview(emailField)
         view.addSubview(bottomColorView)
         bottomColorView.addSubview(signIntEnterButton)
         bottomColorView.addSubview(questionLabel)
         bottomColorView.addSubview(signInButton)
-        
-        view.addSubview(passwordField)
     }
     
     func setupLayout() {
@@ -180,44 +145,20 @@ class SignInController: UIViewController {
             make.height.equalTo(30)
             make.width.equalTo(123)
         }
-
-        emailLabel.snp.remakeConstraints { make in
-            make.top.equalTo(topColorView.snp.bottom).offset(52)
-            make.leading.equalTo(view.snp.leading).offset(38)
-
-            make.width.equalTo(105)
-            make.height.equalTo(20)
-        }
         
-        emailTextField.snp.remakeConstraints { make in
-            make.centerY.equalTo(emailLabel.snp.centerY)
-            make.leading.equalTo(emailLabel.snp.trailing).offset(35)
+        emailField.snp.remakeConstraints { make in
+            make.top.equalTo(topColorView.snp.bottom).offset(58)
+            make.leading.equalTo(view.snp.leading).offset(Constants.fieldLeading)
             make.trailing.equalTo(view.snp.trailing).offset(-20)
             make.height.equalTo(24)
-            make.width.equalTo(191)
         }
-        
         
         passwordField.snp.remakeConstraints { make in
-            make.top.equalTo(emailLabel.snp.bottom).offset(58)
-            make.leading.equalTo(view.snp.leading).offset(38)
+            make.top.equalTo(emailField.snp.bottom).offset(58)
+            make.leading.equalTo(view.snp.leading).offset(Constants.fieldLeading)
             make.trailing.equalTo(view.snp.trailing).offset(-20)
             make.height.equalTo(24)
         }
-        
-//        passwordLabel.snp.remakeConstraints { make in
-//            make.top.equalTo(emailLabel.snp.bottom).offset(58)
-//            make.leading.equalTo(view.snp.leading).offset(38)
-//            make.width.equalTo(105)
-//            make.height.equalTo(20)
-//        }
-//        
-//        passwordTextField.snp.remakeConstraints { make in
-//            make.centerY.equalTo(passwordLabel.snp.centerY)
-//            make.leading.equalTo(passwordLabel.snp.trailing).offset(35)
-//            make.height.equalTo(24)
-//            make.width.equalTo(191)
-//        }
         
         signIntEnterButton.snp.remakeConstraints { make in
             make.height.equalTo(26)
@@ -246,8 +187,8 @@ class SignInController: UIViewController {
     
     @objc func pressSignInButton () {
         // Example validation check for user registration
-        let email = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
+        let email = emailField.text
+        let password = passwordField.text
         
         // Assuming Firebase Authentication for user sign-in
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -263,5 +204,11 @@ class SignInController: UIViewController {
 //            self.present(welcomeVC, animated: true, completion: nil)
             self.navigationController?.pushViewController(welcomeVC, animated: true)
         }
+    }
+}
+
+private extension SignInController {
+    enum Constants {
+        static let fieldLeading: CGFloat = 38
     }
 }

@@ -28,6 +28,16 @@ class MyTextFieldView: UIView {
     
     private var isSecured: Bool = false
     
+    var text: String {
+        get {
+            textField.text ?? ""
+        } 
+        set {
+            textField.text = newValue
+        }
+    }
+    
+    
     init(
         label: String,
         font: UIFont = UIFont.KoronaOneRegular(size: 15),

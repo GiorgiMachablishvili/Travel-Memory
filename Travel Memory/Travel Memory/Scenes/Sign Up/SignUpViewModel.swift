@@ -36,10 +36,10 @@ class SignUpViewModel {
             emailAlarmMessage = "Enter email address."
             return false
         }
-//        if !isValidEmail(user.email) {
-//            emailAlarmMessage = "Please enter a valid email address."
-//            return false
-//        }
+        if !isValidEmail(user.email) {
+            emailAlarmMessage = "Please enter a valid email address."
+            return false
+        }
         emailAlarmMessage = nil
         return true
     }
@@ -85,11 +85,11 @@ class SignUpViewModel {
         return allowedCharacters.isSuperset(of: characterSet)
     }
     
-//    private func isValidEmail(_ email: String) -> Bool {
-//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Z]{2,64}"
-//        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-//        return emailPred.evaluate(with: email)
-//    }
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
     
     private func containsCapitalLetter(_ password: String) -> Bool {
         let capitalLetterRegEx = ".*[A-Z]+.*"
