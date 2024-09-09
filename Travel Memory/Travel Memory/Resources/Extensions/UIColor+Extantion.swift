@@ -28,3 +28,7 @@ extension UIColor {
     }
 }
 
+extension UIColor {
+    static let skyBlue = UIColor.init(hexString: "CDE3FC")
+
+}

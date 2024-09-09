@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController {
     private lazy var fullNameTextField: UITextField = {
         let view = UITextField(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
-        view.backgroundColor = UIColor.init(hexString: "CDE3FC")
+        view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
         return view
     }()
