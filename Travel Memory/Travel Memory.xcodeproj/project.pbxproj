@@ -22,7 +22,6 @@
 		E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F72C87084E00E1DAA9 /* Constraints.swift */; };
 		E31261FB2C8708E800E1DAA9 /* KronaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */; };
 		E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FD2C8710AC00E1DAA9 /* SnapKit */; };
-		E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */; };
 		E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */; };
 		E390302A2C8A3FB900E9BA6F /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030292C8A3FB900E9BA6F /* SignInController.swift */; };
 		E396AAF72C899EB0004D7BE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF62C899EB0004D7BE5 /* User.swift */; };
@@ -92,7 +91,6 @@
 				E396AB2A2C89CAA9004D7BE5 /* FirebaseVertexAI-Preview in Frameworks */,
 				E396AB022C89CAA9004D7BE5 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				E396AB1A2C89CAA9004D7BE5 /* FirebaseInAppMessaging-Beta in Frameworks */,
-				E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */,
 				E396AAFE2C89CAA9004D7BE5 /* FirebaseAnalytics in Frameworks */,
 				E396AB182C89CAA9004D7BE5 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				E396AB282C89CAA9004D7BE5 /* FirebaseStorageCombine-Community in Frameworks */,
@@ -299,7 +297,6 @@
 			name = "Travel Memory";
 			packageProductDependencies = (
 				E31261FD2C8710AC00E1DAA9 /* SnapKit */,
-				E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */,
 				E396AAFD2C89CAA9004D7BE5 /* FirebaseAnalytics */,
 				E396AAFF2C89CAA9004D7BE5 /* FirebaseAnalyticsOnDeviceConversion */,
 				E396AB012C89CAA9004D7BE5 /* FirebaseAnalyticsWithoutAdIdSupport */,
@@ -624,11 +621,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 		E396AAFD2C89CAA9004D7BE5 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
