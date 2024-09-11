@@ -85,17 +85,17 @@ class MyTextFieldView: UIView {
             make.trailing.greaterThanOrEqualTo(textField.snp.leading).offset(5)
             make.bottom.equalTo(self.snp.bottom)
             make.top.equalTo(self.snp.top)
-            make.height.equalTo(20)
+            make.height.equalTo(22)
         }
         
         visibilityToggleButton.snp.makeConstraints { make in
             make.centerY.equalTo(textField.snp.centerY)
             make.trailing.equalTo(self.snp.trailing).offset(-5)
-            make.width.height.equalTo(20)
+            make.width.height.equalTo(22)
         }
         
         textField.snp.remakeConstraints { make in
-            make.width.equalTo(self.snp.width).multipliedBy(0.6)
+            make.width.equalTo(self.snp.width).multipliedBy(0.55)
             make.trailing.equalTo(self.snp.trailing).offset(0)
             make.bottom.equalTo(self.snp.bottom)
             make.top.equalTo(self.snp.top)

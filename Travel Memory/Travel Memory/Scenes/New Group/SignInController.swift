@@ -51,12 +51,8 @@ class SignInController: UIViewController {
         return view
     }()
     
-    
     private let emailField = MyTextFieldView(label: "Email")
-    
     private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
-    
-    
     
     private lazy var signIntEnterButton: UIButton = {
         let view = UIButton(frame: .zero)
@@ -73,7 +69,6 @@ class SignInController: UIViewController {
         view.backgroundColor = .background
         return view
     }()
-    
     
     private lazy var questionLabel: UILabel = {
         let view = UILabel(frame: .zero)
@@ -186,22 +181,16 @@ class SignInController: UIViewController {
     }
     
     @objc func pressSignInButton () {
-        // Example validation check for user registration
         let email = emailField.text
         let password = passwordField.text
         
-        // Assuming Firebase Authentication for user sign-in
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print("Error signing in: \(error.localizedDescription)")
-                // You can show an alert to the user if sign-in fails
                 return
             }
             
-            // If sign-in is successful, navigate to TravelMemoryWelcomeView
             let welcomeVC = TravelMemoryWelcomeView()
-//            welcomeVC.modalPresentationStyle = .fullScreen // If you want the new view to cover the screen
-//            self.present(welcomeVC, animated: true, completion: nil)
             self.navigationController?.pushViewController(welcomeVC, animated: true)
         }
     }

@@ -66,22 +66,9 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private lazy var fullNameLabel: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = .black
-        view.textAlignment = .left
-        view.text = "Full name:"
-        return view
-    }()
-    
-    private lazy var fullNameTextField: UITextField = {
-        let view = UITextField(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.backgroundColor = .skyBlue
-        view.layer.cornerRadius = 8
-        return view
-    }()
+    private let fullNameField = MyTextFieldView(label: "Full name:")
+
+
     
     private lazy var fullNameAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
@@ -92,23 +79,8 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private lazy var emailLabel: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = .black
-        view.textAlignment = .left
-        view.text = "Email:"
-        return view
-    }()
-    
-    private lazy var emailTextField: UITextField = {
-        let view = UITextField(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.backgroundColor = .skyBlue
-        view.layer.cornerRadius = 8
-        view.keyboardType = .emailAddress
-        return view
-    }()
+    private let emailField = MyTextFieldView(label: "Email:")
+
     
     private lazy var emailAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
@@ -119,23 +91,8 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private lazy var passwordLabel: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = .black
-        view.textAlignment = .left
-        view.text = "Password:"
-        return view
-    }()
-    
-    private lazy var passwordTextField: UITextField = {
-        let view = UITextField(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.backgroundColor = .skyBlue
-        view.layer.cornerRadius = 8
-        view.isSecureTextEntry = true
-        return view
-    }()
+    private let passwordField = MyTextFieldView(label: "Email:", isSecured: true, hasPasswordVisibility: true)
+
     
     private lazy var passwordAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
@@ -146,23 +103,7 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private lazy var confirmPswLabel: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
-        view.textAlignment = .left
-        view.text = "Confirm Psw:"
-        return view
-    }()
-    
-    private lazy var confirmPswTextField: UITextField = {
-        let view = UITextField(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 15)
-        view.backgroundColor = .skyBlue
-        view.layer.cornerRadius = 8
-        view.isSecureTextEntry = true
-        return view
-    }()
+    private let passwordConfirmField = MyTextFieldView(label: "Confirm psw:", isSecured: true, hasPasswordVisibility: true)
     
     private lazy var confirmPswAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
@@ -215,14 +156,14 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         
-        passwordTextField.addObserver(self, forKeyPath: "isSecureTextEntry", options: .new, context: nil)
+//        passwordTextField.addObserver(self, forKeyPath: "isSecureTextEntry", options: .new, context: nil)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "isSecureTextEntry" {
-            passwordTextField.backgroundColor = .white
-        }
-    }
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if keyPath == "isSecureTextEntry" {
+//            passwordTextField.backgroundColor = .white
+//        }
+//    }
     
     private func setup() {
         view.addSubview(topColorView)
@@ -231,17 +172,13 @@ class SignUpViewController: UIViewController {
         topColorView.addSubview(sloganLabel)
         topColorView.addSubview(signupLabel)
         view.addSubview(infoLabel)
-        view.addSubview(fullNameLabel)
-        view.addSubview(fullNameTextField)
+        view.addSubview(fullNameField)
         view.addSubview(fullNameAlarmLabel)
-        view.addSubview(emailLabel)
-        view.addSubview(emailTextField)
+        view.addSubview(emailField)
         view.addSubview(emailAlarmLabel)
-        view.addSubview(passwordLabel)
-        view.addSubview(passwordTextField)
+        view.addSubview(passwordField)
         view.addSubview(passwordAlarmLabel)
-        view.addSubview(confirmPswLabel)
-        view.addSubview(confirmPswTextField)
+        view.addSubview(passwordConfirmField)
         view.addSubview(confirmPswAlarmLabel)
         view.addSubview(bottomColorView)
         bottomColorView.addSubview(createAccountButton)
@@ -287,89 +224,57 @@ class SignUpViewController: UIViewController {
             make.width.equalTo(353)
         }
         
-        fullNameLabel.snp.remakeConstraints { make in
-            make.top.equalTo(infoLabel.snp.bottom).offset(30)
-            make.leading.equalTo(view.snp.leading).offset(37)
-            make.height.equalTo(19)
-            make.width.equalTo(105)
-        }
-        
-        fullNameTextField.snp.remakeConstraints { make in
-            make.leading.equalTo(fullNameLabel.snp.trailing).offset(35)
-            make.centerY.equalTo(fullNameLabel.snp.centerY)
-            make.height.equalTo(19)
-            make.width.equalTo(191)
-        }
-        
-        fullNameAlarmLabel.snp.remakeConstraints { make in
-            make.top.equalTo(fullNameLabel.snp.bottom).offset(5)
-            make.leading.equalTo(view.snp.leading).offset(37)
-            make.height.equalTo(11)
-        }
-        
-        emailLabel.snp.remakeConstraints { make in
-            make.top.equalTo(fullNameLabel.snp.bottom).offset(30)
-            make.leading.equalTo(view.snp.leading).offset(37)
-            make.height.equalTo(19)
-            make.width.equalTo(105)
-        }
-        
-        emailTextField.snp.remakeConstraints { make in
-            make.leading.equalTo(emailLabel.snp.trailing).offset(35)
-            make.centerY.equalTo(emailLabel.snp.centerY)
-            make.height.equalTo(19)
-            make.width.equalTo(191)
-        }
-        
-        emailAlarmLabel.snp.remakeConstraints { make in
-            make.top.equalTo(emailLabel.snp.bottom).offset(5)
-            make.leading.equalTo(view.snp.leading).offset(37)
-            make.height.equalTo(11)
-        }
-        
-        passwordLabel.snp.remakeConstraints { make in
-            make.top.equalTo(emailLabel.snp.bottom).offset(30)
-            make.leading.equalTo(view.snp.leading).offset(37)
-            make.height.equalTo(19)
-            make.width.equalTo(105)
-        }
-        
-        passwordTextField.snp.remakeConstraints { make in
-            make.leading.equalTo(passwordLabel.snp.trailing).offset(35)
-            make.centerY.equalTo(passwordLabel.snp.centerY)
-            make.height.equalTo(19)
-            make.width.equalTo(191)
-        }
-        
-        passwordAlarmLabel.snp.remakeConstraints { make in
-            make.top.equalTo(passwordLabel.snp.bottom).offset(5)
-            make.leading.equalTo(view.snp.leading).offset(37)
-            make.height.equalTo(11)
-        }
-        
-        confirmPswLabel.snp.remakeConstraints { make in
-            make.top.equalTo(passwordLabel.snp.bottom).offset(30)
-            make.leading.equalTo(view.snp.leading).offset(37)
-            make.height.equalTo(19)
-            make.width.equalTo(105)
-        }
-        
-        confirmPswTextField.snp.remakeConstraints { make in
-            make.leading.equalTo(confirmPswLabel.snp.trailing).offset(35)
-            make.centerY.equalTo(confirmPswLabel.snp.centerY)
-            make.height.equalTo(19)
-            make.width.equalTo(191)
-        }
-        
-        confirmPswAlarmLabel.snp.remakeConstraints { make in
-            make.top.equalTo(confirmPswLabel.snp.bottom).offset(5)
-            make.leading.equalTo(view.snp.leading).offset(37)
-            make.height.equalTo(11)
-        }
+        fullNameField.snp.remakeConstraints { make in
+                   make.top.equalTo(infoLabel.snp.bottom).offset(30)
+                   make.leading.equalTo(view.snp.leading).offset(37)
+                   make.trailing.equalTo(view.snp.trailing).offset(-37)
+               }
+               
+               fullNameAlarmLabel.snp.remakeConstraints { make in
+                   make.top.equalTo(fullNameField.snp.bottom).offset(5)
+                   make.leading.equalTo(view.snp.leading).offset(37)
+                   make.height.equalTo(11)
+               }
+               
+               emailField.snp.remakeConstraints { make in
+                   make.top.equalTo(fullNameField.snp.bottom).offset(30)
+                   make.leading.equalTo(view.snp.leading).offset(37)
+                   make.trailing.equalTo(view.snp.trailing).offset(-37)
+               }
+               
+               emailAlarmLabel.snp.remakeConstraints { make in
+                   make.top.equalTo(emailField.snp.bottom).offset(5)
+                   make.leading.equalTo(view.snp.leading).offset(37)
+                   make.height.equalTo(11)
+               }
+               
+               passwordField.snp.remakeConstraints { make in
+                   make.top.equalTo(emailField.snp.bottom).offset(30)
+                   make.leading.equalTo(view.snp.leading).offset(37)
+                   make.trailing.equalTo(view.snp.trailing).offset(-37)
+               }
+               
+               passwordAlarmLabel.snp.remakeConstraints { make in
+                   make.top.equalTo(passwordField.snp.bottom).offset(5)
+                   make.leading.equalTo(view.snp.leading).offset(37)
+                   make.height.equalTo(11)
+               }
+               
+               passwordConfirmField.snp.remakeConstraints { make in
+                   make.top.equalTo(passwordField.snp.bottom).offset(30)
+                   make.leading.equalTo(view.snp.leading).offset(37)
+                   make.trailing.equalTo(view.snp.trailing).offset(-37)
+               }
+               
+               confirmPswAlarmLabel.snp.remakeConstraints { make in
+                   make.top.equalTo(passwordConfirmField.snp.bottom).offset(5)
+                   make.leading.equalTo(view.snp.leading).offset(37)
+                   make.height.equalTo(11)
+               }
         
         bottomColorView.snp.remakeConstraints { make in
             make.leading.bottom.trailing.equalToSuperview()
-            make.top.equalTo(confirmPswLabel.snp.bottom).offset(36)
+            make.top.equalTo(passwordConfirmField.snp.bottom).offset(36)
         }
         
         createAccountButton.snp.remakeConstraints { make in
@@ -393,10 +298,10 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func pressButton() {
-        viewModel.user.fullName = fullNameTextField.text ?? ""
-        viewModel.user.email = emailTextField.text ?? ""
-        viewModel.user.password = passwordTextField.text ?? ""
-        viewModel.user.confirmPassword = confirmPswTextField.text ?? ""
+        viewModel.user.fullName = fullNameField.text 
+        viewModel.user.email = emailField.text
+        viewModel.user.password = passwordField.text
+        viewModel.user.confirmPassword = passwordConfirmField.text
         
         if viewModel.validateFullName() {
             fullNameAlarmLabel.isHidden = true
