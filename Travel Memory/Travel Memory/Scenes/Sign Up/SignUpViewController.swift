@@ -91,7 +91,7 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private let passwordField = MyTextFieldView(label: "Email:", isSecured: true, hasPasswordVisibility: true)
+    private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
 
     
     private lazy var passwordAlarmLabel: UILabel = {

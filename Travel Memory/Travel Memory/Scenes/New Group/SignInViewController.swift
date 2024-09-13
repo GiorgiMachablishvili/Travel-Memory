@@ -7,9 +7,9 @@
 
 import UIKit
 import SnapKit
-import FirebaseAuth
 
 class SignInController: UIViewController {
+    private var viewModel = SignInViewModel()
     
     //MARK: -UI components
     private lazy var topColorView: UIView = {
@@ -87,7 +87,7 @@ class SignInController: UIViewController {
         view.clipsToBounds = true
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -181,19 +181,17 @@ class SignInController: UIViewController {
     }
     
     @objc func pressSignInButton () {
-        let email = emailField.text
-        let password = passwordField.text
-        
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                print("Error signing in: \(error.localizedDescription)")
-                return
+        viewModel.pressSignInButton(email: emailField.text, password: passwordField.text) { result in
+            switch result {
+            case .success:
+                let welcomeVC = TravelMemoryWelcomeView()
+                self.navigationController?.pushViewController(welcomeVC, animated: true)
+            case .failure(let error):
+                print("Sign in failed: \(error.localizedDescription)")
             }
-            
-            let welcomeVC = TravelMemoryWelcomeView()
-            self.navigationController?.pushViewController(welcomeVC, animated: true)
         }
     }
+    
 }
 
 private extension SignInController {

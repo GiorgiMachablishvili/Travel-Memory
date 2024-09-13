@@ -25,6 +25,7 @@ class LaunchViewController: UIViewController {
     }
     private func setup() {
         view.addSubview(logoView)
+        
     }
     
     private func layout() {
