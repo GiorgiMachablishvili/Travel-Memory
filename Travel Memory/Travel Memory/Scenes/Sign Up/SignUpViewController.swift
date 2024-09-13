@@ -154,16 +154,8 @@ class SignUpViewController: UIViewController {
         setup()
         layout()
         view.backgroundColor = .systemBackground
-        
-        
-//        passwordTextField.addObserver(self, forKeyPath: "isSecureTextEntry", options: .new, context: nil)
     }
-    
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if keyPath == "isSecureTextEntry" {
-//            passwordTextField.backgroundColor = .white
-//        }
-//    }
+
     
     private func setup() {
         view.addSubview(topColorView)

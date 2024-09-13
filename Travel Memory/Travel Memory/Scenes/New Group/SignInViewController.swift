@@ -187,7 +187,15 @@ class SignInController: UIViewController {
                 let welcomeVC = TravelMemoryWelcomeView()
                 self.navigationController?.pushViewController(welcomeVC, animated: true)
             case .failure(let error):
-                print("Sign in failed: \(error.localizedDescription)")
+                let alert = UIAlertController(
+                    title: "Sign In Failed",
+                    message: error.localizedDescription,
+                    preferredStyle: .alert
+                )
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

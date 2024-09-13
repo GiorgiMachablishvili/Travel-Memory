@@ -17,6 +17,15 @@ class SignUpViewModel {
     var passwordAlarmMessage: String?
     var confirmPasswordAlarmMessage: String?
     
+    func didPressSignUpButton(
+        fullName: String,
+        email: String,
+        password: String,
+        confirmPassword: String,
+        completion: @escaping(Result<Void, SignUpError>) -> Void
+    ) {
+        
+    }
     // Input validation
     func validateFullName() -> Bool {
         if user.fullName.isEmpty {
@@ -34,6 +43,7 @@ class SignUpViewModel {
     func validateEmail() -> Bool {
         if user.email.isEmpty {
             emailAlarmMessage = "Enter email address."
+            
             return false
         }
         if !isValidEmail(user.email) {
@@ -101,5 +111,15 @@ class SignUpViewModel {
         let numberRegEx = ".*[0-9]+.*"
         let numberTest = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
         return numberTest.evaluate(with: password)
+    }
+}
+
+extension SignUpViewModel {
+    enum SignUpError:Error{
+        case fullName
+        case email
+        case password
+        case confirmPassword
+        case auth
     }
 }
