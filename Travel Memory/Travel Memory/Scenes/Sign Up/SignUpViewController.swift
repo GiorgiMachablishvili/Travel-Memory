@@ -333,7 +333,7 @@ class SignUpViewController: UIViewController {
                     print("Account created successfully")
                     // Navigate to sign-in controller after successful registration
                     //MARK: add signInController name
-                    let signInController = TravelMemoryWelcomeView()
+                    let signInController = DashboardViewController()
                     self?.navigationController?.pushViewController(signInController, animated: true)
                 }
             }
