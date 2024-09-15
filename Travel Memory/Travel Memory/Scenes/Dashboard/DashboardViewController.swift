@@ -43,7 +43,13 @@ class DashboardViewController: UIViewController {
         view.font = UIFont.KoronaOneRegular(size: 14)
         view.textColor = UIColor.init(hexString: "000000")
         view.textAlignment = .center
-        view.text = "Welcome"
+        
+        if let user = Auth.auth().currentUser {
+               let userName = user.displayName ?? "User"
+               view.text = "Welcome, \(userName)"
+           } else {
+               view.text = "Welcome"
+           }
         return view
     }()
     
