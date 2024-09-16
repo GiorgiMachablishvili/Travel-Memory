@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF001E1F2C94915C00A8556B /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF001E1E2C94915C00A8556B /* SignInViewModel.swift */; };
 		CF2DE1E12C8B5EAE004AC5F4 /* MyTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */; };
 		CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216542C872F4400AAE830 /* LaunchViewController.swift */; };
 		CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216572C8733F400AAE830 /* WelcomeViewController.swift */; };
@@ -25,9 +26,8 @@
 		E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F72C87084E00E1DAA9 /* Constraints.swift */; };
 		E31261FB2C8708E800E1DAA9 /* KronaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */; };
 		E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FD2C8710AC00E1DAA9 /* SnapKit */; };
-		E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */; };
 		E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */; };
-		E390302A2C8A3FB900E9BA6F /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030292C8A3FB900E9BA6F /* SignInController.swift */; };
+		E390302A2C8A3FB900E9BA6F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030292C8A3FB900E9BA6F /* SignInViewController.swift */; };
 		E396AAF72C899EB0004D7BE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF62C899EB0004D7BE5 /* User.swift */; };
 		E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */; };
 		E396AAFB2C89C72B004D7BE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E396AAFA2C89C72B004D7BE5 /* GoogleService-Info.plist */; };
@@ -57,7 +57,21 @@
 		E396AB2C2C89D204004D7BE5 /* MyAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AB2B2C89D204004D7BE5 /* MyAuthManager.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FA1F15FB2C949EE700E299AC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		CF001E1E2C94915C00A8556B /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextFieldView.swift; sourceTree = "<group>"; };
 		CF7216542C872F4400AAE830 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		CF7216572C8733F400AAE830 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +92,7 @@
 		E31261F72C87084E00E1DAA9 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KronaOne-Regular.ttf"; sourceTree = "<group>"; };
 		E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryWelcomeView.swift; sourceTree = "<group>"; };
-		E39030292C8A3FB900E9BA6F /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
+		E39030292C8A3FB900E9BA6F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		E396AAF62C899EB0004D7BE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E396AAFA2C89C72B004D7BE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -98,7 +112,6 @@
 				E396AB2A2C89CAA9004D7BE5 /* FirebaseVertexAI-Preview in Frameworks */,
 				E396AB022C89CAA9004D7BE5 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				E396AB1A2C89CAA9004D7BE5 /* FirebaseInAppMessaging-Beta in Frameworks */,
-				E31262002C8710AC00E1DAA9 /* SnapKit-Dynamic in Frameworks */,
 				E396AAFE2C89CAA9004D7BE5 /* FirebaseAnalytics in Frameworks */,
 				E396AB182C89CAA9004D7BE5 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				E396AB282C89CAA9004D7BE5 /* FirebaseStorageCombine-Community in Frameworks */,
@@ -292,7 +305,8 @@
 		E39030282C8A3F7D00E9BA6F /* Sign In */ = {
 			isa = PBXGroup;
 			children = (
-				E39030292C8A3FB900E9BA6F /* SignInController.swift */,
+				E39030292C8A3FB900E9BA6F /* SignInViewController.swift */,
+				CF001E1E2C94915C00A8556B /* SignInViewModel.swift */,
 			);
 			name = "Sign In";
 			path = "New Group";
@@ -308,6 +322,7 @@
 				E31261CC2C86E66300E1DAA9 /* Sources */,
 				E31261CD2C86E66300E1DAA9 /* Frameworks */,
 				E31261CE2C86E66300E1DAA9 /* Resources */,
+				FA1F15FB2C949EE700E299AC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -316,7 +331,6 @@
 			name = "Travel Memory";
 			packageProductDependencies = (
 				E31261FD2C8710AC00E1DAA9 /* SnapKit */,
-				E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */,
 				E396AAFD2C89CAA9004D7BE5 /* FirebaseAnalytics */,
 				E396AAFF2C89CAA9004D7BE5 /* FirebaseAnalyticsOnDeviceConversion */,
 				E396AB012C89CAA9004D7BE5 /* FirebaseAnalyticsWithoutAdIdSupport */,
@@ -404,7 +418,7 @@
 				E30234252C96E5B700CB1795 /* DashboardViewController.swift in Sources */,
 				E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */,
 				CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */,
-				E390302A2C8A3FB900E9BA6F /* SignInController.swift in Sources */,
+				E390302A2C8A3FB900E9BA6F /* SignInViewController.swift in Sources */,
 				CF72165B2C8736DF00AAE830 /* LogoView.swift in Sources */,
 				E31261D82C86E66300E1DAA9 /* ViewController.swift in Sources */,
 				E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */,
@@ -416,6 +430,7 @@
 				E396AAF72C899EB0004D7BE5 /* User.swift in Sources */,
 				E31261F52C8707C600E1DAA9 /* UIFont+Extansion.swift in Sources */,
 				CF2DE1E12C8B5EAE004AC5F4 /* MyTextFieldView.swift in Sources */,
+				CF001E1F2C94915C00A8556B /* SignInViewModel.swift in Sources */,
 				CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */,
 				E31261F12C86F33900E1DAA9 /* SignUpViewController.swift in Sources */,
 				E396AB2C2C89D204004D7BE5 /* MyAuthManager.swift in Sources */,
@@ -644,11 +659,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		E31261FF2C8710AC00E1DAA9 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 		E396AAFD2C89CAA9004D7BE5 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

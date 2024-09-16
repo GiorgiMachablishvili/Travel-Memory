@@ -68,8 +68,6 @@ class SignUpViewController: UIViewController {
     
     private let fullNameField = MyTextFieldView(label: "Full name:")
     
-    
-    
     private lazy var fullNameAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 9)
@@ -81,7 +79,6 @@ class SignUpViewController: UIViewController {
     
     private let emailField = MyTextFieldView(label: "Email:")
     
-    
     private lazy var emailAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 9)
@@ -91,8 +88,7 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private let passwordField = MyTextFieldView(label: "Email:", isSecured: true, hasPasswordVisibility: true)
-    
+    private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
     
     private lazy var passwordAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
@@ -154,17 +150,8 @@ class SignUpViewController: UIViewController {
         setup()
         layout()
         view.backgroundColor = .systemBackground
-        
-        
-        //        passwordTextField.addObserver(self, forKeyPath: "isSecureTextEntry", options: .new, context: nil)
     }
-    
-    //    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-    //        if keyPath == "isSecureTextEntry" {
-    //            passwordTextField.backgroundColor = .white
-    //        }
-    //    }
-    
+
     private func setup() {
         view.addSubview(topColorView)
         topColorView.addSubview(logoImage)

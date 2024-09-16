@@ -77,6 +77,7 @@ class SignUpViewModel {
     func validateEmail() -> Bool {
         if user.email.isEmpty {
             emailAlarmMessage = "Enter email address."
+            
             return false
         }
         if !isValidEmail(user.email) {

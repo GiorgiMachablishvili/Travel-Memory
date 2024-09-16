@@ -7,9 +7,9 @@
 
 import UIKit
 import SnapKit
-import FirebaseAuth
 
 class SignInController: UIViewController {
+    private var viewModel = SignInViewModel()
     
     //MARK: -UI components
     private lazy var topColorView: UIView = {
@@ -54,6 +54,24 @@ class SignInController: UIViewController {
     private let emailField = MyTextFieldView(label: "Email")
     private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
     
+    private lazy var emailAlarmLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 9)
+        view.textColor = .red
+        view.textAlignment = .left
+        view.isHidden = true
+        return view
+    }()
+    
+    private lazy var passwordAlarmLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 9)
+        view.textColor = .red
+        view.textAlignment = .left
+        view.isHidden = true
+        return view
+    }()
+    
     private lazy var signIntEnterButton: UIButton = {
         let view = UIButton(frame: .zero)
         view.setTitle("Sign In", for: .normal)
@@ -87,7 +105,7 @@ class SignInController: UIViewController {
         view.clipsToBounds = true
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -101,8 +119,10 @@ class SignInController: UIViewController {
         topColorView.addSubview(nameLabel)
         topColorView.addSubview(sloganLabel)
         topColorView.addSubview(signInLabel)
-        view.addSubview(passwordField)
         view.addSubview(emailField)
+        view.addSubview(emailAlarmLabel)
+        view.addSubview(passwordField)
+        view.addSubview(passwordAlarmLabel)
         view.addSubview(bottomColorView)
         bottomColorView.addSubview(signIntEnterButton)
         bottomColorView.addSubview(questionLabel)
@@ -133,7 +153,6 @@ class SignInController: UIViewController {
             make.height.equalTo(29)
             make.width.equalTo(133)
         }
-        
         signInLabel.snp.remakeConstraints { make in
             make.top.equalTo(sloganLabel.snp.bottom).offset(18)
             make.centerX.equalTo(topColorView.snp.centerX)
@@ -147,12 +166,22 @@ class SignInController: UIViewController {
             make.trailing.equalTo(view.snp.trailing).offset(-20)
             make.height.equalTo(24)
         }
+        emailAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(emailField.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
+        }
         
         passwordField.snp.remakeConstraints { make in
             make.top.equalTo(emailField.snp.bottom).offset(58)
             make.leading.equalTo(view.snp.leading).offset(Constants.fieldLeading)
             make.trailing.equalTo(view.snp.trailing).offset(-20)
             make.height.equalTo(24)
+        }
+        passwordAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(passwordField.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
         }
         
         signIntEnterButton.snp.remakeConstraints { make in
@@ -181,19 +210,49 @@ class SignInController: UIViewController {
     }
     
     @objc func pressSignInButton () {
-        let email = emailField.text
-        let password = passwordField.text
-        
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                print("Error signing in: \(error.localizedDescription)")
-                return
+        viewModel.pressSignInButton(email: emailField.text, password: passwordField.text) { result in
+            switch result {
+            case .success:
+//                let welcomeVC = TravelMemoryWelcomeView()
+//                self.navigationController?.pushViewController(welcomeVC, animated: true)
+                
+                let welcomeVC = DashboardViewController()
+                self.navigationController?.pushViewController(welcomeVC, animated: true)
+            case .failure(let error):
+                self.handleSignupError(error)
             }
-            
-            let welcomeVC = DashboardViewController()
-            self.navigationController?.pushViewController(welcomeVC, animated: true)
         }
     }
+    
+    private func handleSignupError(_ error: SignInViewModel.SignInError) {
+        //TODO handle multi errors
+        switch error {
+        case .email:
+            emailAlarmLabel.isHidden = false
+            emailAlarmLabel.text = error.localizedDescription
+            
+            passwordAlarmLabel.isHidden = true
+        case .password:
+            passwordAlarmLabel.isHidden = false
+            passwordAlarmLabel.text = error.localizedDescription
+            
+            emailAlarmLabel.isHidden = true
+        case .auth(_):
+
+            emailAlarmLabel.isHidden = true
+            passwordAlarmLabel.isHidden = true
+            
+            let alert = UIAlertController(
+                title: "Sign In Failed",
+                message: error.localizedDescription,
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 private extension SignInController {
