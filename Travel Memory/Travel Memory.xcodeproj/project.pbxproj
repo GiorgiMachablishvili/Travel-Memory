@@ -12,6 +12,9 @@
 		CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216542C872F4400AAE830 /* LaunchViewController.swift */; };
 		CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216572C8733F400AAE830 /* WelcomeViewController.swift */; };
 		CF72165B2C8736DF00AAE830 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72165A2C8736DF00AAE830 /* LogoView.swift */; };
+		E30234252C96E5B700CB1795 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30234242C96E5B700CB1795 /* DashboardViewController.swift */; };
+		E30234272C96E5FF00CB1795 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30234262C96E5FF00CB1795 /* DashboardCell.swift */; };
+		E30234292C96E62700CB1795 /* DashboardBottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30234282C96E62700CB1795 /* DashboardBottomButtonView.swift */; };
 		E31261D42C86E66300E1DAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261D32C86E66300E1DAA9 /* AppDelegate.swift */; };
 		E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261D52C86E66300E1DAA9 /* SceneDelegate.swift */; };
 		E31261D82C86E66300E1DAA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261D72C86E66300E1DAA9 /* ViewController.swift */; };
@@ -73,6 +76,9 @@
 		CF7216542C872F4400AAE830 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		CF7216572C8733F400AAE830 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		CF72165A2C8736DF00AAE830 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		E30234242C96E5B700CB1795 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		E30234262C96E5FF00CB1795 /* DashboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
+		E30234282C96E62700CB1795 /* DashboardBottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardBottomButtonView.swift; sourceTree = "<group>"; };
 		E31261D02C86E66300E1DAA9 /* Travel Memory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Travel Memory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31261D32C86E66300E1DAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E31261D52C86E66300E1DAA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +159,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E30234232C96E56400CB1795 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E30234242C96E5B700CB1795 /* DashboardViewController.swift */,
+				E30234262C96E5FF00CB1795 /* DashboardCell.swift */,
+				E30234282C96E62700CB1795 /* DashboardBottomButtonView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		E31261C72C86E66300E1DAA9 = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +218,7 @@
 				CF7216562C8733EA00AAE830 /* Welcome */,
 				E351DFAD2C87945C008B2E04 /* Sign Up */,
 				E39030282C8A3F7D00E9BA6F /* Sign In */,
+				E30234232C96E56400CB1795 /* Dashboard */,
 				E35A969F2C8AD02D00328BF4 /* TravelMemoryWelcome */,
 				E31261D72C86E66300E1DAA9 /* ViewController.swift */,
 			);
@@ -398,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E31261DE2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld in Sources */,
+				E30234252C96E5B700CB1795 /* DashboardViewController.swift in Sources */,
 				E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */,
 				CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */,
 				E390302A2C8A3FB900E9BA6F /* SignInViewController.swift in Sources */,
@@ -406,6 +424,7 @@
 				E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */,
 				E31261D42C86E66300E1DAA9 /* AppDelegate.swift in Sources */,
 				E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */,
+				E30234292C96E62700CB1795 /* DashboardBottomButtonView.swift in Sources */,
 				E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */,
 				E31261F32C8707B500E1DAA9 /* UIColor+Extantion.swift in Sources */,
 				E396AAF72C899EB0004D7BE5 /* User.swift in Sources */,
@@ -415,6 +434,7 @@
 				CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */,
 				E31261F12C86F33900E1DAA9 /* SignUpViewController.swift in Sources */,
 				E396AB2C2C89D204004D7BE5 /* MyAuthManager.swift in Sources */,
+				E30234272C96E5FF00CB1795 /* DashboardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

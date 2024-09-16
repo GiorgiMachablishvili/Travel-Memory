@@ -67,8 +67,8 @@ class SignUpViewController: UIViewController {
     }()
     
     private let fullNameField = MyTextFieldView(label: "Full name:")
-
-
+    
+    
     
     private lazy var fullNameAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
@@ -80,7 +80,6 @@ class SignUpViewController: UIViewController {
     }()
     
     private let emailField = MyTextFieldView(label: "Email:")
-
     
     private lazy var emailAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
@@ -92,7 +91,6 @@ class SignUpViewController: UIViewController {
     }()
     
     private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
-
     
     private lazy var passwordAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
@@ -156,7 +154,6 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
 
-    
     private func setup() {
         view.addSubview(topColorView)
         topColorView.addSubview(logoImage)
@@ -217,52 +214,52 @@ class SignUpViewController: UIViewController {
         }
         
         fullNameField.snp.remakeConstraints { make in
-                   make.top.equalTo(infoLabel.snp.bottom).offset(30)
-                   make.leading.equalTo(view.snp.leading).offset(37)
-                   make.trailing.equalTo(view.snp.trailing).offset(-37)
-               }
-               
-               fullNameAlarmLabel.snp.remakeConstraints { make in
-                   make.top.equalTo(fullNameField.snp.bottom).offset(5)
-                   make.leading.equalTo(view.snp.leading).offset(37)
-                   make.height.equalTo(11)
-               }
-               
-               emailField.snp.remakeConstraints { make in
-                   make.top.equalTo(fullNameField.snp.bottom).offset(30)
-                   make.leading.equalTo(view.snp.leading).offset(37)
-                   make.trailing.equalTo(view.snp.trailing).offset(-37)
-               }
-               
-               emailAlarmLabel.snp.remakeConstraints { make in
-                   make.top.equalTo(emailField.snp.bottom).offset(5)
-                   make.leading.equalTo(view.snp.leading).offset(37)
-                   make.height.equalTo(11)
-               }
-               
-               passwordField.snp.remakeConstraints { make in
-                   make.top.equalTo(emailField.snp.bottom).offset(30)
-                   make.leading.equalTo(view.snp.leading).offset(37)
-                   make.trailing.equalTo(view.snp.trailing).offset(-37)
-               }
-               
-               passwordAlarmLabel.snp.remakeConstraints { make in
-                   make.top.equalTo(passwordField.snp.bottom).offset(5)
-                   make.leading.equalTo(view.snp.leading).offset(37)
-                   make.height.equalTo(11)
-               }
-               
-               passwordConfirmField.snp.remakeConstraints { make in
-                   make.top.equalTo(passwordField.snp.bottom).offset(30)
-                   make.leading.equalTo(view.snp.leading).offset(37)
-                   make.trailing.equalTo(view.snp.trailing).offset(-37)
-               }
-               
-               confirmPswAlarmLabel.snp.remakeConstraints { make in
-                   make.top.equalTo(passwordConfirmField.snp.bottom).offset(5)
-                   make.leading.equalTo(view.snp.leading).offset(37)
-                   make.height.equalTo(11)
-               }
+            make.top.equalTo(infoLabel.snp.bottom).offset(30)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.trailing.equalTo(view.snp.trailing).offset(-37)
+        }
+        
+        fullNameAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(fullNameField.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
+        }
+        
+        emailField.snp.remakeConstraints { make in
+            make.top.equalTo(fullNameField.snp.bottom).offset(30)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.trailing.equalTo(view.snp.trailing).offset(-37)
+        }
+        
+        emailAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(emailField.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
+        }
+        
+        passwordField.snp.remakeConstraints { make in
+            make.top.equalTo(emailField.snp.bottom).offset(30)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.trailing.equalTo(view.snp.trailing).offset(-37)
+        }
+        
+        passwordAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(passwordField.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
+        }
+        
+        passwordConfirmField.snp.remakeConstraints { make in
+            make.top.equalTo(passwordField.snp.bottom).offset(30)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.trailing.equalTo(view.snp.trailing).offset(-37)
+        }
+        
+        confirmPswAlarmLabel.snp.remakeConstraints { make in
+            make.top.equalTo(passwordConfirmField.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(11)
+        }
         
         bottomColorView.snp.remakeConstraints { make in
             make.leading.bottom.trailing.equalToSuperview()
@@ -290,47 +287,41 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func pressButton() {
-        viewModel.user.fullName = fullNameField.text 
-        viewModel.user.email = emailField.text
-        viewModel.user.password = passwordField.text
-        viewModel.user.confirmPassword = passwordConfirmField.text
-        
-        if viewModel.validateFullName() {
-            fullNameAlarmLabel.isHidden = true
-        } else {
+        viewModel.didPressSignupButton(
+            fullName: fullNameField.text,
+            email: emailField.text,
+            password: passwordField.text,
+            confirmPassword: passwordConfirmField.text
+        ) { [weak self] result in
+            switch result {
+            case .success:
+                print("Account created successfully")
+                let signInController = DashboardViewController()
+                self?.navigationController?.pushViewController(signInController, animated: true)
+            case .failure(let error):
+                self?.handleSignupError(error)
+            }
+        }
+    }
+    
+    private func handleSignupError(_ error: SignUpViewModel.SignUpError) {
+        switch error {
+        case .fullName:
             fullNameAlarmLabel.isHidden = false
             fullNameAlarmLabel.text = viewModel.fullNameAlarmMessage
-        }
-        
-        viewModel.validateEmail()
-        emailAlarmLabel.isHidden = viewModel.emailAlarmMessage == nil
-        emailAlarmLabel.text = viewModel.emailAlarmMessage
-        
-        viewModel.validatePassword()
-        passwordAlarmLabel.isHidden = viewModel.passwordAlarmMessage == nil
-        passwordAlarmLabel.text = viewModel.passwordAlarmMessage
-        
-        viewModel.validateConfirmPassword()
-        confirmPswAlarmLabel.isHidden = viewModel.confirmPasswordAlarmMessage == nil
-        confirmPswAlarmLabel.text = viewModel.confirmPasswordAlarmMessage
-        
-        if viewModel.validateFullName() && viewModel.validateEmail() && viewModel.validatePassword() && viewModel.validateConfirmPassword() {
-            
-            // Use AuthManager to create a new account
-            authManager.createAccount(withEmail: viewModel.user.email, password: viewModel.user.password, name: viewModel.user.fullName) { [weak self] error in
-                if let error = error {
-                    print("Failed to create account: \(error.localizedDescription)")
-                    // Handle error cases (e.g., email already in use, weak password)
-                } else {
-                    print("Account created successfully")
-                    // Navigate to sign-in controller after successful registration
-                    //MARK: add signInController name
-                    let signInController = TravelMemoryWelcomeView()
-                    self?.navigationController?.pushViewController(signInController, animated: true)
-                }
-            }
-        } else {
-            print("Validation failed")
+        case .email:
+            emailAlarmLabel.isHidden = false
+            emailAlarmLabel.text = viewModel.emailAlarmMessage
+        case .password:
+            passwordAlarmLabel.isHidden = false
+            passwordAlarmLabel.text = viewModel.passwordAlarmMessage
+        case .confirmPassword:
+            confirmPswAlarmLabel.isHidden = false
+            confirmPswAlarmLabel.text = viewModel.confirmPasswordAlarmMessage
+        case .auth(let message):
+            let alert = UIAlertController(title: "Sign Up Failed", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

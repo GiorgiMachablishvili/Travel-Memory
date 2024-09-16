@@ -197,6 +197,9 @@ class SignInController: UIViewController {
                 
                 self.present(alert, animated: true, completion: nil)
             }
+            
+            let welcomeVC = DashboardViewController()
+            self.navigationController?.pushViewController(welcomeVC, animated: true)
         }
     }
     
