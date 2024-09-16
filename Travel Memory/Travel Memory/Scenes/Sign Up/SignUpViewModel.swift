@@ -9,6 +9,8 @@ import Foundation
 
 class SignUpViewModel {
     
+    private let authManager = AuthManager()
+    
     var user = User(fullName: "", email: "", password: "", confirmPassword: "")
     
     // Outputs
@@ -16,6 +18,47 @@ class SignUpViewModel {
     var emailAlarmMessage: String?
     var passwordAlarmMessage: String?
     var confirmPasswordAlarmMessage: String?
+    
+    func didPressSignupButton(
+        fullName: String?,
+        email: String?,
+        password: String?,
+        confirmPassword: String?,
+        completion: @escaping (Result<Void, SignUpError>) -> Void
+    ) {
+        // Set user data
+        user.fullName = fullName ?? ""
+        user.email = email ?? ""
+        user.password = password ?? ""
+        user.confirmPassword = confirmPassword ?? ""
+        
+        // Validate fields
+        guard validateFullName() else {
+            completion(.failure(.fullName))
+            return
+        }
+        guard validateEmail() else {
+            completion(.failure(.email))
+            return
+        }
+        guard validatePassword() else {
+            completion(.failure(.password))
+            return
+        }
+        guard validateConfirmPassword() else {
+            completion(.failure(.confirmPassword))
+            return
+        }
+        
+        // If all validations pass, proceed with account creation
+        authManager.createAccount(withEmail: user.email, password: user.password, name: user.fullName) { error in
+            if let error = error {
+                completion(.failure(.auth(error.localizedDescription)))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
     
     // Input validation
     func validateFullName() -> Bool {
@@ -101,5 +144,30 @@ class SignUpViewModel {
         let numberRegEx = ".*[0-9]+.*"
         let numberTest = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
         return numberTest.evaluate(with: password)
+    }
+}
+
+extension SignUpViewModel {
+    enum SignUpError: Error {
+        case fullName
+        case email
+        case password
+        case confirmPassword
+        case auth(String)
+        
+        var localizedDescription: String {
+            switch self {
+            case .fullName:
+                return "Invalid full name."
+            case .email:
+                return "Invalid email."
+            case .password:
+                return "Invalid password."
+            case .confirmPassword:
+                return "Passwords do not match."
+            case .auth(let message):
+                return "Authentication error: \(message)"
+            }
+        }
     }
 }
