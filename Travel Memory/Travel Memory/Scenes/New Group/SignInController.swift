@@ -190,7 +190,7 @@ class SignInController: UIViewController {
                 return
             }
             
-            let welcomeVC = TravelMemoryWelcomeView()
+            let welcomeVC = DashboardViewController()
             self.navigationController?.pushViewController(welcomeVC, animated: true)
         }
     }
