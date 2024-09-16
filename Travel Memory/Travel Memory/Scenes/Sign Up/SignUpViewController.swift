@@ -68,8 +68,6 @@ class SignUpViewController: UIViewController {
     
     private let fullNameField = MyTextFieldView(label: "Full name:")
     
-    
-    
     private lazy var fullNameAlarmLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 9)
