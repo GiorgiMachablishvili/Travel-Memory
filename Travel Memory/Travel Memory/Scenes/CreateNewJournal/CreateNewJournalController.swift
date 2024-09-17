@@ -41,7 +41,7 @@ class CreateNewJournalController: UIViewController {
     
     private let startDateField = MyTextFieldView(label: "Start Date")
     
-    private let endDate = MyTextFieldView(label: "End Date")
+    private let endDateField = MyTextFieldView(label: "End Date")
     
     private lazy var bottomColorView: UIView = {
         let view = UIView(frame: .zero)
@@ -56,6 +56,16 @@ class CreateNewJournalController: UIViewController {
         view.backgroundColor = .skyBlue.withAlphaComponent(25)
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressContinueButton), for: .touchUpInside)
+        return view
+    }()
+    
+    private lazy var cancelButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Cancel", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        view.backgroundColor = .skyBlue.withAlphaComponent(25)
+        view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(pressCancelButton), for: .touchUpInside)
         return view
     }()
     
@@ -74,9 +84,10 @@ class CreateNewJournalController: UIViewController {
         view.addSubview(journalTitle)
         view.addSubview(destinationField)
         view.addSubview(startDateField)
-        view.addSubview(endDate)
+        view.addSubview(endDateField)
         view.addSubview(bottomColorView)
         bottomColorView.addSubview(continueButton)
+        bottomColorView.addSubview(cancelButton)
     }
     
     private func setupConstraints() {
@@ -113,7 +124,7 @@ class CreateNewJournalController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(32)
         }
         
-        endDate.snp.remakeConstraints { make in
+        endDateField.snp.remakeConstraints { make in
             make.top.equalTo(startDateField.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(32)
         }
@@ -129,11 +140,24 @@ class CreateNewJournalController: UIViewController {
             make.height.equalTo(27)
             make.width.equalTo(150)
         }
+        
+        cancelButton.snp.remakeConstraints { make in
+            make.leading.equalTo(view.snp.leading).offset(36)
+            make.bottom.equalTo(view.snp.bottom).offset(-36)
+            make.height.equalTo(15)
+        }
     }
     
     
     @objc func pressContinueButton() {
         
+    }
+    
+    @objc func pressCancelButton() {
+        journalTitle.clearText()
+        destinationField.clearText()
+        startDateField.clearText()
+        endDateField.clearText()
     }
     
 }

@@ -194,7 +194,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     }
     
     func navigateToSignInController() {
-        let signInController = SignInController() 
+        let signInController = SignInController()
         let navigationController = UINavigationController(rootViewController: signInController)
         
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController = navigationController

@@ -76,8 +76,11 @@ class MyTextFieldView: UIView {
         addSubview(labelView)
         addSubview(textField)
         addSubview(visibilityToggleButton)
-        
     }
+    
+    func clearText() {
+            textField.text = ""
+        }
     
     private func setupConstraints() {
         labelView.snp.remakeConstraints { make in
