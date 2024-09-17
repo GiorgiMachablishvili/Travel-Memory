@@ -11,6 +11,7 @@ import FirebaseAuth
 
 protocol DashboardBottomButtonViewDelegate: AnyObject {
     func didPressCreateFolderButton()
+    func didPressLogoutButton()
 }
 
 class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
@@ -48,11 +49,11 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         view.textAlignment = .center
         
         if let user = Auth.auth().currentUser {
-               let userName = user.displayName ?? "User"
-               view.text = "Welcome, \(userName)"
-           } else {
-               view.text = "Welcome"
-           }
+            let userName = user.displayName ?? "User"
+            view.text = "Welcome, \(userName)"
+        } else {
+            view.text = "Welcome"
+        }
         return view
     }()
     
@@ -179,9 +180,25 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     }
     
     func didPressCreateFolderButton() {
-           let createController = CreateNewJournalController()
-           self.navigationController?.pushViewController(createController, animated: true)
-       }
+        let createController = CreateNewJournalController()
+        self.navigationController?.pushViewController(createController, animated: true)
+    }
+    
+    func didPressLogoutButton() {
+        do {
+            try Auth.auth().signOut() // Sign out the user
+            navigateToSignInController() // Navigate to the SignInController
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
+    
+    func navigateToSignInController() {
+        let signInController = SignInController() 
+        let navigationController = UINavigationController(rootViewController: signInController)
+        
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController = navigationController
+    }
 }
 
 extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {

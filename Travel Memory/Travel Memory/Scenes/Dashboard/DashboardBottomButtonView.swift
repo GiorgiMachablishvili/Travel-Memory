@@ -53,6 +53,7 @@ class DashboardBottomButtonView: UIView {
         setupConstraints()
         
         createFolderButton.addTarget(self, action: #selector(didPressCreateFolderButton), for: .touchUpInside)
+        logoutButton.addTarget(self, action: #selector(didPressLogoutButton), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -102,6 +103,10 @@ class DashboardBottomButtonView: UIView {
     
     @objc private func didPressCreateFolderButton() {
         delegate?.didPressCreateFolderButton()
+    }
+    
+    @objc private func didPressLogoutButton() {
+        delegate?.didPressLogoutButton()
     }
 }
 
