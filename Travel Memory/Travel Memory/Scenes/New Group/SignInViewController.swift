@@ -20,7 +20,7 @@ class SignInController: UIViewController {
     
     private lazy var logoImage: UIImageView = {
         let view = UIImageView(frame: .zero)
-        view.image = UIImage(named: "FLIGHT")
+        view.image = UIImage(named: "flight")
         return view
     }()
     
@@ -213,9 +213,6 @@ class SignInController: UIViewController {
         viewModel.pressSignInButton(email: emailField.text, password: passwordField.text) { result in
             switch result {
             case .success:
-//                let welcomeVC = TravelMemoryWelcomeView()
-//                self.navigationController?.pushViewController(welcomeVC, animated: true)
-                
                 let welcomeVC = DashboardViewController()
                 self.navigationController?.pushViewController(welcomeVC, animated: true)
             case .failure(let error):
@@ -238,7 +235,7 @@ class SignInController: UIViewController {
             
             emailAlarmLabel.isHidden = true
         case .auth(_):
-
+            
             emailAlarmLabel.isHidden = true
             passwordAlarmLabel.isHidden = true
             

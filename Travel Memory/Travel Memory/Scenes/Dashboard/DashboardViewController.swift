@@ -9,15 +9,17 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 
-class DashboardViewController: UIViewController {
+protocol DashboardBottomButtonViewDelegate: AnyObject {
+    func didPressCreateFolderButton()
+}
+
+class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 200, height: 160)
         layout.minimumLineSpacing = 15
-        
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
@@ -30,7 +32,7 @@ class DashboardViewController: UIViewController {
     private let journalData: [(image: UIImage, title: String)] = [
         (image: UIImage(named: "japan")!, title: "1. Sushi in Japan"),
         (image: UIImage(named: "ny")!, title: "2. NY never sleep"),
-        (image: UIImage(named: "new mexico")!, title: "3. Chili day New Mexico")
+        (image: UIImage(named: "new_mexico")!, title: "3. Chili day New Mexico")
     ]
     
     private lazy var topColorView: UIView = {
@@ -93,8 +95,11 @@ class DashboardViewController: UIViewController {
     
     private lazy var bottomButtonView: DashboardBottomButtonView = {
         let view = DashboardBottomButtonView()
+        view.delegate = self
         return view
     }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +108,6 @@ class DashboardViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
     }
-    
     
     private func setup() {
         view.addSubview(topColorView)
@@ -173,6 +177,11 @@ class DashboardViewController: UIViewController {
             make.height.equalTo(70)
         }
     }
+    
+    func didPressCreateFolderButton() {
+           let createController = CreateNewJournalController()
+           self.navigationController?.pushViewController(createController, animated: true)
+       }
 }
 
 extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -186,5 +195,4 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.configure(title: journal.title, image: journal.image)
         return cell
     }
-    
 }

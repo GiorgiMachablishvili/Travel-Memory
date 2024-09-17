@@ -26,6 +26,7 @@
 		E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F72C87084E00E1DAA9 /* Constraints.swift */; };
 		E31261FB2C8708E800E1DAA9 /* KronaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */; };
 		E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E31261FD2C8710AC00E1DAA9 /* SnapKit */; };
+		E34A57242C99C1E300E6592E /* CreateNewJournalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34A57232C99C1E300E6592E /* CreateNewJournalController.swift */; };
 		E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */; };
 		E390302A2C8A3FB900E9BA6F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030292C8A3FB900E9BA6F /* SignInViewController.swift */; };
 		E396AAF72C899EB0004D7BE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF62C899EB0004D7BE5 /* User.swift */; };
@@ -91,6 +92,7 @@
 		E31261F42C8707C600E1DAA9 /* UIFont+Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extansion.swift"; sourceTree = "<group>"; };
 		E31261F72C87084E00E1DAA9 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KronaOne-Regular.ttf"; sourceTree = "<group>"; };
+		E34A57232C99C1E300E6592E /* CreateNewJournalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewJournalController.swift; sourceTree = "<group>"; };
 		E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryWelcomeView.swift; sourceTree = "<group>"; };
 		E39030292C8A3FB900E9BA6F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		E396AAF62C899EB0004D7BE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				E351DFAD2C87945C008B2E04 /* Sign Up */,
 				E39030282C8A3F7D00E9BA6F /* Sign In */,
 				E30234232C96E56400CB1795 /* Dashboard */,
+				E34A57222C99C17000E6592E /* CreateNewJournal */,
 				E35A969F2C8AD02D00328BF4 /* TravelMemoryWelcome */,
 				E31261D72C86E66300E1DAA9 /* ViewController.swift */,
 			);
@@ -266,6 +269,14 @@
 				E31261FA2C8708E800E1DAA9 /* KronaOne-Regular.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		E34A57222C99C17000E6592E /* CreateNewJournal */ = {
+			isa = PBXGroup;
+			children = (
+				E34A57232C99C1E300E6592E /* CreateNewJournalController.swift */,
+			);
+			path = CreateNewJournal;
 			sourceTree = "<group>";
 		};
 		E351DFAD2C87945C008B2E04 /* Sign Up */ = {
@@ -426,6 +437,7 @@
 				E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */,
 				E30234292C96E62700CB1795 /* DashboardBottomButtonView.swift in Sources */,
 				E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */,
+				E34A57242C99C1E300E6592E /* CreateNewJournalController.swift in Sources */,
 				E31261F32C8707B500E1DAA9 /* UIColor+Extantion.swift in Sources */,
 				E396AAF72C899EB0004D7BE5 /* User.swift in Sources */,
 				E31261F52C8707C600E1DAA9 /* UIFont+Extansion.swift in Sources */,

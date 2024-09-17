@@ -9,16 +9,19 @@ import UIKit
 import SnapKit
 
 class DashboardBottomButtonView: UIView {
+    
+    weak var delegate: DashboardBottomButtonViewDelegate?
+    
     private let createFolderButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setImage(UIImage(named: "createFolder"), for: .normal)
+        view.setImage(UIImage(named: "create_folder"), for: .normal)
         view.tintColor = UIColor.black
         return view
     }()
     
     private let addFolderButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setImage(UIImage(named: "addFolder"), for: .normal)
+        view.setImage(UIImage(named: "add_folder"), for: .normal)
         view.tintColor = UIColor.black
         return view
     }()
@@ -48,6 +51,8 @@ class DashboardBottomButtonView: UIView {
         super.init(frame: frame)
         setup()
         setupConstraints()
+        
+        createFolderButton.addTarget(self, action: #selector(didPressCreateFolderButton), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -94,6 +99,9 @@ class DashboardBottomButtonView: UIView {
             make.height.width.equalTo(50)
         }
     }
-
+    
+    @objc private func didPressCreateFolderButton() {
+        delegate?.didPressCreateFolderButton()
+    }
 }
 

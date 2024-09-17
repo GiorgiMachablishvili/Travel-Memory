@@ -19,7 +19,7 @@ class TravelMemoryWelcomeView: UIViewController {
     
     private lazy var logoImage: UIImageView = {
         let view = UIImageView(frame: .zero)
-        view.image = UIImage(named: "FLIGHT")
+        view.image = UIImage(named: "flight")
         return view
     }()
     

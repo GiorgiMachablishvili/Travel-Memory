@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController {
     
     private lazy var logoImage: UIImageView = {
         let view = UIImageView(frame: .zero)
-        view.image = UIImage(named: "FLIGHT")
+        view.image = UIImage(named: "flight")
         return view
     }()
     
@@ -293,7 +293,6 @@ class SignUpViewController: UIViewController {
         ) { [weak self] result in
             switch result {
             case .success:
-                print("Account created successfully")
                 let signInController = DashboardViewController()
                 self?.navigationController?.pushViewController(signInController, animated: true)
             case .failure(let error):
