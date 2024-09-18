@@ -63,7 +63,6 @@ class CreateNewJournalController: UIViewController {
         let view = UIButton(frame: .zero)
         view.setTitle("Cancel", for: .normal)
         view.setTitleColor(.black, for: .normal)
-        view.backgroundColor = .skyBlue.withAlphaComponent(25)
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressCancelButton), for: .touchUpInside)
         return view
@@ -150,7 +149,39 @@ class CreateNewJournalController: UIViewController {
     
     
     @objc func pressContinueButton() {
-        
+           let journalTitleText = journalTitle.getText()
+           let destinationText = destinationField.getText()
+           let startDateText = startDateField.getText()
+           let endDateText = endDateField.getText()
+           
+           // Check for empty fields
+           if journalTitleText.isEmpty || destinationText.isEmpty || startDateText.isEmpty || endDateText.isEmpty {
+               showAlert(title: "Error", message: "All fields must be filled.")
+               return
+           }
+           
+           // Validate if startDateText and endDateText are integers
+           if Int(startDateText) == nil || Int(endDateText) == nil {
+               showAlert(title: "Error", message: "Start Date and End Date must be valid integers.")
+               return
+           }
+           
+           let addContentVC = AddContentController()
+           
+           // Pass the journal information to AddContentController
+           addContentVC.journalTitle = journalTitleText
+           addContentVC.destination = destinationText
+           addContentVC.startDate = startDateText
+           addContentVC.endDate = endDateText
+           
+           // Navigate to AddContentController
+           self.navigationController?.pushViewController(addContentVC, animated: true)
+       }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func pressCancelButton() {
@@ -159,5 +190,4 @@ class CreateNewJournalController: UIViewController {
         startDateField.clearText()
         endDateField.clearText()
     }
-    
 }

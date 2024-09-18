@@ -78,6 +78,10 @@ class MyTextFieldView: UIView {
         addSubview(visibilityToggleButton)
     }
     
+    func getText() -> String {
+        return textField.text ?? ""
+    }
+    
     func clearText() {
             textField.text = ""
         }

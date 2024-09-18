@@ -6,10 +6,30 @@
 //
 
 import UIKit
+import SnapKit
 
 class AddContentController: UIViewController {
     
+    var journalTitle: String?
+    var destination: String?
+    var startDate: String?
+    var endDate: String?
+    
     //MARK: -UI components
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 128, height: 328)
+        layout.minimumLineSpacing = 15
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        collectionView.register(AddContentCollectionViewCell.self, forCellWithReuseIdentifier: "AddContentCollectionViewCell")
+        return collectionView
+    }()
+    
     private lazy var topColorView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .background
@@ -35,20 +55,152 @@ class AddContentController: UIViewController {
         return view
     }()
     
+    private lazy var lineImageView: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.image = UIImage(named: "LineImage")
+        return view
+    }()
     
+    private lazy var addPhotoLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 12)
+        view.textColor = .black
+        view.textAlignment = .left
+        view.text = "Add Photo"
+        return view
+    }()
+    
+    private lazy var addVideoLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 12)
+        view.textColor = .black
+        view.textAlignment = .left
+        view.text = "Add Video"
+        return view
+    }()
+    
+    private lazy var addNoteLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 15)
+        view.textColor = .black
+        view.textAlignment = .left
+        view.text = "Add Note :"
+        return view
+    }()
+    
+    private lazy var noteTextField: UITextField = {
+        let view = UITextField(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 11)
+        view.placeholder = "Type here...."
+        view.layer.cornerRadius = 8
+        return view
+    }()
     
     private lazy var bottomColorView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .background
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        setupLayout()
+        setupConstraints()
+        
+        view.backgroundColor = .systemBackground
+        
+        setJournalInfo()
     }
     
+    private func setupLayout() {
+        view.addSubview(topColorView)
+        topColorView.addSubview(nameLabel)
+        topColorView.addSubview(sloganLabel)
+        view.addSubview(lineImageView)
+        view.addSubview(addPhotoLabel)
+        view.addSubview(addVideoLabel)
+        view.addSubview(bottomColorView)
+        view.addSubview(collectionView)
+        bottomColorView.addSubview(addNoteLabel)
+        bottomColorView.addSubview(noteTextField)
+    }
+    
+    private func setupConstraints() {
+        topColorView.snp.remakeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(292 * Constraint.yCoeff)
+        }
+        
+        nameLabel.snp.remakeConstraints { make in
+            make.top.equalTo(view.snp.top).offset(141)
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(36)
+        }
+        
+        sloganLabel.snp.remakeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(39)
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(38)
+        }
+        
+        collectionView.snp.remakeConstraints { make in
+            make.top.equalTo(topColorView.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(128)
+        }
+        
+        lineImageView.snp.remakeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).offset(2)
+            make.centerX.equalTo(view.snp.centerX)
+            make.height.equalTo(1)
+        }
+        
+        addPhotoLabel.snp.remakeConstraints { make in
+            make.top.equalTo(lineImageView.snp.bottom).offset(30)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(20)
+        }
+        
+        addVideoLabel.snp.remakeConstraints { make in
+            make.top.equalTo(addPhotoLabel.snp.bottom).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(20)
+        }
+        
+        addNoteLabel.snp.remakeConstraints { make in
+            make.top.equalTo(bottomColorView.snp.top).offset(5)
+            make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(20)
+        }
+        
+        noteTextField.snp.remakeConstraints { make in
+            make.top.equalTo(bottomColorView.snp.top).offset(5)
+            make.leading.equalTo(addNoteLabel.snp.trailing).offset(35)
+            make.height.equalTo(139)
+            make.width.equalTo(199)
+        }
+        
+        bottomColorView.snp.remakeConstraints { make in
+            make.leading.bottom.trailing.equalToSuperview()
+            make.height.equalTo(292)
+        }
+    }
+    
+    private func setJournalInfo() {
+            print("Journal Title: \(journalTitle ?? "")")
+            print("Destination: \(destination ?? "")")
+            print("Start Date: \(startDate ?? "")")
+            print("End Date: \(endDate ?? "")")
+        }
+}
 
-
+extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddContentCollectionViewCell", for: indexPath) as! AddContentCollectionViewCell
+        return cell
+    }
 }

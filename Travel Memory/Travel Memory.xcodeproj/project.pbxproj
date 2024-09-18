@@ -12,6 +12,7 @@
 		CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216542C872F4400AAE830 /* LaunchViewController.swift */; };
 		CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216572C8733F400AAE830 /* WelcomeViewController.swift */; };
 		CF72165B2C8736DF00AAE830 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72165A2C8736DF00AAE830 /* LogoView.swift */; };
+		E300192F2C9AA68D006993F7 /* AddContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300192E2C9AA68D006993F7 /* AddContentCollectionViewCell.swift */; };
 		E30234252C96E5B700CB1795 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30234242C96E5B700CB1795 /* DashboardViewController.swift */; };
 		E30234272C96E5FF00CB1795 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30234262C96E5FF00CB1795 /* DashboardCell.swift */; };
 		E30234292C96E62700CB1795 /* DashboardBottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30234282C96E62700CB1795 /* DashboardBottomButtonView.swift */; };
@@ -78,6 +79,7 @@
 		CF7216542C872F4400AAE830 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		CF7216572C8733F400AAE830 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		CF72165A2C8736DF00AAE830 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		E300192E2C9AA68D006993F7 /* AddContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		E30234242C96E5B700CB1795 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		E30234262C96E5FF00CB1795 /* DashboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
 		E30234282C96E62700CB1795 /* DashboardBottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardBottomButtonView.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				E34A57262C99E4B800E6592E /* AddContentController.swift */,
+				E300192E2C9AA68D006993F7 /* AddContentCollectionViewCell.swift */,
 			);
 			path = AddContent;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E300192F2C9AA68D006993F7 /* AddContentCollectionViewCell.swift in Sources */,
 				E31261DE2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld in Sources */,
 				E30234252C96E5B700CB1795 /* DashboardViewController.swift in Sources */,
 				E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */,
