@@ -71,12 +71,32 @@ class AddContentController: UIViewController {
         return view
     }()
     
+    private lazy var addPhotoButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Browse:", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        view.backgroundColor = .skyBlue.withAlphaComponent(25)
+        view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(pressAddPhotoBrowserButton), for: .touchUpInside)
+        return view
+    }()
+    
     private lazy var addVideoLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textColor = .black
         view.textAlignment = .left
         view.text = "Add Video"
+        return view
+    }()
+    
+    private lazy var addVideoButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Browse:", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        view.backgroundColor = .skyBlue.withAlphaComponent(25)
+        view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(pressAddVideoBrowserButton), for: .touchUpInside)
         return view
     }()
     
@@ -92,6 +112,7 @@ class AddContentController: UIViewController {
     private lazy var noteTextField: UITextField = {
         let view = UITextField(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 11)
+        view.backgroundColor = UIColor.init(hexString: "CDE3FC")
         view.placeholder = "Type here...."
         view.layer.cornerRadius = 8
         return view
@@ -119,7 +140,9 @@ class AddContentController: UIViewController {
         topColorView.addSubview(sloganLabel)
         view.addSubview(lineImageView)
         view.addSubview(addPhotoLabel)
+        view.addSubview(addPhotoButton)
         view.addSubview(addVideoLabel)
+        view.addSubview(addVideoButton)
         view.addSubview(bottomColorView)
         view.addSubview(collectionView)
         bottomColorView.addSubview(addNoteLabel)
@@ -162,10 +185,22 @@ class AddContentController: UIViewController {
             make.height.equalTo(20)
         }
         
+        addPhotoButton.snp.remakeConstraints { make in
+            make.centerX.equalTo(addPhotoLabel.snp.centerX)
+            make.height.equalTo(26)
+            make.width.equalTo(96)
+        }
+        
         addVideoLabel.snp.remakeConstraints { make in
             make.top.equalTo(addPhotoLabel.snp.bottom).offset(5)
             make.leading.equalTo(view.snp.leading).offset(37)
             make.height.equalTo(20)
+        }
+        
+        addVideoButton.snp.remakeConstraints { make in
+            make.centerX.equalTo(addVideoLabel.snp.centerX)
+            make.height.equalTo(26)
+            make.width.equalTo(96)
         }
         
         addNoteLabel.snp.remakeConstraints { make in
@@ -193,7 +228,16 @@ class AddContentController: UIViewController {
             print("Start Date: \(startDate ?? "")")
             print("End Date: \(endDate ?? "")")
         }
+    
+    @objc func pressAddPhotoBrowserButton() {
+        
+    }
+    
+    @objc func pressAddVideoBrowserButton() {
+        
+    }
 }
+
 
 extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
