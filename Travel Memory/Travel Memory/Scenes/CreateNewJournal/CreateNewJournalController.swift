@@ -166,13 +166,12 @@ class CreateNewJournalController: UIViewController {
                return
            }
            
-           let addContentVC = AddContentController()
            
-           // Pass the journal information to AddContentController
-           addContentVC.journalTitle = journalTitleText
-           addContentVC.destination = destinationText
-           addContentVC.startDate = startDateText
-           addContentVC.endDate = endDateText
+            let addContentVC = AddContentController()
+            addContentVC.journalTitle = journalTitleText
+            addContentVC.destination = destinationText
+            addContentVC.startDate = startDateText
+            addContentVC.endDate = endDateText
            
            // Navigate to AddContentController
            self.navigationController?.pushViewController(addContentVC, animated: true)

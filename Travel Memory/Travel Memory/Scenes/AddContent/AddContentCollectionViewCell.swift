@@ -40,7 +40,7 @@ class AddContentCollectionViewCell: UICollectionViewCell {
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textColor = .black
         view.textAlignment = .left
-        view.text = "Destination :"
+        view.text = ""
         return view
     }()
     
@@ -58,7 +58,7 @@ class AddContentCollectionViewCell: UICollectionViewCell {
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textColor = .black
         view.textAlignment = .left
-        view.text = "Start Date :"
+        view.text = ""
         return view
     }()
     
@@ -76,12 +76,14 @@ class AddContentCollectionViewCell: UICollectionViewCell {
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textColor = .black
         view.textAlignment = .left
-        view.text = "End Date :"
+        view.text = ""
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupLayout()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -108,7 +110,7 @@ class AddContentCollectionViewCell: UICollectionViewCell {
     
     private func setupConstraints() {
         journalTitleLabel.snp.remakeConstraints { make in
-            make.top.equalTo(snp.top).offset(20)
+            make.top.equalTo(snp.top).offset(5)
             make.leading.equalTo(snp.leading).offset(20)
             make.height.equalTo(14)
         }

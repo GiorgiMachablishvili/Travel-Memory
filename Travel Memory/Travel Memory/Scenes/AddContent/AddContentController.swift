@@ -19,12 +19,13 @@ class AddContentController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 128, height: 328)
-        layout.minimumLineSpacing = 15
+        layout.minimumLineSpacing = 10
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.isScrollEnabled = false
         
         collectionView.register(AddContentCollectionViewCell.self, forCellWithReuseIdentifier: "AddContentCollectionViewCell")
         return collectionView
@@ -146,7 +147,7 @@ class AddContentController: UIViewController {
         collectionView.snp.remakeConstraints { make in
             make.top.equalTo(topColorView.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(128)
+            make.height.equalTo(140)
         }
         
         lineImageView.snp.remakeConstraints { make in
@@ -201,6 +202,7 @@ extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddContentCollectionViewCell", for: indexPath) as! AddContentCollectionViewCell
+        cell.setJournalInfo(journalTitle: journalTitle ?? "", destination: destination ?? "", startDate: startDate ?? "", endDate: endDate ?? "")
         return cell
     }
 }
