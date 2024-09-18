@@ -8,8 +8,7 @@
 import Foundation
 
 class SignUpViewModel {
-    
-    private let authManager = AuthManager()
+    private let authManager = AuthManager.shared
     
     var user = User(fullName: "", email: "", password: "", confirmPassword: "")
     

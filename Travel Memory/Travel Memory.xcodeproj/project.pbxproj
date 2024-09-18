@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CF001E1F2C94915C00A8556B /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF001E1E2C94915C00A8556B /* SignInViewModel.swift */; };
+		CF001E212C9B293A00A8556B /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF001E202C9B293900A8556B /* ThemeManager.swift */; };
+		CF001E242C9B2CE500A8556B /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF001E232C9B2CE500A8556B /* MoreViewController.swift */; };
 		CF2DE1E12C8B5EAE004AC5F4 /* MyTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */; };
 		CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216542C872F4400AAE830 /* LaunchViewController.swift */; };
 		CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216572C8733F400AAE830 /* WelcomeViewController.swift */; };
@@ -57,7 +59,7 @@
 		E396AB262C89CAA9004D7BE5 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E396AB252C89CAA9004D7BE5 /* FirebaseStorage */; };
 		E396AB282C89CAA9004D7BE5 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E396AB272C89CAA9004D7BE5 /* FirebaseStorageCombine-Community */; };
 		E396AB2A2C89CAA9004D7BE5 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = E396AB292C89CAA9004D7BE5 /* FirebaseVertexAI-Preview */; };
-		E396AB2C2C89D204004D7BE5 /* MyAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AB2B2C89D204004D7BE5 /* MyAuthManager.swift */; };
+		E396AB2C2C89D204004D7BE5 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AB2B2C89D204004D7BE5 /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,6 +77,8 @@
 
 /* Begin PBXFileReference section */
 		CF001E1E2C94915C00A8556B /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		CF001E202C9B293900A8556B /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		CF001E232C9B2CE500A8556B /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextFieldView.swift; sourceTree = "<group>"; };
 		CF7216542C872F4400AAE830 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		CF7216572C8733F400AAE830 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +106,7 @@
 		E396AAF62C899EB0004D7BE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E396AAFA2C89C72B004D7BE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E396AB2B2C89D204004D7BE5 /* MyAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAuthManager.swift; sourceTree = "<group>"; };
+		E396AB2B2C89D204004D7BE5 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF001E222C9B2CD100A8556B /* More */ = {
+			isa = PBXGroup;
+			children = (
+				CF001E232C9B2CE500A8556B /* MoreViewController.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
 		CF7216532C872F3100AAE830 /* Launch */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +232,7 @@
 		E31261EB2C86F09C00E1DAA9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CF001E222C9B2CD100A8556B /* More */,
 				CF7216532C872F3100AAE830 /* Launch */,
 				CF7216562C8733EA00AAE830 /* Welcome */,
 				E351DFAD2C87945C008B2E04 /* Sign Up */,
@@ -322,7 +335,8 @@
 		E384C00F2C8B54DB00ADAA69 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				E396AB2B2C89D204004D7BE5 /* MyAuthManager.swift */,
+				E396AB2B2C89D204004D7BE5 /* AuthManager.swift */,
+				CF001E202C9B293900A8556B /* ThemeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -440,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E300192F2C9AA68D006993F7 /* AddContentCollectionViewCell.swift in Sources */,
+				CF001E242C9B2CE500A8556B /* MoreViewController.swift in Sources */,
 				E31261DE2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld in Sources */,
 				E30234252C96E5B700CB1795 /* DashboardViewController.swift in Sources */,
 				E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */,
@@ -460,7 +475,8 @@
 				CF001E1F2C94915C00A8556B /* SignInViewModel.swift in Sources */,
 				CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */,
 				E31261F12C86F33900E1DAA9 /* SignUpViewController.swift in Sources */,
-				E396AB2C2C89D204004D7BE5 /* MyAuthManager.swift in Sources */,
+				E396AB2C2C89D204004D7BE5 /* AuthManager.swift in Sources */,
+				CF001E212C9B293A00A8556B /* ThemeManager.swift in Sources */,
 				E30234272C96E5FF00CB1795 /* DashboardCell.swift in Sources */,
 				E34A57272C99E4B800E6592E /* AddContentController.swift in Sources */,
 			);
