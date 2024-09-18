@@ -47,6 +47,10 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     private lazy var menuMoreImage: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.image = UIImage(named: "Menu")
+        view.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didPressMore))
+            view.addGestureRecognizer(tapGesture)
+    
         return view
     }()
     
@@ -210,6 +214,10 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
 //        } catch let signOutError as NSError {
 //            print("Error signing out: %@", signOutError)
 //        }
+    }
+    
+   @objc func didPressMore() {
+       navigationController?.pushViewController(MoreViewController(), animated: true)
     }
     
     func navigateToSignInController() {
