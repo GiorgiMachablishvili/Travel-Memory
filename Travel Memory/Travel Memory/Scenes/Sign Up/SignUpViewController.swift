@@ -14,7 +14,6 @@ class SignUpViewController: UIViewController {
     
     // ViewModel
     private var viewModel = SignUpViewModel()
-    private let authManager = AuthManager()
     
     //MARK: -UI components
     private lazy var topColorView: UIView = {

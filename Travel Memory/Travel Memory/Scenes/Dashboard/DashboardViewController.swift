@@ -15,6 +15,8 @@ protocol DashboardBottomButtonViewDelegate: AnyObject {
 }
 
 class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
+    private let themeManager = ThemeManager.shared
+
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -38,7 +40,17 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     
     private lazy var topColorView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = UIColor.init(hexString: "0371F2").withAlphaComponent(25)
+        view.backgroundColor = UIColor(named: "backgroundPrimary")
+        return view
+    }()
+    
+    private lazy var menuMoreImage: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.image = UIImage(named: "Menu")
+        view.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didPressMore))
+            view.addGestureRecognizer(tapGesture)
+    
         return view
     }()
     
@@ -84,7 +96,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     
     private lazy var bottomColorView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = UIColor.init(hexString: "0371F2")
+        view.backgroundColor = UIColor(named: "backgroundPrimary")
         return view
     }()
     
@@ -108,10 +120,14 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         setupConstraints()
         
         view.backgroundColor = .systemBackground
+        
+        print("Current theme: ", themeManager.getTheme().rawValue)
+        themeManager.saveTheme(.dark)
     }
     
     private func setup() {
         view.addSubview(topColorView)
+        view.addSubview(menuMoreImage)
         topColorView.addSubview(welcomeLabel)
         topColorView.addSubview(dashboardInfoLabel)
         topColorView.addSubview(lineImageView)
@@ -126,6 +142,12 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         topColorView.snp.remakeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(292 * Constraint.yCoeff)
+        }
+        
+        menuMoreImage.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(0)
+            make.left.equalTo(view.snp.left).offset(20)
+            make.height.width.equalTo(24)
         }
         
         welcomeLabel.snp.remakeConstraints { make in
@@ -185,12 +207,17 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     }
     
     func didPressLogoutButton() {
-        do {
-            try Auth.auth().signOut() // Sign out the user
-            navigateToSignInController() // Navigate to the SignInController
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
+        print("After Current theme: ",themeManager.getTheme().rawValue)
+//        do {
+//            try Auth.auth().signOut() // Sign out the user
+//            navigateToSignInController() // Navigate to the SignInController
+//        } catch let signOutError as NSError {
+//            print("Error signing out: %@", signOutError)
+//        }
+    }
+    
+   @objc func didPressMore() {
+       navigationController?.pushViewController(MoreViewController(), animated: true)
     }
     
     func navigateToSignInController() {

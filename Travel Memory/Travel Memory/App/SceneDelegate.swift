@@ -23,11 +23,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.showMainNavigation()
         }
         
+        let themeManager = ThemeManager.shared
+        themeManager.applyTheme()
+        
     }
     
     func showMainNavigation() {
-        let mainViewController = WelcomeViewController()
-        window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+        if AuthManager.shared.isUserLoggedIn() {
+            let mainViewController = DashboardViewController()
+            window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+         } else {
+             let mainViewController = WelcomeViewController()
+             window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+         }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

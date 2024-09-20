@@ -8,29 +8,15 @@
 import SwiftUI
 import FirebaseAuth
 
-class AuthManager: NSObject, ObservableObject {
+class AuthManager {
+    static let shared = AuthManager()
     
-    //MARK: Properties
-    @Published var isUserLoggedIn = false
-    
-    //MARK: Initialization
-    
-    override init() {
-        super.init()
-        setupAuthStateChangeListener()
-    }
+    //MARK: Init
+    private init() {}
     
     //MARK: Methods
-    
-    //MARK: Auth State Change Listener
-    private func setupAuthStateChangeListener() {
-        Auth.auth().addStateDidChangeListener { [weak self] auth, user in
-            guard let self = self else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.isUserLoggedIn = user != nil
-            }
-            
-        }
+    func isUserLoggedIn() -> Bool {
+        return Auth.auth().currentUser != nil
     }
     
     //MARK: Sign Out
@@ -49,12 +35,21 @@ class AuthManager: NSObject, ObservableObject {
 extension AuthManager {
     //MARK: Create Acount
     
-    //-Parameters
-        //-email
-        //-password
-        //-name
-        //-completion
-    
+    /// Creat account
+    /// - Parameters:
+    ///   - email: email description
+    ///   - password: password description
+    ///   - name: name description
+    ///   - completion: completion description
+    /// - Example:
+    /// ```
+    /// authManager.createAccount(withEmail: user.email, password: user.password, name: user.fullName) { error in
+    /// if let error = error {
+    /// completion(.failure(.auth(error.localizedDescription)))
+    /// } else {
+    /// completion(.success(()))
+    /// }
+    ///
     func createAccount(withEmail email: String, password: String, name: String, completion: @escaping(Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
