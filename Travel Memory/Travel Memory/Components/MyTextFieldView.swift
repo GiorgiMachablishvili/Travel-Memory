@@ -37,6 +37,9 @@ class MyTextFieldView: UIView {
         }
     }
     
+    public var inputTextField: UITextField { 
+            return textField
+        }
     
     init(
         label: String,

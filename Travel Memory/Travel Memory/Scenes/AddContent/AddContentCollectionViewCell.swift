@@ -82,13 +82,6 @@ class AddContentCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setJournalInfo(journalTitle: String, destination: String, startDate: String, endDate: String) {
-            journalTitleInfoLabel.text = journalTitle
-            destinationInfoLabel.text = destination
-            startDateInfoLabel.text = startDate
-            endDateInfoLabel.text = endDate
-        }
-    
     private func setupLayout() {
         addSubview(journalTitleLabel)
         addSubview(journalTitleInfoLabel)
@@ -149,4 +142,11 @@ class AddContentCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(14)
         }
     }
+    
+    func setJournalInfo(journalTitle: String, destination: String, startDate: String, endDate: String) {
+            journalTitleInfoLabel.text = journalTitle
+            destinationInfoLabel.text = destination
+            startDateInfoLabel.text = startDate
+            endDateInfoLabel.text = endDate
+        }
 }
