@@ -12,11 +12,10 @@ class DashboardCell: UICollectionViewCell {
     
 //    static let identifier = "DashboardCell"
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var titleLabel: MyLabel = {
+        let label = MyLabel()
         label.font = UIFont.KoronaOneRegular(size: 12)
         label.textAlignment = .center
-        label.textColor = UIColor.black
         return label
     }()
     

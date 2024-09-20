@@ -54,10 +54,9 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         return view
     }()
     
-    private lazy var welcomeLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var welcomeLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
-        view.textColor = UIColor.init(hexString: "000000")
         view.textAlignment = .center
         
         if let user = Auth.auth().currentUser {
@@ -69,10 +68,9 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         return view
     }()
     
-    private lazy var dashboardInfoLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var dashboardInfoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = UIColor.init(hexString: "000000")
         view.textAlignment = .center
         view.numberOfLines = 3
         view.text = "This is your dashboard where you can start creating and managing your travel journals."
@@ -85,10 +83,9 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         return view
     }()
     
-    private lazy var journalLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var journalLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = UIColor.init(hexString: "000000")
         view.textAlignment = .center
         view.text = "Your Journals:"
         return view
@@ -119,10 +116,9 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         setup()
         setupConstraints()
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .background
+        navigationItem.hidesBackButton = true
         
-        print("Current theme: ", themeManager.getTheme().rawValue)
-        themeManager.saveTheme(.dark)
     }
     
     private func setup() {
@@ -207,13 +203,12 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     }
     
     func didPressLogoutButton() {
-        print("After Current theme: ",themeManager.getTheme().rawValue)
-//        do {
-//            try Auth.auth().signOut() // Sign out the user
-//            navigateToSignInController() // Navigate to the SignInController
-//        } catch let signOutError as NSError {
-//            print("Error signing out: %@", signOutError)
-//        }
+        do {
+            try Auth.auth().signOut() // Sign out the user
+            navigateToSignInController() // Navigate to the SignInController
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
     }
     
    @objc func didPressMore() {

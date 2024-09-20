@@ -23,38 +23,34 @@ class TravelMemoryWelcomeView: UIViewController {
         return view
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var nameLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 20)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "TRAVEL MEMORY"
         return view
     }()
     
-    private lazy var sloganLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var sloganLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "Welcome to Travel Memory Journal!"
         return view
     }()
     
-    private lazy var signInApproveLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var signInApproveLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
-        view.textColor = .black
         view.textAlignment = .center
         view.numberOfLines = 2
         view.text = "Congratulations, your account has been successfully created"
         return view
     }()
     
-    private lazy var infoLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var infoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
-        view.textColor = .black
         view.textAlignment = .center
         view.numberOfLines = 3
         view.text = "You are now ready to start capturing, organizing, and sharing your travel memories with our app."

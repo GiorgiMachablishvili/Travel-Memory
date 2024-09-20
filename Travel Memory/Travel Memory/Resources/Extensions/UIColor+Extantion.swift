@@ -29,7 +29,7 @@ extension UIColor {
 }
 
 extension UIColor {
-    static let skyBlue = UIColor.init(hexString: "CDE3FC")
+    static let skyBlue = UIColor(named: "skyBluePrimary")
     static let black = UIColor.init(hexString: "000000")
     static let red = UIColor.init(hexString: "F80D0D")
     static let background = UIColor(named: "backgroundPrimary")

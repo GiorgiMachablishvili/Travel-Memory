@@ -2,10 +2,10 @@ import UIKit
 import SnapKit
 
 class MyTextFieldView: UIView {
-    private lazy var labelView: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.textColor = .black
+    private lazy var labelView: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.textAlignment = .left
+        view.textColor = .black
         return view
     }()
     

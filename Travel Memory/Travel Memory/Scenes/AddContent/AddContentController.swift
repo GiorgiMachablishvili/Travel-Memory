@@ -37,19 +37,17 @@ class AddContentController: UIViewController {
         return view
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var nameLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "Add Content to Your Journal"
         return view
     }()
     
-    private lazy var sloganLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var sloganLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .center
         view.numberOfLines = 2
         view.text = "You can start adding memories and content to your journal, Let’s begin!"
@@ -62,10 +60,9 @@ class AddContentController: UIViewController {
         return view
     }()
     
-    private lazy var addPhotoLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var addPhotoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = "Add Photo"
         return view
@@ -75,16 +72,15 @@ class AddContentController: UIViewController {
         let view = UIButton(frame: .zero)
         view.setTitle("Browse:", for: .normal)
         view.setTitleColor(.black, for: .normal)
-        view.backgroundColor = .skyBlue.withAlphaComponent(25)
+        view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressAddPhotoBrowserButton), for: .touchUpInside)
         return view
     }()
     
-    private lazy var addVideoLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var addVideoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = "Add Video"
         return view
@@ -94,16 +90,15 @@ class AddContentController: UIViewController {
         let view = UIButton(frame: .zero)
         view.setTitle("Browse:", for: .normal)
         view.setTitleColor(.black, for: .normal)
-        view.backgroundColor = .skyBlue.withAlphaComponent(25)
+        view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressAddVideoBrowserButton), for: .touchUpInside)
         return view
     }()
     
-    private lazy var addNoteLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var addNoteLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = "Add Note :"
         return view

@@ -8,19 +8,17 @@ class LogoView: UIView {
         return view
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var nameLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 20)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "TRAVEL MEMORY"
         return view
     }()
     
-    private lazy var sloganLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var sloganLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "JOURNAL"
         return view

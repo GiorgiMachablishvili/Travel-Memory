@@ -11,7 +11,6 @@ import SnapKit
 class LaunchViewController: UIViewController {
     private lazy var logoView: LogoView = {
         let view = LogoView()
-        view.backgroundColor = .white
         return view
     }()
     

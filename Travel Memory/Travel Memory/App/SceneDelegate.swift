@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let themeManager = ThemeManager.shared
-        themeManager.applyTheme()
+        themeManager.applyTheme(nil)
         
     }
     

@@ -20,11 +20,12 @@ class WelcomeViewController: UIViewController {
         return view
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
+    private let titleLabel: MyLabel = {
+        let label = MyLabel()
         label.text = "Welcome to travel Memory Journal!"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .black
         return label
     }()
     
@@ -34,10 +35,11 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
-    private let textLabel: UILabel = {
-        let label = UILabel()
+    private let textLabel: MyLabel = {
+        let label = MyLabel()
         label.text = "or"
         label.textAlignment = .center
+        label.textColor = .black
         return label
     }()
     

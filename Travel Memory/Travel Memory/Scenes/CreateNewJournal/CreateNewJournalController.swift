@@ -17,19 +17,17 @@ class CreateNewJournalController: UIViewController {
         return view
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var nameLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 24)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "Create new journal"
         return view
     }()
     
-    private lazy var sloganLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var sloganLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "Let’s start creating your new travel journal!"
         return view
@@ -53,7 +51,7 @@ class CreateNewJournalController: UIViewController {
         let view = UIButton(frame: .zero)
         view.setTitle("Continue", for: .normal)
         view.setTitleColor(.black, for: .normal)
-        view.backgroundColor = .skyBlue.withAlphaComponent(25)
+        view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressContinueButton), for: .touchUpInside)
         return view

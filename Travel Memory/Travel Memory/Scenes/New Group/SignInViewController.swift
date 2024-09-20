@@ -24,28 +24,25 @@ class SignInController: UIViewController {
         return view
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var nameLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 20)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "TRAVEL MEMORY"
         return view
     }()
     
-    private lazy var sloganLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var sloganLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "JOURNAL"
         return view
     }()
     
-    private lazy var signInLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var signInLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 24)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "Sign In"
         return view
@@ -54,8 +51,8 @@ class SignInController: UIViewController {
     private let emailField = MyTextFieldView(label: "Email")
     private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
     
-    private lazy var emailAlarmLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var emailAlarmLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 9)
         view.textColor = .red
         view.textAlignment = .left
@@ -63,8 +60,8 @@ class SignInController: UIViewController {
         return view
     }()
     
-    private lazy var passwordAlarmLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var passwordAlarmLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 9)
         view.textColor = .red
         view.textAlignment = .left
@@ -76,7 +73,7 @@ class SignInController: UIViewController {
         let view = UIButton(frame: .zero)
         view.setTitle("Sign In", for: .normal)
         view.setTitleColor(.black, for: .normal)
-        view.backgroundColor = .skyBlue.withAlphaComponent(25)
+        view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressSignInButton), for: .touchUpInside)
         return view
@@ -88,10 +85,9 @@ class SignInController: UIViewController {
         return view
     }()
     
-    private lazy var questionLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var questionLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = "Forget Password?"
         return view
@@ -110,7 +106,9 @@ class SignInController: UIViewController {
         super.viewDidLoad()
         setup()
         setupLayout()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
+        
+        navigationController?.navigationBar.tintColor = .white
     }
     
     func setup() {

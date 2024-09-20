@@ -1,14 +1,4 @@
-//
-//  SceneManager.swift
-//  Travel Memory
-//
-//  Created by Irakli Kochua on 18.09.24.
-//
-
-import Foundation
 import UIKit
-
-
 
 final class ThemeManager {
     static let shared = ThemeManager()
@@ -17,24 +7,34 @@ final class ThemeManager {
     
     private init() {}
     
-    func getTheme() -> UIUserInterfaceStyle {
-        let storageThemeRawValue = UserDefaults.standard.integer(forKey: themeKey)
-        
-        return UIUserInterfaceStyle(rawValue: storageThemeRawValue) ??   UITraitCollection.current.userInterfaceStyle
+    var currentTheme: UIUserInterfaceStyle {
+        get {
+            let storedValue = UserDefaults.standard.integer(forKey: themeKey)
+            return UIUserInterfaceStyle(rawValue: storedValue) ?? .unspecified
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: themeKey)
+            applyTheme(newValue)
+        }
     }
     
-    func saveTheme(_ theme: UIUserInterfaceStyle) {
-        UserDefaults.standard.set(theme.rawValue, forKey: themeKey)
-        applyTheme(theme)
-    }
+//    var currentTextColor: UIColor {
+//        switch currentTheme {
+//        case .dark:
+//            return .white
+//        case .light, .unspecified:
+//            return .black
+//        @unknown default:
+//            return .black
+//        }
+//    }
     
-    func applyTheme(_ theme: UIUserInterfaceStyle? = nil) {
-        let theme = theme ?? getTheme()
+    func applyTheme(_ theme: UIUserInterfaceStyle?) {
+        let theme = theme ?? currentTheme
         
         UIApplication.shared.windows.forEach { window in
-              window.overrideUserInterfaceStyle = theme
-          }
+            window.overrideUserInterfaceStyle = theme
+        }
+        NotificationCenter.default.post(name: .themeChanged, object: nil)
     }
 }
-
-

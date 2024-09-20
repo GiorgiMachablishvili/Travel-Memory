@@ -9,72 +9,64 @@ import UIKit
 import SnapKit
 
 class AddContentCollectionViewCell: UICollectionViewCell {
-    private lazy var journalTitleLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var journalTitleLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = "Journal Title :"
         return view
     }()
     
-    private lazy var journalTitleInfoLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var journalTitleInfoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         return view
     }()
     
-    private lazy var destinationLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var destinationLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = "Destination :"
         return view
     }()
     
-    private lazy var destinationInfoLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var destinationInfoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = ""
         return view
     }()
     
-    private lazy var startDateLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var startDateLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = "Start Date :"
         return view
     }()
     
-    private lazy var startDateInfoLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var startDateInfoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = ""
         return view
     }()
     
-    private lazy var endDateLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var endDateLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = "End Date :"
         return view
     }()
     
-    private lazy var endDateInfoLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var endDateInfoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textColor = .black
         view.textAlignment = .left
         view.text = ""
         return view

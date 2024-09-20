@@ -28,37 +28,33 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var nameLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 20)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "TRAVEL MEMORY"
         return view
     }()
     
-    private lazy var sloganLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var sloganLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "JOURNAL"
         return view
     }()
     
-    private lazy var signupLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var signupLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 24)
-        view.textColor = .black
         view.textAlignment = .center
         view.text = "Sign Up"
         return view
     }()
     
-    private lazy var infoLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var infoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
-        view.textColor = .black
         view.textAlignment = .left
         view.numberOfLines = 2
         view.text = "Please fill in the following information to create your account:"
@@ -67,8 +63,8 @@ class SignUpViewController: UIViewController {
     
     private let fullNameField = MyTextFieldView(label: "Full name:")
     
-    private lazy var fullNameAlarmLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var fullNameAlarmLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 9)
         view.textColor = .red
         view.textAlignment = .left
@@ -78,8 +74,8 @@ class SignUpViewController: UIViewController {
     
     private let emailField = MyTextFieldView(label: "Email:")
     
-    private lazy var emailAlarmLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var emailAlarmLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 9)
         view.textColor = .red
         view.textAlignment = .left
@@ -89,8 +85,8 @@ class SignUpViewController: UIViewController {
     
     private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
     
-    private lazy var passwordAlarmLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var passwordAlarmLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 9)
         view.textColor = .red
         view.textAlignment = .left
@@ -100,8 +96,8 @@ class SignUpViewController: UIViewController {
     
     private let passwordConfirmField = MyTextFieldView(label: "Confirm psw:", isSecured: true, hasPasswordVisibility: true)
     
-    private lazy var confirmPswAlarmLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var confirmPswAlarmLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 9)
         view.textColor = .skyBlue
         view.textAlignment = .left
@@ -119,14 +115,14 @@ class SignUpViewController: UIViewController {
         let view = UIButton(frame: .zero)
         view.setTitle("Create Account", for: .normal)
         view.setTitleColor(.black, for: .normal)
-        view.backgroundColor = .skyBlue.withAlphaComponent(25)
+        view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
         return view
     }()
     
-    private lazy var questionLabel: UILabel = {
-        let view = UILabel(frame: .zero)
+    private lazy var questionLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textColor = .black
         view.textAlignment = .left
@@ -148,7 +144,9 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         setup()
         layout()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
+        
+        navigationController?.navigationBar.tintColor = .white
     }
 
     private func setup() {
