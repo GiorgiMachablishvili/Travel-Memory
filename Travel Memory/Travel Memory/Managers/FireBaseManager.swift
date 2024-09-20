@@ -7,9 +7,13 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 class FireBaseManager {
     static let shared = FireBaseManager()
+    
+    private let db = Firestore.firestore()
+
     
     //MARK: Init
     private init() {}
@@ -28,6 +32,7 @@ class FireBaseManager {
             completion(signOutError)
         }
     }
+
 }
 
 //MARK: Account creation and sign in
@@ -88,4 +93,21 @@ extension FireBaseManager {
     }
 }
 
+// MARK: Firestore
+extension FireBaseManager {
+    func uploadJournal(_ journal: Journal) {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        db.collection(user.uid).document(journal.id).setData(journal.toDictionary()) { error in
+            if let error = error {
+                print("Error adding document: \(error)")
+            } else {
+                print("Document added successfully with ID: \(user.uid)")
+            }
+        }
+    }
+    
+}
 

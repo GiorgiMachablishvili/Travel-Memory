@@ -158,9 +158,9 @@ class CreateNewJournalController: UIViewController {
             return
         }
         
-        // Validate if startDateText and endDateText are integers
-        if Int(startDateText) == nil || Int(endDateText) == nil {
-            showAlert(title: "Error", message: "Start Date and End Date must be valid integers.")
+        // Validate if startDateText and endDateText are empty
+        if startDateText.isEmpty || endDateText.isEmpty {
+            showAlert(title: "Error", message: "Start Date and End Date must not valid.")
             return
         }
         

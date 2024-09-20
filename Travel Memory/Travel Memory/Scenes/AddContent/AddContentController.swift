@@ -119,6 +119,16 @@ class AddContentController: UIViewController {
         return view
     }()
     
+    private lazy var createButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Create", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        view.backgroundColor = .skyBlue
+        view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(createButtonPressed), for: .touchUpInside)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -142,6 +152,7 @@ class AddContentController: UIViewController {
         view.addSubview(collectionView)
         bottomColorView.addSubview(addNoteLabel)
         bottomColorView.addSubview(noteTextField)
+        bottomColorView.addSubview(createButton)
     }
     
     private func setupConstraints() {
@@ -217,6 +228,12 @@ class AddContentController: UIViewController {
             make.leading.bottom.trailing.equalToSuperview()
             make.height.equalTo(292)
         }
+        createButton.snp.remakeConstraints { make in
+            make.bottom.equalTo(bottomColorView.snp.bottom).offset(-20)
+            make.centerX.equalTo(view.snp.centerX)
+            make.height.equalTo(27)
+            make.width.equalTo(150)
+        }
     }
     
     private func setJournalInfo() {
@@ -233,6 +250,11 @@ class AddContentController: UIViewController {
     @objc func pressAddVideoBrowserButton() {
         
     }
+    
+    @objc func createButtonPressed() {
+        
+    }
+   
 }
 
 
