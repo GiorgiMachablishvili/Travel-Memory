@@ -8,8 +8,8 @@
 import SwiftUI
 import FirebaseAuth
 
-class AuthManager {
-    static let shared = AuthManager()
+class FireBaseManager {
+    static let shared = FireBaseManager()
     
     //MARK: Init
     private init() {}
@@ -32,7 +32,7 @@ class AuthManager {
 
 //MARK: Account creation and sign in
 
-extension AuthManager {
+extension FireBaseManager {
     //MARK: Create Acount
     
     /// Creat account

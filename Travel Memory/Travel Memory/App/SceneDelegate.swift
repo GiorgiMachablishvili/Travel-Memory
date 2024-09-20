@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func showMainNavigation() {
-        if AuthManager.shared.isUserLoggedIn() {
+        if FireBaseManager.shared.isUserLoggedIn() {
             let mainViewController = DashboardViewController()
             window?.rootViewController = UINavigationController(rootViewController: mainViewController)
          } else {

@@ -8,7 +8,7 @@
 import Foundation
 
 class SignUpViewModel {
-    private let authManager = AuthManager.shared
+    private let authManager = FireBaseManager.shared
     
     var user = User(fullName: "", email: "", password: "", confirmPassword: "")
     

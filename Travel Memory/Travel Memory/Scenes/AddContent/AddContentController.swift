@@ -181,7 +181,8 @@ class AddContentController: UIViewController {
         }
         
         addPhotoButton.snp.remakeConstraints { make in
-            make.centerX.equalTo(addPhotoLabel.snp.centerX)
+            make.centerY.equalTo(addPhotoLabel.snp.centerY)
+            make.trailing.equalTo(view.snp.trailing).offset(-20)
             make.height.equalTo(26)
             make.width.equalTo(96)
         }
@@ -193,7 +194,8 @@ class AddContentController: UIViewController {
         }
         
         addVideoButton.snp.remakeConstraints { make in
-            make.centerX.equalTo(addVideoLabel.snp.centerX)
+            make.centerY.equalTo(addVideoLabel.snp.centerY)
+            make.trailing.equalTo(view.snp.trailing).offset(-20)
             make.height.equalTo(26)
             make.width.equalTo(96)
         }
