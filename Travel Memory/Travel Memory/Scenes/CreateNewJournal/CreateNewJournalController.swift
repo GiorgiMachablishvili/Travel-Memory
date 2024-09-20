@@ -36,12 +36,12 @@ class CreateNewJournalController: UIViewController {
     }()
     
     private let journalTitle = MyTextFieldView(label: "Journal Title")
-    
     private let destinationField = MyTextFieldView(label: "Destination")
-    
     private let startDateField = MyTextFieldView(label: "Start Date")
-    
     private let endDateField = MyTextFieldView(label: "End Date")
+    
+    private var startDatePicker = UIDatePicker()
+    private var endDatePicker = UIDatePicker()
     
     private lazy var bottomColorView: UIView = {
         let view = UIView(frame: .zero)
@@ -72,6 +72,7 @@ class CreateNewJournalController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupConstraints()
+        configureDatePickers()
         
         view.backgroundColor = .systemBackground
     }
@@ -147,35 +148,34 @@ class CreateNewJournalController: UIViewController {
         }
     }
     
-    
     @objc func pressContinueButton() {
-           let journalTitleText = journalTitle.getText()
-           let destinationText = destinationField.getText()
-           let startDateText = startDateField.getText()
-           let endDateText = endDateField.getText()
-           
-           // Check for empty fields
-           if journalTitleText.isEmpty || destinationText.isEmpty || startDateText.isEmpty || endDateText.isEmpty {
-               showAlert(title: "Error", message: "All fields must be filled.")
-               return
-           }
-           
-           // Validate if startDateText and endDateText are integers
-           if Int(startDateText) == nil || Int(endDateText) == nil {
-               showAlert(title: "Error", message: "Start Date and End Date must be valid integers.")
-               return
-           }
-           
-           
-            let addContentVC = AddContentController()
-            addContentVC.journalTitle = journalTitleText
-            addContentVC.destination = destinationText
-            addContentVC.startDate = startDateText
-            addContentVC.endDate = endDateText
-           
-           // Navigate to AddContentController
-           self.navigationController?.pushViewController(addContentVC, animated: true)
-       }
+        let journalTitleText = journalTitle.getText()
+        let destinationText = destinationField.getText()
+        let startDateText = startDateField.getText()
+        let endDateText = endDateField.getText()
+        
+        // Check for empty fields
+        if journalTitleText.isEmpty || destinationText.isEmpty || startDateText.isEmpty || endDateText.isEmpty {
+            showAlert(title: "Error", message: "All fields must be filled.")
+            return
+        }
+        
+        // Validate if startDateText and endDateText are integers
+        if Int(startDateText) == nil || Int(endDateText) == nil {
+            showAlert(title: "Error", message: "Start Date and End Date must be valid integers.")
+            return
+        }
+        
+        
+        let addContentVC = AddContentController()
+        addContentVC.journalTitle = journalTitleText
+        addContentVC.destination = destinationText
+        addContentVC.startDate = startDateText
+        addContentVC.endDate = endDateText
+        
+        // Navigate to AddContentController
+        self.navigationController?.pushViewController(addContentVC, animated: true)
+    }
     
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -188,5 +188,51 @@ class CreateNewJournalController: UIViewController {
         destinationField.clearText()
         startDateField.clearText()
         endDateField.clearText()
+    }
+    
+    private func configureDatePickers() {
+        startDatePicker = UIDatePicker()
+        startDatePicker.datePickerMode = .date
+        startDatePicker.addTarget(self, action: #selector(startDateChanged(_:)), for: .valueChanged)
+        
+        endDatePicker = UIDatePicker()
+        endDatePicker.datePickerMode = .date
+        endDatePicker.addTarget(self, action: #selector(endDateChanged(_:)), for: .valueChanged)
+        
+        // Set the input views
+        startDateField.inputTextField.inputView = startDatePicker
+        endDateField.inputTextField.inputView = endDatePicker
+        
+        // Optionally: Add toolbar to dismiss the picker
+        let toolbar = createToolbar()
+        startDateField.inputTextField.inputAccessoryView = toolbar
+        endDateField.inputTextField.inputAccessoryView = toolbar
+    }
+    
+    private func createToolbar() -> UIToolbar {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissDatePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolbar.setItems([spaceButton, doneButton], animated: false)
+        return toolbar
+    }
+    
+    @objc private func dismissDatePicker() {
+        view.endEditing(true)
+    }
+    
+    @objc private func startDateChanged(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        startDateField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    @objc private func endDateChanged(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        endDateField.text = dateFormatter.string(from: sender.date)
     }
 }
