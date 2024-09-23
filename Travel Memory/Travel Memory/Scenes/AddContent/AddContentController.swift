@@ -18,7 +18,7 @@ class AddContentController: UIViewController {
     var startDate: String?
     var endDate: String?
     
-
+    
     var selectedImage: UIImage?
     
     //MARK: -UI components
@@ -91,7 +91,7 @@ class AddContentController: UIViewController {
         view.addTarget(self, action: #selector(pressAddPhotoBrowserButton), for: .touchUpInside)
         return view
     }()
-
+    
     
     private lazy var addVideoLabel: MyLabel = {
         let view = MyLabel(frame: .zero)
@@ -280,12 +280,13 @@ class AddContentController: UIViewController {
     }
     
     @objc func createButtonPressed() {
-
+        
         guard let journalTitle = journalTitle, !journalTitle.isEmpty else {
             print("Journal title is empty")
-
+            return
+        }
+        
         guard let selectedImage else {
-
             return
         }
         FullScreenLoader.show(in: self)
@@ -327,7 +328,7 @@ class AddContentController: UIViewController {
             switch result {
             case .success:
                 let dashboardVC = DashboardViewController()
-                dashboardVC.journalTitles = journalTitles
+                dashboardVC.journalTitles.append(journal.title)
                 self.navigationController?.pushViewController(dashboardVC, animated: true)
             case .failure(let error):
                 FullScreenLoader.hide()
@@ -336,12 +337,11 @@ class AddContentController: UIViewController {
         }
     }
 }
-
-
-extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
+    
+    extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return 1
+        }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddContentCollectionViewCell", for: indexPath) as! AddContentCollectionViewCell
@@ -349,3 +349,4 @@ extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSo
             return cell
         }
     }
+    
