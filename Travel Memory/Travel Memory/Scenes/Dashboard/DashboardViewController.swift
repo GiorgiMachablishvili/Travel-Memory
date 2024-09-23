@@ -16,7 +16,7 @@ protocol DashboardBottomButtonViewDelegate: AnyObject {
 
 class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
     private let themeManager = ThemeManager.shared
-    private let firebaseManager = FireBaseManager.shared
+
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,12 +31,6 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         collectionView.register(DashboardCell.self, forCellWithReuseIdentifier: "DashboardCell")
         return collectionView
     }()
-    
-    //    private let journalData: [(image: UIImage, title: String)] = [
-    //        (image: UIImage(named: "japan")!, title: "1. Sushi in Japan"),
-    //        (image: UIImage(named: "ny")!, title: "2. NY never sleep"),
-    //        (image: UIImage(named: "new_mexico")!, title: "3. Chili day New Mexico")
-    //    ]
     
     var journalTitles: [String] = []
     
@@ -120,18 +114,6 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         navigationItem.hidesBackButton = true
         
         collectionView.reloadData()
-        
-        //        let journal: Journal = Journal(
-        //            id: UUID().uuidString,
-        //            title: "Title 2",
-        //            destination: "Destination 2",
-        //            startDate: "11",
-        //            endDate: "16",
-        //            dateModified: Date().formatted()
-        //        )
-        //
-        //        firebaseManager.uploadJournal(journal)
-        
     }
     
     private func setup() {

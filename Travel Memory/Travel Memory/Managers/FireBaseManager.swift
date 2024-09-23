@@ -116,22 +116,19 @@ extension FireBaseManager {
 
 // MARK: Firestore
 extension FireBaseManager {
-    func uploadJournal(_ journal: Journal, completion: @escaping (Bool) -> Void) {
-        let journalData: [String: Any] = [
-            "title": journal.title,
-            "destination": journal.destination,
-            "startDate": journal.startDate,
-            "endDate": journal.endDate,
-            "dateModified": journal.dateModified
-        ]
+    func uploadJournal(_ journal: Journal, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let user = Auth.auth().currentUser else {
+            completion(.failure("Error" as! Error))
+            return
+        }
         
-        // Assuming journals are stored in a collection called "journals"
-        fireStore.collection("journals").document(journal.id).setData(journalData) { error in
+        fireStore.collection(user.uid).document(journal.id).setData(journal.toDictionary()) { error in
             if let error = error {
-                print("Error uploading journal: \(error.localizedDescription)")
-                completion(false)
+                print("Error adding document: \(error)")
+                completion(.failure(error))
             } else {
-                completion(true)
+                print("Document added successfully with ID: \(user.uid)")
+                completion(.success(()))
             }
         }
     }

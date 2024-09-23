@@ -10,6 +10,7 @@ import SnapKit
 import Firebase
 
 class AddContentController: UIViewController {
+    private let firebaseManager = FireBaseManager.shared
     
     var journalTitle: String?
     var destination: String?
@@ -141,12 +142,6 @@ class AddContentController: UIViewController {
         
         setJournalInfo()
         
-//        firebaseManager.fetchJournalTitles { [weak self] journalTitles in
-//            guard let self = self else { return }
-//            self.journalTitles = journalTitles
-//            print("Fetched journal titles: \(journalTitles)") // Log to confirm titles are fetched
-//            self.collectionView.reloadData() // Reload the collection view after setting journalTitles
-//        }
     }
     
     private func setupLayout() {
@@ -247,11 +242,11 @@ class AddContentController: UIViewController {
     }
     
     private func setJournalInfo() {
-            print("Journal Title: \(journalTitle ?? "")")
-            print("Destination: \(destination ?? "")")
-            print("Start Date: \(startDate ?? "")")
-            print("End Date: \(endDate ?? "")")
-        }
+        print("Journal Title: \(journalTitle ?? "")")
+        print("Destination: \(destination ?? "")")
+        print("Start Date: \(startDate ?? "")")
+        print("End Date: \(endDate ?? "")")
+    }
     
     @objc func pressAddPhotoBrowserButton() {
         
@@ -266,42 +261,41 @@ class AddContentController: UIViewController {
             print("Journal title is empty")
             return
         }
+        FullScreenLoader.show(in: self)
         
-        let journalData = Journal(
-            id: journalTitle,
-            title: journalTitle,
+        let journal: Journal = Journal(
+            id: UUID().uuidString,
+            title: journalTitle ?? "",
             destination: destination ?? "",
             startDate: startDate ?? "",
             endDate: endDate ?? "",
-            dateModified: ""
+            dateModified: Date().formatted()
         )
         
-        firebaseManager.uploadJournal(journalData) { [weak self] success in
-            guard let self = self else { return }
-            
-            if success {
-                print("Journal added successfully")
-                self.firebaseManager.fetchJournalTitles { journalTitles in
-                    let dashboardVC = DashboardViewController()
-                    dashboardVC.journalTitles = journalTitles
-                    self.navigationController?.pushViewController(dashboardVC, animated: true)
-                }
-            } else {
-                print("Failed to add journal")
+        firebaseManager.uploadJournal(journal) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success:
+                FullScreenLoader.hide()
+                let DashboardVC = DashboardViewController()
+                dashboardVC.journalTitles = journalTitles
+                self.navigationController?.pushViewController(DashboardVC, animated: true)
+            case .failure(let error):
+                FullScreenLoader.hide()
+                AlertUtility.showSimpleAlert(on: self, title: "Error", message: error.localizedDescription)
             }
         }
     }
-}
-
-
-extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddContentCollectionViewCell", for: indexPath) as! AddContentCollectionViewCell
-        cell.setJournalInfo(journalTitle: journalTitle ?? "", destination: destination ?? "", startDate: startDate ?? "", endDate: endDate ?? "")
-        return cell
+    
+    extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return 1
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddContentCollectionViewCell", for: indexPath) as! AddContentCollectionViewCell
+            cell.setJournalInfo(journalTitle: journalTitle ?? "", destination: destination ?? "", startDate: startDate ?? "", endDate: endDate ?? "")
+            return cell
+        }
     }
-}
