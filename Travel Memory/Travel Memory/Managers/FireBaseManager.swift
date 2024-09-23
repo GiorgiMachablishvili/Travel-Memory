@@ -95,20 +95,27 @@ extension FireBaseManager {
 }
 
 extension FireBaseManager {
-    func fetchJournalTitles(completion: @escaping ([String]) -> Void) {
-        fireStore.collection("journals").getDocuments { (querySnapshot, error) in
+    func fetchJournals(completion: @escaping ([Journal]) -> Void) {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        fireStore.collection(user.uid).getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error fetching journals: \(error.localizedDescription)")
                 completion([]) // Return empty array if error
             } else {
-                var journalTitles: [String] = []
-                for document in querySnapshot!.documents {
-                    let data = document.data()
-                    if let title = data["title"] as? String {
-                        journalTitles.append(title)
+                
+                let journals = querySnapshot!.documents.compactMap { document -> Journal? in
+                    do {
+                        return try document.data(as: Journal.self)
+                    } catch {
+                        print("Error decoding journal: \(error)")
+                        return nil
                     }
                 }
-                completion(journalTitles)
+                
+                completion(journals)
             }
         }
     }
@@ -137,7 +144,7 @@ extension FireBaseManager {
 
 extension FireBaseManager {
     func uploadImage(_ image: UIImage, path: String, completion: @escaping (Result<URL, Error>) -> Void) {
-        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+        guard let imageData = image.jpegData(compressionQuality: 0.6) else {
             completion(.failure(NSError(domain: "ImageUploader", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to convert image to data"])))
             return
         }

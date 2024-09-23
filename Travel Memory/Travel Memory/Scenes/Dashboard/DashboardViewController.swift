@@ -32,7 +32,10 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         return collectionView
     }()
     
-    var journalTitles: [String] = []
+    var journals: [Journal] = []
+    var journalTitles: [String] {
+        journals.map { $0.title }
+    }
     
     private lazy var topColorView: UIView = {
         let view = UIView(frame: .zero)

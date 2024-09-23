@@ -18,7 +18,6 @@ class AddContentController: UIViewController {
     var startDate: String?
     var endDate: String?
     
-    
     var selectedImage: UIImage?
     
     //MARK: -UI components
@@ -275,22 +274,18 @@ class AddContentController: UIViewController {
         }
     }
     
-    @objc func pressAddVideoBrowserButton() {
-        
-    }
+    @objc func pressAddVideoBrowserButton() {}
     
     @objc func createButtonPressed() {
-        
         guard let journalTitle = journalTitle, !journalTitle.isEmpty else {
             print("Journal title is empty")
             return
         }
-        
         guard let selectedImage else {
+            AlertUtility.showSimpleAlert(on: self, title: "Error", message: "Please select Image")
             return
         }
         FullScreenLoader.show(in: self)
-        
         
         let imagePath = "images/\(UUID().uuidString).jpg"
         firebaseManager.uploadImage(selectedImage, path: imagePath) { [weak self] result in
@@ -302,7 +297,6 @@ class AddContentController: UIViewController {
             switch result {
             case .success(let downloadURL):
                 let uploadedImageUrl = downloadURL.absoluteString
-                
                 let journal = Journal(
                     id: UUID().uuidString,
                     title: self.journalTitle ?? "",
@@ -312,6 +306,7 @@ class AddContentController: UIViewController {
                     dateModified: Date().formatted(),
                     imageUrl: uploadedImageUrl
                 )
+                
                 self.uploadJournal(journal)
                 
             case .failure(let error):
@@ -328,7 +323,7 @@ class AddContentController: UIViewController {
             switch result {
             case .success:
                 let dashboardVC = DashboardViewController()
-                dashboardVC.journalTitles.append(journal.title)
+                dashboardVC.journals.append(journal)
                 self.navigationController?.pushViewController(dashboardVC, animated: true)
             case .failure(let error):
                 FullScreenLoader.hide()
