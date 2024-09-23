@@ -10,11 +10,14 @@ import SnapKit
 
 class AddContentController: UIViewController {
     private let firebaseManager = FireBaseManager.shared
+    private var imagePicker: ImagePickerUtility!
     
     var journalTitle: String?
     var destination: String?
     var startDate: String?
     var endDate: String?
+    
+    var selectedImage: UIImage?
     
     //MARK: -UI components
     private lazy var collectionView: UICollectionView = {
@@ -65,7 +68,15 @@ class AddContentController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .left
-        view.text = "Add Photo"
+        view.text = "Add Photo: "
+        return view
+    }()
+    
+    private lazy var selectedPhotoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 10)
+        view.textAlignment = .left
+        
         return view
     }()
     
@@ -78,12 +89,13 @@ class AddContentController: UIViewController {
         view.addTarget(self, action: #selector(pressAddPhotoBrowserButton), for: .touchUpInside)
         return view
     }()
+
     
     private lazy var addVideoLabel: MyLabel = {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .left
-        view.text = "Add Video"
+        view.text = "Add Video: "
         return view
     }()
     
@@ -136,6 +148,7 @@ class AddContentController: UIViewController {
         setupConstraints()
         
         view.backgroundColor = .systemBackground
+        imagePicker = ImagePickerUtility(presentationController: self)
         
         setJournalInfo()
     }
@@ -146,6 +159,7 @@ class AddContentController: UIViewController {
         topColorView.addSubview(sloganLabel)
         view.addSubview(lineImageView)
         view.addSubview(addPhotoLabel)
+        view.addSubview(selectedPhotoLabel)
         view.addSubview(addPhotoButton)
         view.addSubview(addVideoLabel)
         view.addSubview(addVideoButton)
@@ -189,6 +203,11 @@ class AddContentController: UIViewController {
         addPhotoLabel.snp.remakeConstraints { make in
             make.top.equalTo(lineImageView.snp.bottom).offset(30)
             make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(20)
+        }
+        selectedPhotoLabel.snp.remakeConstraints { make in
+            make.top.equalTo(lineImageView.snp.bottom).offset(30)
+            make.leading.equalTo(addPhotoLabel.snp.trailing).offset(10)
             make.height.equalTo(20)
         }
         
@@ -244,8 +263,13 @@ class AddContentController: UIViewController {
         print("End Date: \(endDate ?? "")")
     }
     
-    @objc func pressAddPhotoBrowserButton() {
-        
+    @objc func pressAddPhotoBrowserButton(_ sender: UIButton) {
+        imagePicker.present { [weak self] image in
+            if let image = image {
+                self?.selectedImage = image
+                self?.selectedPhotoLabel.text = "Selected!"
+            }
+        }
     }
     
     @objc func pressAddVideoBrowserButton() {
@@ -253,34 +277,54 @@ class AddContentController: UIViewController {
     }
     
     @objc func createButtonPressed() {
+        guard let selectedImage else {
+            return
+        }
         FullScreenLoader.show(in: self)
         
-        let journal: Journal = Journal(
-            id: UUID().uuidString,
-            title: journalTitle ?? "",
-            destination: destination ?? "",
-            startDate: startDate ?? "",
-            endDate: endDate ?? "",
-            dateModified: Date().formatted()
-        )
-        
-        firebaseManager.uploadJournal(journal) { result in
+        let imagePath = "images/\(UUID().uuidString).jpg"
+        firebaseManager.uploadImage(selectedImage, path: imagePath) { [weak self] result in
+            guard let self = self else {
+                AlertUtility.showSimpleAlert(on: self!, title: "Error", message: "Please select Image")
+                return
+            }
+            
+            switch result {
+            case .success(let downloadURL):
+                let uploadedImageUrl = downloadURL.absoluteString
+                
+                let journal = Journal(
+                    id: UUID().uuidString,
+                    title: self.journalTitle ?? "",
+                    destination: self.destination ?? "",
+                    startDate: self.startDate ?? "",
+                    endDate: self.endDate ?? "",
+                    dateModified: Date().formatted(),
+                    imageUrl: uploadedImageUrl
+                )
+                self.uploadJournal(journal)
+                
+            case .failure(let error):
+                FullScreenLoader.hide()
+                AlertUtility.showSimpleAlert(on: self, title: "Error", message: "Failed to upload image: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func uploadJournal(_ journal: Journal) {
+        firebaseManager.uploadJournal(journal) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success:
-                FullScreenLoader.hide()
-                let DashboardVC = DashboardViewController()
-                
-                self.navigationController?.pushViewController(DashboardVC, animated: true)
+                let dashboardVC = DashboardViewController()
+                self.navigationController?.pushViewController(dashboardVC, animated: true)
             case .failure(let error):
                 FullScreenLoader.hide()
                 AlertUtility.showSimpleAlert(on: self, title: "Error", message: error.localizedDescription)
-                
             }
         }
-        
-        
     }
-    
 }
 
 

@@ -8,12 +8,13 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 class FireBaseManager {
     static let shared = FireBaseManager()
     
     private let db = Firestore.firestore()
-
+    
     
     //MARK: Init
     private init() {}
@@ -32,7 +33,7 @@ class FireBaseManager {
             completion(signOutError)
         }
     }
-
+    
 }
 
 //MARK: Account creation and sign in
@@ -72,12 +73,12 @@ extension FireBaseManager {
     }
     
     //MARK: Sign In With Email and Password
-
+    
     //-Parameters
-        //-email
-        //-password
-        //-name
-        //-completion
+    //-email
+    //-password
+    //-name
+    //-completion
     
     func signInWithEmail(withEmail email: String, password: String, name: String, completion: @escaping(Error?, String?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -111,6 +112,36 @@ extension FireBaseManager {
             }
         }
     }
-    
 }
 
+extension FireBaseManager {
+    func uploadImage(_ image: UIImage, path: String, completion: @escaping (Result<URL, Error>) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+            completion(.failure(NSError(domain: "ImageUploader", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to convert image to data"])))
+            return
+        }
+        
+        let storageRef = Storage.storage().reference()
+        let imageRef = storageRef.child(path)
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        imageRef.putData(imageData, metadata: metadata) { (metadata, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            imageRef.downloadURL { (url, error) in
+                if let error = error {
+                    completion(.failure(error))
+                } else if let downloadURL = url {
+                    completion(.success(downloadURL))
+                } else {
+                    completion(.failure(NSError(domain: "ImageUploader", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to get download URL"])))
+                }
+            }
+        }
+    }
+}
