@@ -12,6 +12,8 @@
 		CF001E242C9B2CE500A8556B /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF001E232C9B2CE500A8556B /* MoreViewController.swift */; };
 		CF001E2B2C9DA3B200A8556B /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF001E2A2C9DA3B200A8556B /* MyLabel.swift */; };
 		CF001E2D2C9DC1DC00A8556B /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF001E2C2C9DC1DC00A8556B /* Journal.swift */; };
+		CF054C162CA1887C00EEC27D /* AlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF054C152CA1887C00EEC27D /* AlertUtility.swift */; };
+		CF054C182CA1896800EEC27D /* FullScreenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF054C172CA1896800EEC27D /* FullScreenLoader.swift */; };
 		CF2DE1E12C8B5EAE004AC5F4 /* MyTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */; };
 		CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216542C872F4400AAE830 /* LaunchViewController.swift */; };
 		CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216572C8733F400AAE830 /* WelcomeViewController.swift */; };
@@ -83,6 +85,8 @@
 		CF001E232C9B2CE500A8556B /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		CF001E2A2C9DA3B200A8556B /* MyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
 		CF001E2C2C9DC1DC00A8556B /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		CF054C152CA1887C00EEC27D /* AlertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtility.swift; sourceTree = "<group>"; };
+		CF054C172CA1896800EEC27D /* FullScreenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenLoader.swift; sourceTree = "<group>"; };
 		CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextFieldView.swift; sourceTree = "<group>"; };
 		CF7216542C872F4400AAE830 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		CF7216572C8733F400AAE830 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +160,14 @@
 			path = More;
 			sourceTree = "<group>";
 		};
+		CF054C142CA1886500EEC27D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CF054C152CA1887C00EEC27D /* AlertUtility.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CF7216532C872F3100AAE830 /* Launch */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +190,7 @@
 				CF72165A2C8736DF00AAE830 /* LogoView.swift */,
 				CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */,
 				CF001E2A2C9DA3B200A8556B /* MyLabel.swift */,
+				CF054C172CA1896800EEC27D /* FullScreenLoader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -274,6 +287,7 @@
 		E31261EE2C86F14D00E1DAA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF054C142CA1886500EEC27D /* Utils */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -472,9 +486,11 @@
 				E31261D42C86E66300E1DAA9 /* AppDelegate.swift in Sources */,
 				CF001E2B2C9DA3B200A8556B /* MyLabel.swift in Sources */,
 				E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */,
+				CF054C182CA1896800EEC27D /* FullScreenLoader.swift in Sources */,
 				E30234292C96E62700CB1795 /* DashboardBottomButtonView.swift in Sources */,
 				E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */,
 				E34A57242C99C1E300E6592E /* CreateNewJournalController.swift in Sources */,
+				CF054C162CA1887C00EEC27D /* AlertUtility.swift in Sources */,
 				E31261F32C8707B500E1DAA9 /* UIColor+Extantion.swift in Sources */,
 				E396AAF72C899EB0004D7BE5 /* User.swift in Sources */,
 				E31261F52C8707C600E1DAA9 /* UIFont+Extansion.swift in Sources */,

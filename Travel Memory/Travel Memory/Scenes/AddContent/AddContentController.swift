@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class AddContentController: UIViewController {
+    private let firebaseManager = FireBaseManager.shared
     
     var journalTitle: String?
     var destination: String?
@@ -237,11 +238,11 @@ class AddContentController: UIViewController {
     }
     
     private func setJournalInfo() {
-            print("Journal Title: \(journalTitle ?? "")")
-            print("Destination: \(destination ?? "")")
-            print("Start Date: \(startDate ?? "")")
-            print("End Date: \(endDate ?? "")")
-        }
+        print("Journal Title: \(journalTitle ?? "")")
+        print("Destination: \(destination ?? "")")
+        print("Start Date: \(startDate ?? "")")
+        print("End Date: \(endDate ?? "")")
+    }
     
     @objc func pressAddPhotoBrowserButton() {
         
@@ -252,9 +253,34 @@ class AddContentController: UIViewController {
     }
     
     @objc func createButtonPressed() {
+        FullScreenLoader.show(in: self)
+        
+        let journal: Journal = Journal(
+            id: UUID().uuidString,
+            title: journalTitle ?? "",
+            destination: destination ?? "",
+            startDate: startDate ?? "",
+            endDate: endDate ?? "",
+            dateModified: Date().formatted()
+        )
+        
+        firebaseManager.uploadJournal(journal) { result in
+            switch result {
+            case .success:
+                FullScreenLoader.hide()
+                let DashboardVC = DashboardViewController()
+                
+                self.navigationController?.pushViewController(DashboardVC, animated: true)
+            case .failure(let error):
+                FullScreenLoader.hide()
+                AlertUtility.showSimpleAlert(on: self, title: "Error", message: error.localizedDescription)
+                
+            }
+        }
+        
         
     }
-   
+    
 }
 
 

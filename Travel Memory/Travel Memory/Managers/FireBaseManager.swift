@@ -95,16 +95,19 @@ extension FireBaseManager {
 
 // MARK: Firestore
 extension FireBaseManager {
-    func uploadJournal(_ journal: Journal) {
+    func uploadJournal(_ journal: Journal, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let user = Auth.auth().currentUser else {
+            completion(.failure("Error" as! Error))
             return
         }
         
         db.collection(user.uid).document(journal.id).setData(journal.toDictionary()) { error in
             if let error = error {
                 print("Error adding document: \(error)")
+                completion(.failure(error))
             } else {
                 print("Document added successfully with ID: \(user.uid)")
+                completion(.success(()))
             }
         }
     }
