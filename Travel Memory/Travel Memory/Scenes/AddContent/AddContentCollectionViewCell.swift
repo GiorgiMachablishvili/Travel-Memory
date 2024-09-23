@@ -144,9 +144,9 @@ class AddContentCollectionViewCell: UICollectionViewCell {
     }
     
     func setJournalInfo(journalTitle: String, destination: String, startDate: String, endDate: String) {
-            journalTitleInfoLabel.text = journalTitle
-            destinationInfoLabel.text = destination
-            startDateInfoLabel.text = startDate
-            endDateInfoLabel.text = endDate
-        }
+        journalTitleInfoLabel.text = journalTitle
+        destinationInfoLabel.text = destination
+        startDateInfoLabel.text = startDate
+        endDateInfoLabel.text = endDate
+    }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Firebase
 
 class AddContentController: UIViewController {
     private let firebaseManager = FireBaseManager.shared
@@ -16,6 +17,7 @@ class AddContentController: UIViewController {
     var destination: String?
     var startDate: String?
     var endDate: String?
+    
     
     var selectedImage: UIImage?
     
@@ -89,7 +91,7 @@ class AddContentController: UIViewController {
         view.addTarget(self, action: #selector(pressAddPhotoBrowserButton), for: .touchUpInside)
         return view
     }()
-
+    
     
     private lazy var addVideoLabel: MyLabel = {
         let view = MyLabel(frame: .zero)
@@ -151,6 +153,7 @@ class AddContentController: UIViewController {
         imagePicker = ImagePickerUtility(presentationController: self)
         
         setJournalInfo()
+        
     }
     
     private func setupLayout() {
@@ -277,10 +280,17 @@ class AddContentController: UIViewController {
     }
     
     @objc func createButtonPressed() {
+        
+        guard let journalTitle = journalTitle, !journalTitle.isEmpty else {
+            print("Journal title is empty")
+            return
+        }
+        
         guard let selectedImage else {
             return
         }
         FullScreenLoader.show(in: self)
+        
         
         let imagePath = "images/\(UUID().uuidString).jpg"
         firebaseManager.uploadImage(selectedImage, path: imagePath) { [weak self] result in
@@ -318,6 +328,7 @@ class AddContentController: UIViewController {
             switch result {
             case .success:
                 let dashboardVC = DashboardViewController()
+                dashboardVC.journalTitles.append(journal.title)
                 self.navigationController?.pushViewController(dashboardVC, animated: true)
             case .failure(let error):
                 FullScreenLoader.hide()
@@ -326,16 +337,16 @@ class AddContentController: UIViewController {
         }
     }
 }
-
-
-extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+    
+    extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return 1
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddContentCollectionViewCell", for: indexPath) as! AddContentCollectionViewCell
+            cell.setJournalInfo(journalTitle: journalTitle ?? "", destination: destination ?? "", startDate: startDate ?? "", endDate: endDate ?? "")
+            return cell
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddContentCollectionViewCell", for: indexPath) as! AddContentCollectionViewCell
-        cell.setJournalInfo(journalTitle: journalTitle ?? "", destination: destination ?? "", startDate: startDate ?? "", endDate: endDate ?? "")
-        return cell
-    }
-}

@@ -8,12 +8,12 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseDatabaseInternal
 import FirebaseStorage
 
 class FireBaseManager {
     static let shared = FireBaseManager()
-    
-    private let db = Firestore.firestore()
+    private let fireStore = Firestore.firestore()
     
     
     //MARK: Init
@@ -94,6 +94,27 @@ extension FireBaseManager {
     }
 }
 
+extension FireBaseManager {
+    func fetchJournalTitles(completion: @escaping ([String]) -> Void) {
+        fireStore.collection("journals").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching journals: \(error.localizedDescription)")
+                completion([]) // Return empty array if error
+            } else {
+                var journalTitles: [String] = []
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let title = data["title"] as? String {
+                        journalTitles.append(title)
+                    }
+                }
+                completion(journalTitles)
+            }
+        }
+    }
+}
+
+
 // MARK: Firestore
 extension FireBaseManager {
     func uploadJournal(_ journal: Journal, completion: @escaping (Result<Void, Error>) -> Void) {
@@ -102,7 +123,7 @@ extension FireBaseManager {
             return
         }
         
-        db.collection(user.uid).document(journal.id).setData(journal.toDictionary()) { error in
+        fireStore.collection(user.uid).document(journal.id).setData(journal.toDictionary()) { error in
             if let error = error {
                 print("Error adding document: \(error)")
                 completion(.failure(error))
