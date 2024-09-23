@@ -9,9 +9,7 @@ import UIKit
 import SnapKit
 
 class DashboardCell: UICollectionViewCell {
-    
-//    static let identifier = "DashboardCell"
-    
+        
     private lazy var titleLabel: MyLabel = {
         let label = MyLabel()
         label.font = UIFont.KoronaOneRegular(size: 12)

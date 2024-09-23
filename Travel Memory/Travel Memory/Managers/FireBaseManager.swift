@@ -8,12 +8,12 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseDatabaseInternal
 
 class FireBaseManager {
     static let shared = FireBaseManager()
+    private let fireStore = Firestore.firestore()
     
-    private let db = Firestore.firestore()
-
     
     //MARK: Init
     private init() {}
@@ -32,7 +32,7 @@ class FireBaseManager {
             completion(signOutError)
         }
     }
-
+    
 }
 
 //MARK: Account creation and sign in
@@ -72,12 +72,12 @@ extension FireBaseManager {
     }
     
     //MARK: Sign In With Email and Password
-
+    
     //-Parameters
-        //-email
-        //-password
-        //-name
-        //-completion
+    //-email
+    //-password
+    //-name
+    //-completion
     
     func signInWithEmail(withEmail email: String, password: String, name: String, completion: @escaping(Error?, String?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -93,21 +93,47 @@ extension FireBaseManager {
     }
 }
 
-// MARK: Firestore
 extension FireBaseManager {
-    func uploadJournal(_ journal: Journal) {
-        guard let user = Auth.auth().currentUser else {
-            return
-        }
-        
-        db.collection(user.uid).document(journal.id).setData(journal.toDictionary()) { error in
+    func fetchJournalTitles(completion: @escaping ([String]) -> Void) {
+        fireStore.collection("journals").getDocuments { (querySnapshot, error) in
             if let error = error {
-                print("Error adding document: \(error)")
+                print("Error fetching journals: \(error.localizedDescription)")
+                completion([]) // Return empty array if error
             } else {
-                print("Document added successfully with ID: \(user.uid)")
+                var journalTitles: [String] = []
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let title = data["title"] as? String {
+                        journalTitles.append(title)
+                    }
+                }
+                completion(journalTitles)
             }
         }
     }
-    
+}
+
+
+// MARK: Firestore
+extension FireBaseManager {
+    func uploadJournal(_ journal: Journal, completion: @escaping (Bool) -> Void) {
+        let journalData: [String: Any] = [
+            "title": journal.title,
+            "destination": journal.destination,
+            "startDate": journal.startDate,
+            "endDate": journal.endDate,
+            "dateModified": journal.dateModified
+        ]
+        
+        // Assuming journals are stored in a collection called "journals"
+        fireStore.collection("journals").document(journal.id).setData(journalData) { error in
+            if let error = error {
+                print("Error uploading journal: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
 }
 

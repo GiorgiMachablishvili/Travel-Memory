@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Firebase
 
 class AddContentController: UIViewController {
     
@@ -14,6 +15,8 @@ class AddContentController: UIViewController {
     var destination: String?
     var startDate: String?
     var endDate: String?
+    
+    private var firebaseManager = FireBaseManager.shared
     
     //MARK: -UI components
     private lazy var collectionView: UICollectionView = {
@@ -137,6 +140,13 @@ class AddContentController: UIViewController {
         view.backgroundColor = .systemBackground
         
         setJournalInfo()
+        
+//        firebaseManager.fetchJournalTitles { [weak self] journalTitles in
+//            guard let self = self else { return }
+//            self.journalTitles = journalTitles
+//            print("Fetched journal titles: \(journalTitles)") // Log to confirm titles are fetched
+//            self.collectionView.reloadData() // Reload the collection view after setting journalTitles
+//        }
     }
     
     private func setupLayout() {
@@ -252,9 +262,35 @@ class AddContentController: UIViewController {
     }
     
     @objc func createButtonPressed() {
+        guard let journalTitle = journalTitle, !journalTitle.isEmpty else {
+            print("Journal title is empty")
+            return
+        }
         
+        let journalData = Journal(
+            id: journalTitle,
+            title: journalTitle,
+            destination: destination ?? "",
+            startDate: startDate ?? "",
+            endDate: endDate ?? "",
+            dateModified: ""
+        )
+        
+        firebaseManager.uploadJournal(journalData) { [weak self] success in
+            guard let self = self else { return }
+            
+            if success {
+                print("Journal added successfully")
+                self.firebaseManager.fetchJournalTitles { journalTitles in
+                    let dashboardVC = DashboardViewController()
+                    dashboardVC.journalTitles = journalTitles
+                    self.navigationController?.pushViewController(dashboardVC, animated: true)
+                }
+            } else {
+                print("Failed to add journal")
+            }
+        }
     }
-   
 }
 
 

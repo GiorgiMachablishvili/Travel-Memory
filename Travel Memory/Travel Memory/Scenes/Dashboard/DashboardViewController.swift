@@ -17,7 +17,6 @@ protocol DashboardBottomButtonViewDelegate: AnyObject {
 class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
     private let themeManager = ThemeManager.shared
     private let firebaseManager = FireBaseManager.shared
-
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -33,11 +32,13 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         return collectionView
     }()
     
-    private let journalData: [(image: UIImage, title: String)] = [
-        (image: UIImage(named: "japan")!, title: "1. Sushi in Japan"),
-        (image: UIImage(named: "ny")!, title: "2. NY never sleep"),
-        (image: UIImage(named: "new_mexico")!, title: "3. Chili day New Mexico")
-    ]
+    //    private let journalData: [(image: UIImage, title: String)] = [
+    //        (image: UIImage(named: "japan")!, title: "1. Sushi in Japan"),
+    //        (image: UIImage(named: "ny")!, title: "2. NY never sleep"),
+    //        (image: UIImage(named: "new_mexico")!, title: "3. Chili day New Mexico")
+    //    ]
+    
+    var journalTitles: [String] = []
     
     private lazy var topColorView: UIView = {
         let view = UIView(frame: .zero)
@@ -50,8 +51,8 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         view.image = UIImage(named: "Menu")
         view.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didPressMore))
-            view.addGestureRecognizer(tapGesture)
-    
+        view.addGestureRecognizer(tapGesture)
+        
         return view
     }()
     
@@ -118,17 +119,19 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         view.backgroundColor = .background
         navigationItem.hidesBackButton = true
         
-//        let journal: Journal = Journal(
-//            id: UUID().uuidString,
-//            title: "Title 2",
-//            destination: "Destination 2",
-//            startDate: "11",
-//            endDate: "16",
-//            dateModified: Date().formatted()
-//        )
-//        
-//        firebaseManager.uploadJournal(journal)
-
+        collectionView.reloadData()
+        
+        //        let journal: Journal = Journal(
+        //            id: UUID().uuidString,
+        //            title: "Title 2",
+        //            destination: "Destination 2",
+        //            startDate: "11",
+        //            endDate: "16",
+        //            dateModified: Date().formatted()
+        //        )
+        //
+        //        firebaseManager.uploadJournal(journal)
+        
     }
     
     private func setup() {
@@ -221,8 +224,8 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         }
     }
     
-   @objc func didPressMore() {
-       navigationController?.pushViewController(MoreViewController(), animated: true)
+    @objc func didPressMore() {
+        navigationController?.pushViewController(MoreViewController(), animated: true)
     }
     
     func navigateToSignInController() {
@@ -235,13 +238,14 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
 
 extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return journalData.count
+        return journalTitles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
-        let journal = journalData[indexPath.row]
-        cell.configure(title: journal.title, image: journal.image)
+        let journalTitle = journalTitles[indexPath.item]
+        cell.configure(title: journalTitle, image: UIImage(named: "flight")!)
         return cell
     }
 }
+
