@@ -148,31 +148,41 @@ class CreateNewJournalController: UIViewController {
     
     @objc func pressContinueButton() {
         let journalTitleText = journalTitle.getText()
-        let destinationText = destinationField.getText()
-        let startDateText = startDateField.getText()
-        let endDateText = endDateField.getText()
-        
-        // Check for empty fields
-        if journalTitleText.isEmpty || destinationText.isEmpty || startDateText.isEmpty || endDateText.isEmpty {
-            showAlert(title: "Error", message: "All fields must be filled.")
-            return
-        }
-        
-        // Validate if startDateText and endDateText are integers
-        if Int(startDateText) == nil || Int(endDateText) == nil {
-            showAlert(title: "Error", message: "Start Date and End Date must be valid integers.")
-            return
-        }
-        
-        
-        let addContentVC = AddContentController()
-        addContentVC.journalTitle = journalTitleText
-        addContentVC.destination = destinationText
-        addContentVC.startDate = startDateText
-        addContentVC.endDate = endDateText
-        
-        // Navigate to AddContentController
-        self.navigationController?.pushViewController(addContentVC, animated: true)
+            let destinationText = destinationField.getText()
+            let startDateText = startDateField.getText()
+            let endDateText = endDateField.getText()
+            
+            // Check for empty fields
+            if journalTitleText.isEmpty || destinationText.isEmpty || startDateText.isEmpty || endDateText.isEmpty {
+                showAlert(title: "Error", message: "All fields must be filled.")
+                return
+            }
+
+            // Convert the startDateText and endDateText back to Date objects
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+
+            guard let startDate = dateFormatter.date(from: startDateText),
+                  let endDate = dateFormatter.date(from: endDateText) else {
+                showAlert(title: "Error", message: "Invalid date format. Please select valid dates.")
+                return
+            }
+            
+            // Validate if the start date is earlier than the end date
+            if startDate > endDate {
+                showAlert(title: "Error", message: "Start date must be earlier than end date.")
+                return
+            }
+
+            // Proceed if validation is successful
+            let addContentVC = AddContentController()
+            addContentVC.journalTitle = journalTitleText
+            addContentVC.destination = destinationText
+            addContentVC.startDate = startDateText
+            addContentVC.endDate = endDateText
+            
+            // Navigate to AddContentController
+            self.navigationController?.pushViewController(addContentVC, animated: true)
     }
     
     private func showAlert(title: String, message: String) {

@@ -8,9 +8,9 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    
     var window: UIWindow?
     
+    private let firebaseManager = FireBaseManager.shared
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.showMainNavigation()
+            self.mainNavigation()
         }
         
         let themeManager = ThemeManager.shared
@@ -28,10 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
-    func showMainNavigation() {
+    func mainNavigation() {
         if FireBaseManager.shared.isUserLoggedIn() {
-            let mainViewController = DashboardViewController()
-            window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+            firebaseManager.fetchJournals {[weak self] journals in
+                guard (self != nil) else { return }
+                let mainViewController = DashboardViewController()
+                mainViewController.journals = journals
+                self?.window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+            }
          } else {
              let mainViewController = WelcomeViewController()
              window?.rootViewController = UINavigationController(rootViewController: mainViewController)

@@ -7,13 +7,18 @@
 
 import UIKit
 import SnapKit
+import Firebase
 
 class AddContentController: UIViewController {
+    private let firebaseManager = FireBaseManager.shared
+    private var imagePicker: ImagePickerUtility!
     
     var journalTitle: String?
     var destination: String?
     var startDate: String?
     var endDate: String?
+    
+    var selectedImage: UIImage?
     
     //MARK: -UI components
     private lazy var collectionView: UICollectionView = {
@@ -64,7 +69,15 @@ class AddContentController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .left
-        view.text = "Add Photo"
+        view.text = "Add Photo: "
+        return view
+    }()
+    
+    private lazy var selectedPhotoLabel: MyLabel = {
+        let view = MyLabel(frame: .zero)
+        view.font = UIFont.KoronaOneRegular(size: 10)
+        view.textAlignment = .left
+        
         return view
     }()
     
@@ -78,11 +91,12 @@ class AddContentController: UIViewController {
         return view
     }()
     
+    
     private lazy var addVideoLabel: MyLabel = {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .left
-        view.text = "Add Video"
+        view.text = "Add Video: "
         return view
     }()
     
@@ -119,14 +133,26 @@ class AddContentController: UIViewController {
         return view
     }()
     
+    private lazy var createButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Create", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        view.backgroundColor = .skyBlue
+        view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(createButtonPressed), for: .touchUpInside)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         setupConstraints()
         
         view.backgroundColor = .systemBackground
+        imagePicker = ImagePickerUtility(presentationController: self)
         
         setJournalInfo()
+        
     }
     
     private func setupLayout() {
@@ -135,6 +161,7 @@ class AddContentController: UIViewController {
         topColorView.addSubview(sloganLabel)
         view.addSubview(lineImageView)
         view.addSubview(addPhotoLabel)
+        view.addSubview(selectedPhotoLabel)
         view.addSubview(addPhotoButton)
         view.addSubview(addVideoLabel)
         view.addSubview(addVideoButton)
@@ -142,6 +169,7 @@ class AddContentController: UIViewController {
         view.addSubview(collectionView)
         bottomColorView.addSubview(addNoteLabel)
         bottomColorView.addSubview(noteTextField)
+        bottomColorView.addSubview(createButton)
     }
     
     private func setupConstraints() {
@@ -177,6 +205,11 @@ class AddContentController: UIViewController {
         addPhotoLabel.snp.remakeConstraints { make in
             make.top.equalTo(lineImageView.snp.bottom).offset(30)
             make.leading.equalTo(view.snp.leading).offset(37)
+            make.height.equalTo(20)
+        }
+        selectedPhotoLabel.snp.remakeConstraints { make in
+            make.top.equalTo(lineImageView.snp.bottom).offset(30)
+            make.leading.equalTo(addPhotoLabel.snp.trailing).offset(10)
             make.height.equalTo(20)
         }
         
@@ -217,33 +250,98 @@ class AddContentController: UIViewController {
             make.leading.bottom.trailing.equalToSuperview()
             make.height.equalTo(292)
         }
+        createButton.snp.remakeConstraints { make in
+            make.bottom.equalTo(bottomColorView.snp.bottom).offset(-20)
+            make.centerX.equalTo(view.snp.centerX)
+            make.height.equalTo(27)
+            make.width.equalTo(150)
+        }
     }
     
     private func setJournalInfo() {
-            print("Journal Title: \(journalTitle ?? "")")
-            print("Destination: \(destination ?? "")")
-            print("Start Date: \(startDate ?? "")")
-            print("End Date: \(endDate ?? "")")
+        print("Journal Title: \(journalTitle ?? "")")
+        print("Destination: \(destination ?? "")")
+        print("Start Date: \(startDate ?? "")")
+        print("End Date: \(endDate ?? "")")
+    }
+    
+    @objc func pressAddPhotoBrowserButton(_ sender: UIButton) {
+        imagePicker.present { [weak self] image in
+            if let image = image {
+                self?.selectedImage = image
+                self?.selectedPhotoLabel.text = "Selected!"
+            }
         }
-    
-    @objc func pressAddPhotoBrowserButton() {
-        
     }
     
-    @objc func pressAddVideoBrowserButton() {
+    @objc func pressAddVideoBrowserButton() {}
+    
+    @objc func createButtonPressed() {
+        guard let journalTitle = journalTitle, !journalTitle.isEmpty else {
+            print("Journal title is empty")
+            return
+        }
+        guard let selectedImage else {
+            AlertUtility.showSimpleAlert(on: self, title: "Error", message: "Please select Image")
+            return
+        }
+        FullScreenLoader.show(in: self)
         
+        let imagePath = "images/\(UUID().uuidString).jpg"
+        firebaseManager.uploadImage(selectedImage, path: imagePath) { [weak self] result in
+            guard let self = self else {
+                AlertUtility.showSimpleAlert(on: self!, title: "Error", message: "Please select Image")
+                return
+            }
+            
+            switch result {
+            case .success(let downloadURL):
+                let uploadedImageUrl = downloadURL.absoluteString
+                let journal = Journal(
+                    id: UUID().uuidString,
+                    title: self.journalTitle ?? "",
+                    destination: self.destination ?? "",
+                    startDate: self.startDate ?? "",
+                    endDate: self.endDate ?? "",
+                    dateModified: Date().formatted(),
+                    imageUrl: uploadedImageUrl
+                )
+                
+                self.uploadJournal(journal)
+                
+            case .failure(let error):
+                FullScreenLoader.hide()
+                AlertUtility.showSimpleAlert(on: self, title: "Error", message: "Failed to upload image: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func uploadJournal(_ journal: Journal) {
+        firebaseManager.uploadJournal(journal) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success:
+                let dashboardVC = DashboardViewController()
+                dashboardVC.journals.append(journal)
+                self.navigationController?.pushViewController(dashboardVC, animated: true)
+            case .failure(let error):
+                FullScreenLoader.hide()
+                AlertUtility.showSimpleAlert(on: self, title: "Error", message: error.localizedDescription)
+            }
+        }
     }
 }
-
-
-extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+    
+    extension AddContentController: UICollectionViewDelegate, UICollectionViewDataSource {
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return 1
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddContentCollectionViewCell", for: indexPath) as! AddContentCollectionViewCell
+            cell.setJournalInfo(journalTitle: journalTitle ?? "", destination: destination ?? "", startDate: startDate ?? "", endDate: endDate ?? "")
+            return cell
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddContentCollectionViewCell", for: indexPath) as! AddContentCollectionViewCell
-        cell.setJournalInfo(journalTitle: journalTitle ?? "", destination: destination ?? "", startDate: startDate ?? "", endDate: endDate ?? "")
-        return cell
-    }
-}
