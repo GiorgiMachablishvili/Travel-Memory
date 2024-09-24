@@ -16,7 +16,7 @@ protocol DashboardBottomButtonViewDelegate: AnyObject {
 
 class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
     private let themeManager = ThemeManager.shared
-
+    
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -116,7 +116,13 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         view.backgroundColor = .background
         navigationItem.hidesBackButton = true
         
-        collectionView.reloadData()
+        fetchUserJournals()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchUserJournals()
     }
     
     private func setup() {
@@ -219,16 +225,24 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController = navigationController
     }
+    
+    private func fetchUserJournals() {
+        FireBaseManager.shared.fetchJournals { [weak self] journals in
+            guard let self = self else { return }
+            self.journals = journals
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return journalTitles.count
+        return journals.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
-        let journalTitle = journalTitles[indexPath.item]
+        let journalTitle = journals[indexPath.item].title
         cell.configure(title: journalTitle, image: UIImage(named: "flight")!)
         return cell
     }
