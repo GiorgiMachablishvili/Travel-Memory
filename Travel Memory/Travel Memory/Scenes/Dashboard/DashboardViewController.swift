@@ -17,6 +17,7 @@ protocol DashboardBottomButtonViewDelegate: AnyObject {
 class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
     private let themeManager = ThemeManager.shared
     
+    private let refreshControl = UIRefreshControl()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -29,6 +30,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         collectionView.delegate = self
         
         collectionView.register(DashboardCell.self, forCellWithReuseIdentifier: "DashboardCell")
+        collectionView.refreshControl = refreshControl
         return collectionView
     }()
     
@@ -117,6 +119,8 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         navigationItem.hidesBackButton = true
         
         fetchUserJournals()
+        
+        refreshControl.addTarget(self, action: #selector(refreshJournals), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -226,11 +230,18 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController = navigationController
     }
     
-    private func fetchUserJournals() {
+    private func fetchUserJournals(completion: (() -> Void)? = nil) {
         FireBaseManager.shared.fetchJournals { [weak self] journals in
             guard let self = self else { return }
             self.journals = journals
             self.collectionView.reloadData()
+            completion?()
+        }
+    }
+    
+    @objc private func refreshJournals() {
+        fetchUserJournals { [weak self] in
+            self?.refreshControl.endRefreshing()
         }
     }
 }
