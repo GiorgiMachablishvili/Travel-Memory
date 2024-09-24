@@ -16,7 +16,8 @@ protocol DashboardBottomButtonViewDelegate: AnyObject {
 
 class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
     private let themeManager = ThemeManager.shared
-
+    
+    private let refreshControl = UIRefreshControl()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -29,6 +30,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         collectionView.delegate = self
         
         collectionView.register(DashboardCell.self, forCellWithReuseIdentifier: "DashboardCell")
+        collectionView.refreshControl = refreshControl
         return collectionView
     }()
     
@@ -116,7 +118,15 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         view.backgroundColor = .background
         navigationItem.hidesBackButton = true
         
-        collectionView.reloadData()
+        fetchUserJournals()
+        
+        refreshControl.addTarget(self, action: #selector(refreshJournals), for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchUserJournals()
     }
     
     private func setup() {
@@ -219,16 +229,31 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController = navigationController
     }
+    
+    private func fetchUserJournals(completion: (() -> Void)? = nil) {
+        FireBaseManager.shared.fetchJournals { [weak self] journals in
+            guard let self = self else { return }
+            self.journals = journals
+            self.collectionView.reloadData()
+            completion?()
+        }
+    }
+    
+    @objc private func refreshJournals() {
+        fetchUserJournals { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
+    }
 }
 
 extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return journalTitles.count
+        return journals.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
-        let journalTitle = journalTitles[indexPath.item]
+        let journalTitle = journals[indexPath.item].title
         cell.configure(title: journalTitle, image: UIImage(named: "flight")!)
         return cell
     }

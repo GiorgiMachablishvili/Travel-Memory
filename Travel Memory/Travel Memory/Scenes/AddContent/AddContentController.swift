@@ -324,7 +324,10 @@ class AddContentController: UIViewController {
             case .success:
                 let dashboardVC = DashboardViewController()
                 dashboardVC.journals.append(journal)
-                self.navigationController?.pushViewController(dashboardVC, animated: true)
+                //                self.navigationController?.pushViewController(dashboardVC, animated: true)
+                if let dashboardVC = navigationController?.viewControllers.first(where: { $0 is DashboardViewController }) {
+                    navigationController?.popToViewController(dashboardVC, animated: true)
+                }
             case .failure(let error):
                 FullScreenLoader.hide()
                 AlertUtility.showSimpleAlert(on: self, title: "Error", message: error.localizedDescription)

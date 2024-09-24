@@ -97,23 +97,24 @@ extension FireBaseManager {
 extension FireBaseManager {
     func fetchJournals(completion: @escaping ([Journal]) -> Void) {
         guard let user = Auth.auth().currentUser else {
+            print("No user logged in")
+            completion([])
             return
         }
         
-        fireStore.collection(user.uid).getDocuments { (querySnapshot, error) in
+        fireStore.collection("users").document(user.uid).collection("journals").getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error fetching journals: \(error.localizedDescription)")
-                completion([]) // Return empty array if error
+                completion([])
             } else {
-                
-                let journals = querySnapshot!.documents.compactMap { document -> Journal? in
+                let journals = querySnapshot?.documents.compactMap { document -> Journal? in
                     do {
                         return try document.data(as: Journal.self)
                     } catch {
                         print("Error decoding journal: \(error)")
                         return nil
                     }
-                }
+                } ?? []
                 
                 completion(journals)
             }
@@ -126,16 +127,16 @@ extension FireBaseManager {
 extension FireBaseManager {
     func uploadJournal(_ journal: Journal, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let user = Auth.auth().currentUser else {
-            completion(.failure("Error" as! Error))
+            completion(.failure(NSError(domain: "NoUserLoggedIn", code: 0, userInfo: [NSLocalizedDescriptionKey: "No user is logged in"])))
             return
         }
         
-        fireStore.collection(user.uid).document(journal.id).setData(journal.toDictionary()) { error in
+        fireStore.collection("users").document(user.uid).collection("journals").document(journal.id).setData(journal.toDictionary()) { error in
             if let error = error {
-                print("Error adding document: \(error)")
+                print("Error adding journal: \(error.localizedDescription)")
                 completion(.failure(error))
             } else {
-                print("Document added successfully with ID: \(user.uid)")
+                print("Journal successfully added for user: \(user.uid)")
                 completion(.success(()))
             }
         }
