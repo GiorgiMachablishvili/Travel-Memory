@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class DashboardCell: UICollectionViewCell {
         
@@ -54,9 +55,10 @@ class DashboardCell: UICollectionViewCell {
         }
     }
     
-    func configure(title: String, image: UIImage) {
+    func configure(title: String, imageUrl: String) {
+        let url = URL(string: imageUrl)
+        imageView.kf.setImage(with: url)
         titleLabel.text = title
-        imageView.image = image
     }
 }
 

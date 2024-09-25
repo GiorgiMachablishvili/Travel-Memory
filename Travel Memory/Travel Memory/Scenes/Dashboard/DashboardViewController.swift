@@ -14,9 +14,8 @@ protocol DashboardBottomButtonViewDelegate: AnyObject {
     func didPressLogoutButton()
 }
 
-class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
-    private let themeManager = ThemeManager.shared
-
+class DashboardViewController: UIViewController {
+    let viewModel: DashboardViewModel
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -32,11 +31,6 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         return collectionView
     }()
     
-    var journals: [Journal] = []
-    var journalTitles: [String] {
-        journals.map { $0.title }
-    }
-    
     private lazy var topColorView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = UIColor(named: "backgroundPrimary")
@@ -49,7 +43,6 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         view.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didPressMore))
         view.addGestureRecognizer(tapGesture)
-        
         return view
     }()
     
@@ -57,13 +50,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
         view.textAlignment = .center
-        
-        if let user = Auth.auth().currentUser {
-            let userName = user.displayName ?? "User"
-            view.text = "Welcome, \(userName)"
-        } else {
-            view.text = "Welcome"
-        }
+        view.text = "Welcome"
         return view
     }()
     
@@ -108,15 +95,30 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         return view
     }()
     
+    init(viewModel: DashboardViewModel = DashboardViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         setupConstraints()
+        bindViewModel()
         
         view.backgroundColor = .background
         navigationItem.hidesBackButton = true
-        
-        collectionView.reloadData()
+    }
+    
+    private func bindViewModel() {
+        welcomeLabel.text = viewModel.welcomeMessage
+        viewModel.journalsUpdated = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     private func setup() {
@@ -195,42 +197,46 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         }
     }
     
+    @objc func didPressMore() {
+        navigationController?.pushViewController(MoreViewController(), animated: true)
+    }
+}
+
+extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.journals.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
+        let journal = viewModel.journals[indexPath.item]
+        cell.configure(title: journal.title, imageUrl: journal.imageUrl)
+        return cell
+    }
+}
+
+// MARK: - DashboardBottomButtonViewDelegate
+extension DashboardViewController: DashboardBottomButtonViewDelegate {
     func didPressCreateFolderButton() {
         let createController = CreateNewJournalController()
         self.navigationController?.pushViewController(createController, animated: true)
     }
     
     func didPressLogoutButton() {
-        do {
-            try Auth.auth().signOut() // Sign out the user
-            navigateToSignInController() // Navigate to the SignInController
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+        viewModel.logout { [weak self] result in
+            switch result {
+            case .success:
+                self?.navigateToSignInController()
+            case .failure(let error):
+                print("Error signing out: \(error)")
+            }
         }
     }
     
-    @objc func didPressMore() {
-        navigationController?.pushViewController(MoreViewController(), animated: true)
-    }
-    
-    func navigateToSignInController() {
+    private func navigateToSignInController() {
         let signInController = SignInController()
         let navigationController = UINavigationController(rootViewController: signInController)
         
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController = navigationController
     }
 }
-
-extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return journalTitles.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
-        let journalTitle = journalTitles[indexPath.item]
-        cell.configure(title: journalTitle, image: UIImage(named: "flight")!)
-        return cell
-    }
-}
-

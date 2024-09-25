@@ -29,11 +29,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func mainNavigation() {
-        if FireBaseManager.shared.isUserLoggedIn() {
+        if firebaseManager.isUserLoggedIn() {
             firebaseManager.fetchJournals {[weak self] journals in
                 guard (self != nil) else { return }
-                let mainViewController = DashboardViewController()
-                mainViewController.journals = journals
+                
+                let viewModel = DashboardViewModel()
+                viewModel.setJournals(journals)
+                let mainViewController = DashboardViewController(viewModel: viewModel)
+                
                 self?.window?.rootViewController = UINavigationController(rootViewController: mainViewController)
             }
          } else {

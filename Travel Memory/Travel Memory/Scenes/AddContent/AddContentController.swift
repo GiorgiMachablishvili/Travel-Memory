@@ -323,7 +323,7 @@ class AddContentController: UIViewController {
             switch result {
             case .success:
                 let dashboardVC = DashboardViewController()
-                dashboardVC.journals.append(journal)
+                dashboardVC.viewModel.addJournal(journal)
                 self.navigationController?.pushViewController(dashboardVC, animated: true)
             case .failure(let error):
                 FullScreenLoader.hide()

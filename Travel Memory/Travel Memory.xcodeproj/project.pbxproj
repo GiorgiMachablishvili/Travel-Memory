@@ -16,6 +16,8 @@
 		CF054C182CA1896800EEC27D /* FullScreenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF054C172CA1896800EEC27D /* FullScreenLoader.swift */; };
 		CF054C1A2CA18DD700EEC27D /* ImagePickerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF054C192CA18DD700EEC27D /* ImagePickerUtility.swift */; };
 		CF054C1C2CA1B51400EEC27D /* String+Extantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF054C1B2CA1B51400EEC27D /* String+Extantion.swift */; };
+		CF054C1F2CA433DF00EEC27D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CF054C1E2CA433DF00EEC27D /* Kingfisher */; };
+		CF054C212CA4411D00EEC27D /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF054C202CA4411D00EEC27D /* DashboardViewModel.swift */; };
 		CF2DE1E12C8B5EAE004AC5F4 /* MyTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */; };
 		CF7216552C872F4400AAE830 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216542C872F4400AAE830 /* LaunchViewController.swift */; };
 		CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7216572C8733F400AAE830 /* WelcomeViewController.swift */; };
@@ -91,6 +93,7 @@
 		CF054C172CA1896800EEC27D /* FullScreenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenLoader.swift; sourceTree = "<group>"; };
 		CF054C192CA18DD700EEC27D /* ImagePickerUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerUtility.swift; sourceTree = "<group>"; };
 		CF054C1B2CA1B51400EEC27D /* String+Extantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extantion.swift"; sourceTree = "<group>"; };
+		CF054C202CA4411D00EEC27D /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextFieldView.swift; sourceTree = "<group>"; };
 		CF7216542C872F4400AAE830 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		CF7216572C8733F400AAE830 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 				E39A5D0E2CA169EB00FD6FF1 /* FirebaseDatabase in Frameworks */,
 				E39A5D102CA169EB00FD6FF1 /* FirebaseDynamicLinks in Frameworks */,
 				E39A5CFE2CA169EB00FD6FF1 /* FirebaseAnalytics in Frameworks */,
+				CF054C1F2CA433DF00EEC27D /* Kingfisher in Frameworks */,
 				E39A5D002CA169EB00FD6FF1 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				E31261FE2C8710AC00E1DAA9 /* SnapKit in Frameworks */,
 				E39A5D122CA169EB00FD6FF1 /* FirebaseFirestore in Frameworks */,
@@ -206,6 +210,7 @@
 				E30234242C96E5B700CB1795 /* DashboardViewController.swift */,
 				E30234262C96E5FF00CB1795 /* DashboardCell.swift */,
 				E30234282C96E62700CB1795 /* DashboardBottomButtonView.swift */,
+				CF054C202CA4411D00EEC27D /* DashboardViewModel.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				E39A5D252CA169EB00FD6FF1 /* FirebaseStorage */,
 				E39A5D272CA169EB00FD6FF1 /* FirebaseStorageCombine-Community */,
 				E39A5D292CA169EB00FD6FF1 /* FirebaseVertexAI-Preview */,
+				CF054C1E2CA433DF00EEC27D /* Kingfisher */,
 			);
 			productName = "Travel Memory";
 			productReference = E31261D02C86E66300E1DAA9 /* Travel Memory.app */;
@@ -451,6 +457,7 @@
 			packageReferences = (
 				E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E39A5CFC2CA169EB00FD6FF1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CF054C1D2CA433DF00EEC27D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = E31261D12C86E66300E1DAA9 /* Products */;
 			projectDirPath = "";
@@ -494,6 +501,7 @@
 				E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */,
 				CF054C1C2CA1B51400EEC27D /* String+Extantion.swift in Sources */,
 				CF054C182CA1896800EEC27D /* FullScreenLoader.swift in Sources */,
+				CF054C212CA4411D00EEC27D /* DashboardViewModel.swift in Sources */,
 				E30234292C96E62700CB1795 /* DashboardBottomButtonView.swift in Sources */,
 				E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */,
 				E34A57242C99C1E300E6592E /* CreateNewJournalController.swift in Sources */,
@@ -722,6 +730,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF054C1D2CA433DF00EEC27D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.3;
+			};
+		};
 		E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -741,6 +757,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF054C1E2CA433DF00EEC27D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF054C1D2CA433DF00EEC27D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		E31261FD2C8710AC00E1DAA9 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E31261FC2C8710AC00E1DAA9 /* XCRemoteSwiftPackageReference "SnapKit" */;
