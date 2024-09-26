@@ -22,10 +22,8 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     }
     
     private let themeManager = ThemeManager.shared
-    
     private let refreshControl = UIRefreshControl()
-    
-    private var isDeleteModeActive = false
+    private var isDeleteButtonActive = false
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -219,14 +217,14 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     }
     
     func didPressAddFolderButton() {
-        isDeleteModeActive.toggle()
+        isDeleteButtonActive.toggle()
         collectionView.reloadData()
     }
     
     func didPressLogoutButton() {
         do {
-            try Auth.auth().signOut() // Sign out the user
-            navigateToSignInController() // Navigate to the SignInController
+            try Auth.auth().signOut()
+            navigateToSignInController()
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
@@ -268,7 +266,7 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
         let journalTitle = journals[indexPath.item].title
         cell.configure(title: journalTitle, image: UIImage(named: "flight")!, indexPath: indexPath)
-        cell.setDeleteButtonVisibility(isVisible: isDeleteModeActive)
+        cell.setDeleteButtonVisibility(isVisible: isDeleteButtonActive)
         cell.delegate = self
         return cell
     }
