@@ -306,7 +306,6 @@ class AddContentController: UIViewController {
                     dateModified: Date().formatted(),
                     imageUrl: uploadedImageUrl
                 )
-                
                 self.uploadJournal(journal)
                 
             case .failure(let error):
@@ -322,10 +321,8 @@ class AddContentController: UIViewController {
             
             switch result {
             case .success:
-                let dashboardVC = DashboardViewController()
-                dashboardVC.journals.append(journal)
-                //                self.navigationController?.pushViewController(dashboardVC, animated: true)
-                if let dashboardVC = navigationController?.viewControllers.first(where: { $0 is DashboardViewController }) {
+                if let dashboardVC = navigationController?.viewControllers.first(where: { $0 is DashboardViewController }) as? DashboardViewController {
+                    dashboardVC.journals.append(journal)
                     navigationController?.popToViewController(dashboardVC, animated: true)
                 }
             case .failure(let error):

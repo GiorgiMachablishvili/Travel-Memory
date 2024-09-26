@@ -123,12 +123,6 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         refreshControl.addTarget(self, action: #selector(refreshJournals), for: .valueChanged)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        fetchUserJournals()
-    }
-    
     private func setup() {
         view.addSubview(topColorView)
         view.addSubview(menuMoreImage)
