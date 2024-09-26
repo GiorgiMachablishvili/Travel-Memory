@@ -12,6 +12,7 @@ import FirebaseAuth
 protocol DashboardBottomButtonViewDelegate: AnyObject {
     func didPressCreateFolderButton()
     func didPressAddFolderButton()
+    func didPressShareButton()
     func didPressLogoutButton()
 }
 
@@ -219,6 +220,11 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     func didPressAddFolderButton() {
         isDeleteButtonActive.toggle()
         collectionView.reloadData()
+    }
+    
+    func didPressShareButton() {
+        let shareEmailVC = ShareEmailViewController()
+        self.navigationController?.pushViewController(shareEmailVC, animated: true)
     }
     
     func didPressLogoutButton() {

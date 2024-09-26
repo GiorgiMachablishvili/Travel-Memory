@@ -26,10 +26,10 @@ class DashboardCell: UICollectionViewCell {
     }()
     
     private lazy var titleLabel: MyLabel = {
-        let label = MyLabel()
-        label.font = UIFont.KoronaOneRegular(size: 12)
-        label.textAlignment = .center
-        return label
+            let label = MyLabel()
+            label.font = UIFont.KoronaOneRegular(size: 12)
+            label.textAlignment = .center
+            return label
     }()
     
     private lazy var imageView: UIImageView = {
