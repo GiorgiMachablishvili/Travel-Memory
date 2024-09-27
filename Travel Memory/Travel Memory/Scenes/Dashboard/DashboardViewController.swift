@@ -230,7 +230,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
 //        }
         
         let shareEmailVC = ShareEmailViewController()
-        shareEmailVC.journalTitle = selectedJournalTitle
+//        shareEmailVC.journalTitle = selectedJournalTitle
         shareEmailVC.journals = journals
         self.navigationController?.pushViewController(shareEmailVC, animated: true)
     }
@@ -278,10 +278,17 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
-        let selectedJournalTitle = journals[indexPath.item].title
-        cell.configure(title: selectedJournalTitle, image: UIImage(named: "flight")!, indexPath: indexPath)
+        let journal = journals[indexPath.item]
+        cell.configure(title: journal.title, imageUrl: journal.imageUrl, indexPath: indexPath)
         cell.setDeleteButtonVisibility(isVisible: isDeleteButtonActive)
         cell.delegate = self
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let journal = journals[indexPath.item]
+        
+        let JournalDetailsVC = JournalDetailsViewController(selectedJournal: journal)
+        self.navigationController?.pushViewController(JournalDetailsVC, animated: true)
     }
 }

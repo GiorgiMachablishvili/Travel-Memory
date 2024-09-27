@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 protocol DashboardCellDelegate: AnyObject {
     func didPressDeleteButton(at indexPath: IndexPath)
@@ -76,9 +77,11 @@ class DashboardCell: UICollectionViewCell {
         }
     }
     
-    func configure(title: String, image: UIImage, indexPath: IndexPath) {
+    func configure(title: String, imageUrl: String, indexPath: IndexPath) {
+        let url = URL(string: imageUrl)
+        imageView.kf.setImage(with: url)
+                              
         titleLabel.text = title
-        imageView.image = image
         self.indexPath = indexPath
     }
     
