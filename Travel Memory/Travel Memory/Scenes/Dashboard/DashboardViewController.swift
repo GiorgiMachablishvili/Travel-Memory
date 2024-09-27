@@ -25,6 +25,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     private let themeManager = ThemeManager.shared
     private let refreshControl = UIRefreshControl()
     private var isDeleteButtonActive = false
+    private var selectedJournalTitle: String?
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -223,7 +224,14 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     }
     
     func didPressShareButton() {
+//        guard let selectedJournalTitle = selectedJournalTitle else {
+//            print("No journal selected")
+//            return
+//        }
+        
         let shareEmailVC = ShareEmailViewController()
+        shareEmailVC.journalTitle = selectedJournalTitle
+        shareEmailVC.journals = journals
         self.navigationController?.pushViewController(shareEmailVC, animated: true)
     }
     
@@ -270,12 +278,10 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
-        let journalTitle = journals[indexPath.item].title
-        cell.configure(title: journalTitle, image: UIImage(named: "flight")!, indexPath: indexPath)
+        let selectedJournalTitle = journals[indexPath.item].title
+        cell.configure(title: selectedJournalTitle, image: UIImage(named: "flight")!, indexPath: indexPath)
         cell.setDeleteButtonVisibility(isVisible: isDeleteButtonActive)
         cell.delegate = self
         return cell
     }
 }
-
-

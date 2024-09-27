@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 
 class ShareEmailCollectionViewCell: UICollectionViewCell {
-    private lazy var frameButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setImage(UIImage(named: "checkButtonFraim"), for: .normal)
+    private lazy var frameImageView: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.image = UIImage(named: "checkButtonFraim")
         return view
     }()
     
@@ -35,7 +35,6 @@ class ShareEmailCollectionViewCell: UICollectionViewCell {
         setup()
         setupLayout()
         
-        backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {
@@ -43,13 +42,13 @@ class ShareEmailCollectionViewCell: UICollectionViewCell {
     }
     
     private func setup() {
-        addSubview(frameButton)
-        frameButton.addSubview(checkButton)
+        addSubview(frameImageView)
+        frameImageView.addSubview(checkButton)
         addSubview(journalInfo)
     }
     
     private func setupLayout() {
-        frameButton.snp.remakeConstraints { make in
+        frameImageView.snp.remakeConstraints { make in
             make.top.leading.equalToSuperview().offset(20)
             make.bottom.equalTo(snp.bottom).offset(-20)
             make.height.width.equalTo(13)
@@ -60,13 +59,17 @@ class ShareEmailCollectionViewCell: UICollectionViewCell {
         }
         
         journalInfo.snp.remakeConstraints { make in
-            make.centerY.equalTo(frameButton.snp.centerY)
-            make.leading.equalTo(frameButton.snp.trailing).offset(15)
+            make.centerY.equalTo(frameImageView.snp.centerY)
+            make.leading.equalTo(frameImageView.snp.trailing).offset(15)
             make.height.equalTo(20)
         }
     }
     
-    func configure(journalInfoText: String) {
+    func configure(journalInfoText: String, frameView: UIImage, checkImage: UIImage?) {
         journalInfo.text = journalInfoText
+        frameImageView.image = frameView
+        if let checkImage = checkImage {
+            checkButton.setImage(UIImage(named: "checkPoint"), for: .normal)
+        }
     }
 }

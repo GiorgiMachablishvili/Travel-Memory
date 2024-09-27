@@ -10,6 +10,13 @@ import SnapKit
 
 class ShareEmailViewController: UIViewController {
     
+    var journalTitle: String?
+    
+    var journals: [Journal] = []
+    var journalTitles: [String] {
+        journals.map { $0.title }
+    }
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 128, height: 328)
@@ -67,11 +74,11 @@ class ShareEmailViewController: UIViewController {
         return view
     }()
     
-    
     private lazy var emailField: UITextField = {
         let view = UITextField(frame: .zero)
         view.backgroundColor = UIColor.skyBlue
         view.placeholder = "type email...."
+        view.keyboardType = .emailAddress
         return view
     }()
     
@@ -100,7 +107,11 @@ class ShareEmailViewController: UIViewController {
         setup()
         setupLayout()
         
+//        nameLabel.text = journalTitle
         
+        collectionView.reloadData()
+        
+        view.backgroundColor = .systemBackground
     }
     
     private func setup() {
@@ -123,7 +134,7 @@ class ShareEmailViewController: UIViewController {
         
         nameLabel.snp.remakeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
-            make.top.equalTo(view.snp.top).offset(142)
+            make.top.equalTo(view.snp.top).offset(122)
             make.height.equalTo(30)
         }
         
@@ -154,7 +165,7 @@ class ShareEmailViewController: UIViewController {
         
         emailField.snp.remakeConstraints { make in
             make.centerY.equalTo(toLabel.snp.centerY)
-            make.leading.equalTo(toLabel.snp.trailing).offset(35)
+            make.leading.equalTo(toLabel.snp.trailing).offset(55)
             make.height.equalTo(20)
             make.width.equalTo(220)
         }
@@ -185,12 +196,13 @@ class ShareEmailViewController: UIViewController {
 
 extension ShareEmailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return journals.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShareEmailCollectionViewCell", for: indexPath) as! ShareEmailCollectionViewCell
+        let journal = journals[indexPath.row]
+        cell.configure(journalInfoText: journal.title, frameView: UIImage(named: "checkButtonFraim")!, checkImage: UIImage(named: "checkPoint")!)
+        return cell
     }
-    
-    
 }
