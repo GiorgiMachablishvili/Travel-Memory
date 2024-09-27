@@ -11,13 +11,20 @@ import FirebaseAuth
 
 protocol DashboardBottomButtonViewDelegate: AnyObject {
     func didPressCreateFolderButton()
+    func didPressAddFolderButton()
+    func didPressShareButton()
     func didPressLogoutButton()
 }
 
-class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate {
-    private let themeManager = ThemeManager.shared
+class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate, DashboardCellDelegate {
+    func didPressDeleteButton(at indexPath: IndexPath) {
+        journals.remove(at: indexPath.item)
+        collectionView.deleteItems(at: [indexPath])
+    }
     
+    private let themeManager = ThemeManager.shared
     private let refreshControl = UIRefreshControl()
+    private var isDeleteButtonActive = false
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -123,6 +130,12 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         refreshControl.addTarget(self, action: #selector(refreshJournals), for: .valueChanged)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchUserJournals()
+    }
+    
     private func setup() {
         view.addSubview(topColorView)
         view.addSubview(menuMoreImage)
@@ -204,10 +217,20 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         self.navigationController?.pushViewController(createController, animated: true)
     }
     
+    func didPressAddFolderButton() {
+        isDeleteButtonActive.toggle()
+        collectionView.reloadData()
+    }
+    
+    func didPressShareButton() {
+        let shareEmailVC = ShareEmailViewController()
+        self.navigationController?.pushViewController(shareEmailVC, animated: true)
+    }
+    
     func didPressLogoutButton() {
         do {
-            try Auth.auth().signOut() // Sign out the user
-            navigateToSignInController() // Navigate to the SignInController
+            try Auth.auth().signOut()
+            navigateToSignInController()
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
@@ -248,8 +271,11 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
         let journalTitle = journals[indexPath.item].title
-        cell.configure(title: journalTitle, image: UIImage(named: "flight")!)
+        cell.configure(title: journalTitle, image: UIImage(named: "flight")!, indexPath: indexPath)
+        cell.setDeleteButtonVisibility(isVisible: isDeleteButtonActive)
+        cell.delegate = self
         return cell
     }
 }
+
 

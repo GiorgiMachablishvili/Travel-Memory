@@ -66,6 +66,8 @@
 		E39A5D262CA169EB00FD6FF1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E39A5D252CA169EB00FD6FF1 /* FirebaseStorage */; };
 		E39A5D282CA169EB00FD6FF1 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E39A5D272CA169EB00FD6FF1 /* FirebaseStorageCombine-Community */; };
 		E39A5D2A2CA169EB00FD6FF1 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = E39A5D292CA169EB00FD6FF1 /* FirebaseVertexAI-Preview */; };
+		E3AB90612CA5C9A500E6A37F /* ShareEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB90602CA5C9A500E6A37F /* ShareEmailViewController.swift */; };
+		E3AB90632CA5CEAD00E6A37F /* ShareEmailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB90622CA5CEAD00E6A37F /* ShareEmailCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -119,6 +121,8 @@
 		E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E396AAFA2C89C72B004D7BE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E396AB2B2C89D204004D7BE5 /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
+		E3AB90602CA5C9A500E6A37F /* ShareEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareEmailViewController.swift; sourceTree = "<group>"; };
+		E3AB90622CA5CEAD00E6A37F /* ShareEmailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareEmailCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,7 +259,6 @@
 		E31261EB2C86F09C00E1DAA9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CF001E222C9B2CD100A8556B /* More */,
 				CF7216532C872F3100AAE830 /* Launch */,
 				CF7216562C8733EA00AAE830 /* Welcome */,
 				E351DFAD2C87945C008B2E04 /* Sign Up */,
@@ -263,6 +266,8 @@
 				E30234232C96E56400CB1795 /* Dashboard */,
 				E34A57222C99C17000E6592E /* CreateNewJournal */,
 				E34A57252C99E47A00E6592E /* AddContent */,
+				CF001E222C9B2CD100A8556B /* More */,
+				E3AB905F2CA5C95D00E6A37F /* Share Email */,
 				E35A969F2C8AD02D00328BF4 /* TravelMemoryWelcome */,
 				E31261D72C86E66300E1DAA9 /* ViewController.swift */,
 			);
@@ -375,6 +380,15 @@
 			);
 			name = "Sign In";
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		E3AB905F2CA5C95D00E6A37F /* Share Email */ = {
+			isa = PBXGroup;
+			children = (
+				E3AB90602CA5C9A500E6A37F /* ShareEmailViewController.swift */,
+				E3AB90622CA5CEAD00E6A37F /* ShareEmailCollectionViewCell.swift */,
+			);
+			path = "Share Email";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -497,6 +511,7 @@
 				E30234292C96E62700CB1795 /* DashboardBottomButtonView.swift in Sources */,
 				E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */,
 				E34A57242C99C1E300E6592E /* CreateNewJournalController.swift in Sources */,
+				E3AB90612CA5C9A500E6A37F /* ShareEmailViewController.swift in Sources */,
 				CF054C162CA1887C00EEC27D /* AlertUtility.swift in Sources */,
 				E31261F32C8707B500E1DAA9 /* UIColor+Extantion.swift in Sources */,
 				E396AAF72C899EB0004D7BE5 /* User.swift in Sources */,
@@ -511,6 +526,7 @@
 				E30234272C96E5FF00CB1795 /* DashboardCell.swift in Sources */,
 				CF054C1A2CA18DD700EEC27D /* ImagePickerUtility.swift in Sources */,
 				E34A57272C99E4B800E6592E /* AddContentController.swift in Sources */,
+				E3AB90632CA5CEAD00E6A37F /* ShareEmailCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
