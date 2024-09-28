@@ -119,7 +119,6 @@ class JournalDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
         setupLayout()
         

@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import FirebaseAuth
+import FirebaseFirestore
 
 protocol DashboardBottomButtonViewDelegate: AnyObject {
     func didPressCreateFolderButton()
@@ -17,10 +18,6 @@ protocol DashboardBottomButtonViewDelegate: AnyObject {
 }
 
 class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate, DashboardCellDelegate {
-    func didPressDeleteButton(at indexPath: IndexPath) {
-        journals.remove(at: indexPath.item)
-        collectionView.deleteItems(at: [indexPath])
-    }
     
     private let themeManager = ThemeManager.shared
     private let refreshControl = UIRefreshControl()
@@ -223,14 +220,31 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         collectionView.reloadData()
     }
     
-    func didPressShareButton() {
-//        guard let selectedJournalTitle = selectedJournalTitle else {
-//            print("No journal selected")
-//            return
-//        }
+    func didPressDeleteButton(at indexPath: IndexPath) {
+        // Get the journal to delete
+        let journalToDelete = journals[indexPath.item]
         
+        // Remove the journal from the local array and collection view
+        journals.remove(at: indexPath.item)
+        collectionView.deleteItems(at: [indexPath])
+        
+        // Get the Firestore reference
+        let db = Firestore.firestore()
+        
+        // Ensure the journal has a valid document ID
+        let documentID = journalToDelete.id
+        // Delete the document from Firestore
+        db.collection("journals").document(documentID).delete { error in
+            if let error = error {
+                print("Error removing document: \(error)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    }
+    
+    func didPressShareButton() {
         let shareEmailVC = ShareEmailViewController()
-//        shareEmailVC.journalTitle = selectedJournalTitle
         shareEmailVC.journals = journals
         self.navigationController?.pushViewController(shareEmailVC, animated: true)
     }
@@ -287,7 +301,6 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let journal = journals[indexPath.item]
-        
         let JournalDetailsVC = JournalDetailsViewController(selectedJournal: journal)
         self.navigationController?.pushViewController(JournalDetailsVC, animated: true)
     }
