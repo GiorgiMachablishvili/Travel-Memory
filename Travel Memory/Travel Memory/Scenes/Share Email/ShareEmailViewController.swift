@@ -109,8 +109,8 @@ class ShareEmailViewController: UIViewController {
         setup()
         setupLayout()
         fetchUserJournals()
-        
         view.backgroundColor = .systemBackground
+        TapGestureManager.hideKeyboardOnTap(view: self.view)
     }
     
     private func setup() {

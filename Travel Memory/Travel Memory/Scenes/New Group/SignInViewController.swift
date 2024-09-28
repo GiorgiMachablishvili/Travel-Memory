@@ -107,8 +107,8 @@ class SignInController: UIViewController {
         setup()
         setupLayout()
         view.backgroundColor = .white
-        
         navigationController?.navigationBar.tintColor = .white
+        TapGestureManager.hideKeyboardOnTap(view: self.view)
     }
     
     func setup() {

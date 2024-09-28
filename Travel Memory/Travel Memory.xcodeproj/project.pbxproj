@@ -40,6 +40,7 @@
 		E34A57242C99C1E300E6592E /* CreateNewJournalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34A57232C99C1E300E6592E /* CreateNewJournalController.swift */; };
 		E34A57272C99E4B800E6592E /* AddContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34A57262C99E4B800E6592E /* AddContentController.swift */; };
 		E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */; };
+		E35DC5F92CA82115002FF1CC /* TapGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35DC5F82CA82115002FF1CC /* TapGestureManager.swift */; };
 		E390302A2C8A3FB900E9BA6F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030292C8A3FB900E9BA6F /* SignInViewController.swift */; };
 		E396AAF72C899EB0004D7BE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF62C899EB0004D7BE5 /* User.swift */; };
 		E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */; };
@@ -119,6 +120,7 @@
 		E34A57232C99C1E300E6592E /* CreateNewJournalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewJournalController.swift; sourceTree = "<group>"; };
 		E34A57262C99E4B800E6592E /* AddContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentController.swift; sourceTree = "<group>"; };
 		E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryWelcomeView.swift; sourceTree = "<group>"; };
+		E35DC5F82CA82115002FF1CC /* TapGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGestureManager.swift; sourceTree = "<group>"; };
 		E39030292C8A3FB900E9BA6F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		E396AAF62C899EB0004D7BE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				CF2DE1E02C8B5EAE004AC5F4 /* MyTextFieldView.swift */,
 				CF001E2A2C9DA3B200A8556B /* MyLabel.swift */,
 				CF054C172CA1896800EEC27D /* FullScreenLoader.swift */,
+				E35DC5F82CA82115002FF1CC /* TapGestureManager.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E300192F2C9AA68D006993F7 /* AddContentCollectionViewCell.swift in Sources */,
+				E35DC5F92CA82115002FF1CC /* TapGestureManager.swift in Sources */,
 				CF001E242C9B2CE500A8556B /* MoreViewController.swift in Sources */,
 				E31261DE2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld in Sources */,
 				E30234252C96E5B700CB1795 /* DashboardViewController.swift in Sources */,

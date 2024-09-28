@@ -147,12 +147,10 @@ class AddContentController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupConstraints()
-        
         view.backgroundColor = .systemBackground
         imagePicker = ImagePickerUtility(presentationController: self)
-        
         setJournalInfo()
-        
+        TapGestureManager.hideKeyboardOnTap(view: self.view)
     }
     
     private func setupLayout() {
