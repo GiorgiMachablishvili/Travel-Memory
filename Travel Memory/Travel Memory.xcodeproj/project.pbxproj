@@ -274,7 +274,6 @@
 		E31261EB2C86F09C00E1DAA9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CF054C252CA7073000EEC27D /* JournalDetails */,
 				CF7216532C872F3100AAE830 /* Launch */,
 				CF7216562C8733EA00AAE830 /* Welcome */,
 				E351DFAD2C87945C008B2E04 /* Sign Up */,
@@ -282,9 +281,10 @@
 				E30234232C96E56400CB1795 /* Dashboard */,
 				E34A57222C99C17000E6592E /* CreateNewJournal */,
 				E34A57252C99E47A00E6592E /* AddContent */,
-				CF001E222C9B2CD100A8556B /* More */,
+				CF054C252CA7073000EEC27D /* JournalDetails */,
 				E3AB905F2CA5C95D00E6A37F /* Share Email */,
 				E35A969F2C8AD02D00328BF4 /* TravelMemoryWelcome */,
+				CF001E222C9B2CD100A8556B /* More */,
 				E31261D72C86E66300E1DAA9 /* ViewController.swift */,
 			);
 			path = Scenes;

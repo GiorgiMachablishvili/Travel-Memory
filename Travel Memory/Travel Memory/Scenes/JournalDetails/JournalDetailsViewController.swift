@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class JournalDetailsViewController: UIViewController {
     var selectedJournal: Journal
@@ -27,7 +28,7 @@ class JournalDetailsViewController: UIViewController {
     
     private lazy var journalImage: UIImageView = {
         let view = UIImageView(frame: .zero)
-
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
@@ -121,7 +122,7 @@ class JournalDetailsViewController: UIViewController {
         super.viewDidLoad()
         setup()
         setupLayout()
-        
+        populateJournalDetails()
         view.backgroundColor = .systemBackground
         
     }
@@ -156,7 +157,7 @@ class JournalDetailsViewController: UIViewController {
         }
         
         journalImage.snp.remakeConstraints { make in
-            make.top.equalTo(topColorView.snp.top).offset(5)
+            make.top.equalTo(topColorView.snp.bottom).offset(20)
             make.centerX.equalTo(topColorView.snp.centerX)
             make.width.equalTo(145)
             make.height.equalTo(100)
@@ -217,6 +218,17 @@ class JournalDetailsViewController: UIViewController {
             make.centerY.equalTo(endDateLabel.snp.centerY)
             make.leading.equalTo(endDateLabel.snp.trailing).offset(15)
             make.height.equalTo(20)
+        }
+    }
+    
+    private func populateJournalDetails() {
+        journalTitleInfoLabel.text = selectedJournal.title
+        destinationInfoLabel.text = selectedJournal.dateModified
+        startDateInfoLabel.text = selectedJournal.startDate
+        endDateInfoLabel.text = selectedJournal.endDate
+        
+        if let url = URL(string: selectedJournal.imageUrl) {
+            journalImage.kf.setImage(with: url)
         }
     }
 }
