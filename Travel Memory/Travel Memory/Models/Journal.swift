@@ -19,6 +19,7 @@ struct Journal: Codable, Identifiable, Comparable {
     var endDate: String
     var dateModified: String
     var imageUrl: String
+//    var noteTextField: String
 
     func toDictionary() -> [String: Any] {
         return [
@@ -28,7 +29,8 @@ struct Journal: Codable, Identifiable, Comparable {
             "startDate": startDate,
             "endDate": endDate,
             "dateModified": dateModified,
-            "imageUrl": imageUrl
+            "imageUrl": imageUrl,
+//            "noteTextField": noteTextField
         ]
     }
 }

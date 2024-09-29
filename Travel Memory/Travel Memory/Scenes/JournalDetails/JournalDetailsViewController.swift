@@ -222,6 +222,7 @@ class JournalDetailsViewController: UIViewController {
     }
     
     private func populateJournalDetails() {
+//        journalLabel.text = selectedJournal.noteTextField
         journalTitleInfoLabel.text = selectedJournal.title
         destinationInfoLabel.text = selectedJournal.dateModified
         startDateInfoLabel.text = selectedJournal.startDate

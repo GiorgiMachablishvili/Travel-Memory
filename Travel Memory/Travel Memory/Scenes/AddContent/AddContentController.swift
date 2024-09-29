@@ -303,6 +303,7 @@ class AddContentController: UIViewController {
                     endDate: self.endDate ?? "",
                     dateModified: Date().formatted(),
                     imageUrl: uploadedImageUrl
+//                    noteTextField: self.noteTextField.text ?? ""
                 )
                 self.uploadJournal(journal)
                 

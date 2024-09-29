@@ -35,9 +35,9 @@ class DashboardCell: UICollectionViewCell {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-//        imageView.backgroundColor = .white
+        imageView.backgroundColor = .white
         return imageView
     }()
     
@@ -84,6 +84,8 @@ class DashboardCell: UICollectionViewCell {
                               
         titleLabel.text = title
         self.indexPath = indexPath
+        
+        
     }
     
     func setDeleteButtonVisibility(isVisible: Bool) {

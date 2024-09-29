@@ -18,8 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window?.rootViewController = LaunchViewController()
         window?.makeKeyAndVisible()
-        
+        UINavigationBar.appearance().tintColor = .black
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            
             self.mainNavigation()
         }
         

@@ -126,6 +126,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         fetchUserJournals()
         
         refreshControl.addTarget(self, action: #selector(refreshJournals), for: .valueChanged)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -221,24 +222,22 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     }
     
     func didPressDeleteButton(at indexPath: IndexPath) {
-        // Get the journal to delete
         let journalToDelete = journals[indexPath.item]
         
-        // Remove the journal from the local array and collection view
-        journals.remove(at: indexPath.item)
-        collectionView.deleteItems(at: [indexPath])
+//        journals.remove(at: indexPath.item)
+//        collectionView.deleteItems(at: [indexPath])
         
-        // Get the Firestore reference
         let db = Firestore.firestore()
         
-        // Ensure the journal has a valid document ID
         let documentID = journalToDelete.id
-        // Delete the document from Firestore
-        db.collection("journals").document(documentID).delete { error in
+        
+        db.collection("journals").document(documentID).delete {[weak self] error in
             if let error = error {
                 print("Error removing document: \(error)")
             } else {
                 print("Document successfully removed!")
+                self?.journals.remove(at: indexPath.item)
+                self?.collectionView.deleteItems(at: [indexPath])
             }
         }
     }
@@ -272,7 +271,21 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     private func fetchUserJournals(completion: (() -> Void)? = nil) {
         FireBaseManager.shared.fetchJournals { [weak self] journals in
             guard let self = self else { return }
-            self.journals = journals
+            //            self.journals = journals
+            //            self.collectionView.reloadData()
+            //            completion?()
+            self.journals = journals.map { journal in
+                return Journal(
+                    id: journal.id,
+                    title: journal.title,
+                    destination: journal.destination,
+                    startDate: journal.startDate,
+                    endDate: journal.endDate,
+                    dateModified: journal.dateModified,
+                    imageUrl: journal.imageUrl
+//                    noteTextField: journal.noteTextField.isEmpty ? "" : journal.noteTextField
+                )
+            }
             self.collectionView.reloadData()
             completion?()
         }
