@@ -283,8 +283,8 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
                     startDate: journal.startDate,
                     endDate: journal.endDate,
                     dateModified: journal.dateModified,
-                    imageUrl: journal.imageUrl
-                    //                    noteTextField: journal.noteTextField.isEmpty ? "" : journal.noteTextField
+                    imageUrl: journal.imageUrl,
+                    note: journal.note
                 )
             }
             self.collectionView.reloadData()
