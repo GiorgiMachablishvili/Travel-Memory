@@ -92,23 +92,23 @@ class AddContentController: UIViewController {
     }()
     
     
-    private lazy var addVideoLabel: MyLabel = {
-        let view = MyLabel(frame: .zero)
-        view.font = UIFont.KoronaOneRegular(size: 12)
-        view.textAlignment = .left
-        view.text = "Add Video: "
-        return view
-    }()
+//    private lazy var addVideoLabel: MyLabel = {
+//        let view = MyLabel(frame: .zero)
+//        view.font = UIFont.KoronaOneRegular(size: 12)
+//        view.textAlignment = .left
+//        view.text = "Add Video: "
+//        return view
+//    }()
     
-    private lazy var addVideoButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Browse:", for: .normal)
-        view.setTitleColor(.black, for: .normal)
-        view.backgroundColor = .skyBlue
-        view.layer.cornerRadius = 8
-        view.addTarget(self, action: #selector(pressAddVideoBrowserButton), for: .touchUpInside)
-        return view
-    }()
+//    private lazy var addVideoButton: UIButton = {
+//        let view = UIButton(frame: .zero)
+//        view.setTitle("Browse:", for: .normal)
+//        view.setTitleColor(.black, for: .normal)
+//        view.backgroundColor = .skyBlue
+//        view.layer.cornerRadius = 8
+//        view.addTarget(self, action: #selector(pressAddVideoBrowserButton), for: .touchUpInside)
+//        return view
+//    }()
     
     private lazy var addNoteLabel: MyLabel = {
         let view = MyLabel(frame: .zero)
@@ -161,8 +161,8 @@ class AddContentController: UIViewController {
         view.addSubview(addPhotoLabel)
         view.addSubview(selectedPhotoLabel)
         view.addSubview(addPhotoButton)
-        view.addSubview(addVideoLabel)
-        view.addSubview(addVideoButton)
+//        view.addSubview(addVideoLabel)
+//        view.addSubview(addVideoButton)
         view.addSubview(bottomColorView)
         view.addSubview(collectionView)
         bottomColorView.addSubview(addNoteLabel)
@@ -218,18 +218,18 @@ class AddContentController: UIViewController {
             make.width.equalTo(96)
         }
         
-        addVideoLabel.snp.remakeConstraints { make in
-            make.top.equalTo(addPhotoLabel.snp.bottom).offset(5)
-            make.leading.equalTo(view.snp.leading).offset(37)
-            make.height.equalTo(20)
-        }
-        
-        addVideoButton.snp.remakeConstraints { make in
-            make.centerY.equalTo(addVideoLabel.snp.centerY)
-            make.trailing.equalTo(view.snp.trailing).offset(-20)
-            make.height.equalTo(26)
-            make.width.equalTo(96)
-        }
+//        addVideoLabel.snp.remakeConstraints { make in
+//            make.top.equalTo(addPhotoLabel.snp.bottom).offset(5)
+//            make.leading.equalTo(view.snp.leading).offset(37)
+//            make.height.equalTo(20)
+//        }
+//        
+//        addVideoButton.snp.remakeConstraints { make in
+//            make.centerY.equalTo(addVideoLabel.snp.centerY)
+//            make.trailing.equalTo(view.snp.trailing).offset(-20)
+//            make.height.equalTo(26)
+//            make.width.equalTo(96)
+//        }
         
         addNoteLabel.snp.remakeConstraints { make in
             make.top.equalTo(bottomColorView.snp.top).offset(5)
@@ -302,8 +302,8 @@ class AddContentController: UIViewController {
                     startDate: self.startDate ?? "",
                     endDate: self.endDate ?? "",
                     dateModified: Date().formatted(),
-                    imageUrl: uploadedImageUrl
-//                    noteTextField: self.noteTextField.text ?? ""
+                    imageUrl: uploadedImageUrl,
+                    note: self.noteTextField.text ?? ""
                 )
                 self.uploadJournal(journal)
                 
