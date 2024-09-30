@@ -108,6 +108,49 @@ class JournalDetailsViewController: UIViewController {
         return view
     }()
     
+    private lazy var lineImageView: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.image = UIImage(named: "LineImage")
+        return view
+    }()
+    
+    private lazy var saveJournalButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Save Journal", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        view.backgroundColor = .skyBlue
+        view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(pressSaveJournalButton), for: .touchUpInside)
+        return view
+    }()
+    
+    private lazy var editJournalButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Edit Journal", for: .normal)
+        view.setTitleColor(.skyBlue, for: .normal)
+        view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(pressEditJournalButton), for: .touchUpInside)
+        return view
+    }()
+    
+    private lazy var shareJournalButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Share journal", for: .normal)
+        view.setTitleColor(.skyBlue, for: .normal)
+        view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(pressShareJournalButton), for: .touchUpInside)
+        return view
+    }()
+    
+    private lazy var cancelButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Cancel", for: .normal)
+        view.setTitleColor(.skyBlue, for: .normal)
+        view.layer.cornerRadius = 8
+        view.addTarget(self, action: #selector(pressCancelButton), for: .touchUpInside)
+        return view
+    }()
+    
     init(selectedJournal: Journal) {
         self.selectedJournal = selectedJournal
         
@@ -141,7 +184,11 @@ class JournalDetailsViewController: UIViewController {
         bottomColorView.addSubview(startDateInfoLabel)
         bottomColorView.addSubview(endDateLabel)
         bottomColorView.addSubview(endDateInfoLabel)
-        
+        bottomColorView.addSubview(lineImageView)
+        bottomColorView.addSubview(saveJournalButton)
+        bottomColorView.addSubview(editJournalButton)
+        bottomColorView.addSubview(shareJournalButton)
+        bottomColorView.addSubview(cancelButton)
     }
     
     private func setupLayout() {
@@ -219,6 +266,56 @@ class JournalDetailsViewController: UIViewController {
             make.leading.equalTo(endDateLabel.snp.trailing).offset(15)
             make.height.equalTo(20)
         }
+        
+        lineImageView.snp.remakeConstraints { make in
+            make.top.equalTo(endDateInfoLabel.snp.bottom).offset(5)
+            make.centerX.equalTo(view.snp.centerX)
+            make.height.equalTo(1)
+        }
+        
+        saveJournalButton.snp.remakeConstraints { make in
+            make.top.equalTo(lineImageView.snp.bottom).offset(20)
+            make.leading.equalTo(view.snp.leading).offset(56)
+            make.height.equalTo(27)
+            make.width.equalTo(150)
+        }
+        
+        editJournalButton.snp.remakeConstraints { make in
+            make.top.equalTo(saveJournalButton.snp.bottom).offset(15)
+            make.leading.equalTo(view.snp.leading).offset(56)
+            make.height.equalTo(27)
+            make.width.equalTo(150)
+        }
+        
+        shareJournalButton.snp.remakeConstraints { make in
+            make.top.equalTo(saveJournalButton.snp.bottom).offset(15)
+            make.trailing.equalTo(view.snp.trailing).offset(-56)
+            make.height.equalTo(27)
+            make.width.equalTo(150)
+        }
+        
+        cancelButton.snp.remakeConstraints { make in
+            make.top.equalTo(editJournalButton.snp.bottom).offset(15)
+            make.leading.equalTo(view.snp.leading).offset(56)
+            make.height.equalTo(27)
+            make.width.equalTo(150)
+        }
+    }
+    
+    @objc func pressSaveJournalButton() {
+        
+    }
+    
+    @objc func pressEditJournalButton() {
+        
+    }
+    
+    @objc func pressShareJournalButton() {
+        
+    }
+    
+    @objc func pressCancelButton() {
+        
     }
     
     private func populateJournalDetails() {

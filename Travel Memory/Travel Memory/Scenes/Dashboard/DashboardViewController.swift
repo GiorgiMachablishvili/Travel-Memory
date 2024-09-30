@@ -223,23 +223,24 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     
     func didPressDeleteButton(at indexPath: IndexPath) {
         let journalToDelete = journals[indexPath.item]
-        
-//        journals.remove(at: indexPath.item)
-//        collectionView.deleteItems(at: [indexPath])
-        
         let db = Firestore.firestore()
-        
         let documentID = journalToDelete.id
         
-        db.collection("journals").document(documentID).delete {[weak self] error in
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            print("Error: No user is logged in")
+            return
+        }
+        
+        let journalPath = db.collection("users").document(currentUserID).collection("journals").document(documentID)
+        journalPath.delete { [weak self] error in
             if let error = error {
                 print("Error removing document: \(error)")
             } else {
-                print("Document successfully removed!")
                 self?.journals.remove(at: indexPath.item)
                 self?.collectionView.deleteItems(at: [indexPath])
             }
         }
+        
     }
     
     func didPressShareButton() {
@@ -283,7 +284,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
                     endDate: journal.endDate,
                     dateModified: journal.dateModified,
                     imageUrl: journal.imageUrl
-//                    noteTextField: journal.noteTextField.isEmpty ? "" : journal.noteTextField
+                    //                    noteTextField: journal.noteTextField.isEmpty ? "" : journal.noteTextField
                 )
             }
             self.collectionView.reloadData()
