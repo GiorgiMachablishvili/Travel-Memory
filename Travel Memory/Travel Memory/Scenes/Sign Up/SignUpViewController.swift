@@ -145,8 +145,8 @@ class SignUpViewController: UIViewController {
         setup()
         layout()
         view.backgroundColor = .white
-        
         navigationController?.navigationBar.tintColor = .white
+        TapGestureManager.hideKeyboardOnTap(view: self.view)
     }
 
     private func setup() {

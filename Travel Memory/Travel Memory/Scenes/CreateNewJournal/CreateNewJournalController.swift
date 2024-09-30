@@ -71,8 +71,8 @@ class CreateNewJournalController: UIViewController {
         setupLayout()
         setupConstraints()
         configureDatePickers()
-        
         view.backgroundColor = .systemBackground
+        TapGestureManager.hideKeyboardOnTap(view: self.view)
     }
     
     private func setupLayout() {

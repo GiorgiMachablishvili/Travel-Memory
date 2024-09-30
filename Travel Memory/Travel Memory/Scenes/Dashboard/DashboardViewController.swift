@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import FirebaseAuth
+import FirebaseFirestore
 
 protocol DashboardBottomButtonViewDelegate: AnyObject {
     func didPressCreateFolderButton()
@@ -17,14 +18,11 @@ protocol DashboardBottomButtonViewDelegate: AnyObject {
 }
 
 class DashboardViewController: UIViewController, DashboardBottomButtonViewDelegate, DashboardCellDelegate {
-    func didPressDeleteButton(at indexPath: IndexPath) {
-        journals.remove(at: indexPath.item)
-        collectionView.deleteItems(at: [indexPath])
-    }
     
     private let themeManager = ThemeManager.shared
     private let refreshControl = UIRefreshControl()
     private var isDeleteButtonActive = false
+    private var selectedJournalTitle: String?
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -128,6 +126,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         fetchUserJournals()
         
         refreshControl.addTarget(self, action: #selector(refreshJournals), for: .valueChanged)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -222,8 +221,30 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         collectionView.reloadData()
     }
     
+    func didPressDeleteButton(at indexPath: IndexPath) {
+        let journalToDelete = journals[indexPath.item]
+        
+//        journals.remove(at: indexPath.item)
+//        collectionView.deleteItems(at: [indexPath])
+        
+        let db = Firestore.firestore()
+        
+        let documentID = journalToDelete.id
+        
+        db.collection("journals").document(documentID).delete {[weak self] error in
+            if let error = error {
+                print("Error removing document: \(error)")
+            } else {
+                print("Document successfully removed!")
+                self?.journals.remove(at: indexPath.item)
+                self?.collectionView.deleteItems(at: [indexPath])
+            }
+        }
+    }
+    
     func didPressShareButton() {
         let shareEmailVC = ShareEmailViewController()
+        shareEmailVC.journals = journals
         self.navigationController?.pushViewController(shareEmailVC, animated: true)
     }
     
@@ -250,7 +271,21 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
     private func fetchUserJournals(completion: (() -> Void)? = nil) {
         FireBaseManager.shared.fetchJournals { [weak self] journals in
             guard let self = self else { return }
-            self.journals = journals
+            //            self.journals = journals
+            //            self.collectionView.reloadData()
+            //            completion?()
+            self.journals = journals.map { journal in
+                return Journal(
+                    id: journal.id,
+                    title: journal.title,
+                    destination: journal.destination,
+                    startDate: journal.startDate,
+                    endDate: journal.endDate,
+                    dateModified: journal.dateModified,
+                    imageUrl: journal.imageUrl
+//                    noteTextField: journal.noteTextField.isEmpty ? "" : journal.noteTextField
+                )
+            }
             self.collectionView.reloadData()
             completion?()
         }
@@ -270,12 +305,16 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
-        let journalTitle = journals[indexPath.item].title
-        cell.configure(title: journalTitle, image: UIImage(named: "flight")!, indexPath: indexPath)
+        let journal = journals[indexPath.item]
+        cell.configure(title: journal.title, imageUrl: journal.imageUrl, indexPath: indexPath)
         cell.setDeleteButtonVisibility(isVisible: isDeleteButtonActive)
         cell.delegate = self
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let journal = journals[indexPath.item]
+        let JournalDetailsVC = JournalDetailsViewController(selectedJournal: journal)
+        self.navigationController?.pushViewController(JournalDetailsVC, animated: true)
+    }
 }
-
-

@@ -147,12 +147,10 @@ class AddContentController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupConstraints()
-        
         view.backgroundColor = .systemBackground
         imagePicker = ImagePickerUtility(presentationController: self)
-        
         setJournalInfo()
-        
+        TapGestureManager.hideKeyboardOnTap(view: self.view)
     }
     
     private func setupLayout() {
@@ -305,6 +303,7 @@ class AddContentController: UIViewController {
                     endDate: self.endDate ?? "",
                     dateModified: Date().formatted(),
                     imageUrl: uploadedImageUrl
+//                    noteTextField: self.noteTextField.text ?? ""
                 )
                 self.uploadJournal(journal)
                 
