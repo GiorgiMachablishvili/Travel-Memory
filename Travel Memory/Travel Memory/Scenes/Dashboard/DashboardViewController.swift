@@ -67,9 +67,9 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         
         if let user = Auth.auth().currentUser {
             let userName = user.displayName ?? "User"
-            view.text = "Welcome, \(userName)"
+            view.text = "Welcome, \(userName)".localized()
         } else {
-            view.text = "Welcome"
+            view.text = "Welcome".localized()
         }
         return view
     }()
@@ -79,7 +79,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .center
         view.numberOfLines = 3
-        view.text = "This is your dashboard where you can start creating and managing your travel journals."
+        view.text = "This is your dashboard where you can start creating and managing your travel journals.".localized()
         return view
     }()
     
@@ -93,7 +93,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .center
-        view.text = "Your Journals:"
+        view.text = "Your Journals:".localized()
         return view
     }()
     

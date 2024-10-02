@@ -89,57 +89,57 @@ class CreateNewJournalController: UIViewController {
     }
     
     private func setupConstraints() {
-        topColorView.snp.remakeConstraints { make in
+        topColorView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(292 * Constraint.yCoeff)
         }
         
-        nameLabel.snp.remakeConstraints { make in
+        nameLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(view.snp.top).offset(142)
             make.height.equalTo(30)
         }
         
-        sloganLabel.snp.remakeConstraints { make in
+        sloganLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(nameLabel.snp.bottom).offset(90)
             make.leading.trailing.equalToSuperview().inset(25)
             make.height.equalTo(20)
         }
         
-        journalTitle.snp.remakeConstraints { make in
+        journalTitle.snp.makeConstraints { make in
             make.top.equalTo(topColorView.snp.bottom).offset(56)
             make.leading.trailing.equalToSuperview().inset(32)
         }
         
-        destinationField.snp.remakeConstraints { make in
+        destinationField.snp.makeConstraints { make in
             make.top.equalTo(journalTitle.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(32)
         }
         
-        startDateField.snp.remakeConstraints { make in
+        startDateField.snp.makeConstraints { make in
             make.top.equalTo(destinationField.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(32)
         }
         
-        endDateField.snp.remakeConstraints { make in
+        endDateField.snp.makeConstraints { make in
             make.top.equalTo(startDateField.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(32)
         }
         
-        bottomColorView.snp.remakeConstraints { make in
+        bottomColorView.snp.makeConstraints { make in
             make.leading.bottom.trailing.equalToSuperview()
             make.height.equalTo(292)
         }
         
-        continueButton.snp.remakeConstraints { make in
+        continueButton.snp.makeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(bottomColorView.snp.top).offset(63)
             make.height.equalTo(27)
             make.width.equalTo(150)
         }
         
-        cancelButton.snp.remakeConstraints { make in
+        cancelButton.snp.makeConstraints { make in
             make.leading.equalTo(view.snp.leading).offset(36)
             make.bottom.equalTo(view.snp.bottom).offset(-36)
             make.height.equalTo(15)

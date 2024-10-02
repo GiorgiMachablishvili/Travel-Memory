@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  Travel Memory
+
+  Created by Gio's Mac on 02.10.24.
+  
+*/
+
+"Welcome to travel Memory Journal!" = "Welcome to travel Memory Journal!";
+"Sign In" = "Sign In";
+"or" = "or";
+"Sign Up" = "Sign Up";
+"TRAVEL MEMORY" = "TRAVEL MEMORY";
+"JOURNAL" = "JOURNAL";
+"Please fill in the following information to create your account:" = "Please fill in the following information to create your account:";
+"Full name:" = "Full name:";
+"Email:" = "Email:";
+"Password:" = "Password:";
+"Confirm psw:" = "Confirm psw:";
+"Create Account" = "Create Account";
+"Already have an account?" = "Already have an account?";
+"Please enter some text" = "Please enter some text";
+"Please enter English letters" = "Please enter English letters";
+"Enter email address." = "Enter email address.";
+"Please enter a valid email address." = "Please enter a valid email address.";
+"Please enter a password." = "Please enter a password.";
+"Password should be more than 5 letters." = "Password should be more than 5 letters.";
+"Password should include at least one capital letter." = "Password should include at least one capital letter.";
+"Password should include at least one number." = "Password should include at least one number.";
+"Please confirm your password." = "Please confirm your password.";
+"Passwords do not match." = "Passwords do not match.";
+"Invalid full name." = "Invalid full name.";
+"Invalid email." = "Invalid email.";
+"Invalid password." = "Invalid password.";
+"Passwords do not match." = "Passwords do not match.";
+"Welcome" = "Welcome";
+"This is your dashboard where you can start creating and managing your travel journals." = "This is your dashboard where you can start creating and managing your travel journals.";
+"Your Journals:" = "Your Journals:";
+

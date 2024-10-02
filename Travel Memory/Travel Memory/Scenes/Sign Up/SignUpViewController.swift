@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 20)
         view.textAlignment = .center
-        view.text = "TRAVEL MEMORY"
+        view.text = "TRAVEL MEMORY".localized()
         return view
     }()
     
@@ -40,7 +40,7 @@ class SignUpViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
         view.textAlignment = .center
-        view.text = "JOURNAL"
+        view.text = "JOURNAL".localized()
         return view
     }()
     
@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 24)
         view.textAlignment = .center
-        view.text = "Sign Up"
+        view.text = "Sign Up".localized()
         return view
     }()
     
@@ -57,11 +57,11 @@ class SignUpViewController: UIViewController {
         view.font = UIFont.KoronaOneRegular(size: 14)
         view.textAlignment = .left
         view.numberOfLines = 2
-        view.text = "Please fill in the following information to create your account:"
+        view.text = "Please fill in the following information to create your account:".localized()
         return view
     }()
     
-    private let fullNameField = MyTextFieldView(label: "Full name:")
+    private let fullNameField = MyTextFieldView(label: "Full name:".localized())
     
     private lazy var fullNameAlarmLabel: MyLabel = {
         let view = MyLabel(frame: .zero)
@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private let emailField = MyTextFieldView(label: "Email:")
+    private let emailField = MyTextFieldView(label: "Email:".localized())
     
     private lazy var emailAlarmLabel: MyLabel = {
         let view = MyLabel(frame: .zero)
@@ -83,7 +83,7 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private let passwordField = MyTextFieldView(label: "Password:", isSecured: true, hasPasswordVisibility: true)
+    private let passwordField = MyTextFieldView(label: "Password:".localized(), isSecured: true, hasPasswordVisibility: true)
     
     private lazy var passwordAlarmLabel: MyLabel = {
         let view = MyLabel(frame: .zero)
@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private let passwordConfirmField = MyTextFieldView(label: "Confirm psw:", isSecured: true, hasPasswordVisibility: true)
+    private let passwordConfirmField = MyTextFieldView(label: "Confirm psw:".localized(), isSecured: true, hasPasswordVisibility: true)
     
     private lazy var confirmPswAlarmLabel: MyLabel = {
         let view = MyLabel(frame: .zero)
@@ -113,7 +113,7 @@ class SignUpViewController: UIViewController {
     
     private lazy var createAccountButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Create Account", for: .normal)
+        view.setTitle("Create Account".localized(), for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
@@ -126,13 +126,13 @@ class SignUpViewController: UIViewController {
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textColor = .black
         view.textAlignment = .left
-        view.text = "Already have an account?"
+        view.text = "Already have an account?".localized()
         return view
     }()
     
     private lazy var signInButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Sign In", for: .normal)
+        view.setTitle("Sign In".localized(), for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.titleLabel?.font = UIFont.KoronaOneRegular(size: 12)
         view.clipsToBounds = true

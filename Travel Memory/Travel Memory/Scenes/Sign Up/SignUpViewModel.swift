@@ -62,11 +62,11 @@ class SignUpViewModel {
     // Input validation
     func validateFullName() -> Bool {
         if user.fullName.isEmpty {
-            fullNameAlarmMessage = "Please enter some text"
+            fullNameAlarmMessage = "Please enter some text".localized()
             return false
         }
         if !isValidFullName(user.fullName) {
-            fullNameAlarmMessage = "Please enter English letters"
+            fullNameAlarmMessage = "Please enter English letters".localized()
             return false
         }
         fullNameAlarmMessage = nil
@@ -75,12 +75,12 @@ class SignUpViewModel {
     
     func validateEmail() -> Bool {
         if user.email.isEmpty {
-            emailAlarmMessage = "Enter email address."
+            emailAlarmMessage = "Enter email address.".localized()
             
             return false
         }
         if !isValidEmail(user.email) {
-            emailAlarmMessage = "Please enter a valid email address."
+            emailAlarmMessage = "Please enter a valid email address.".localized()
             return false
         }
         emailAlarmMessage = nil
@@ -89,19 +89,19 @@ class SignUpViewModel {
     
     func validatePassword() -> Bool {
         if user.password.isEmpty {
-            passwordAlarmMessage = "Please enter a password."
+            passwordAlarmMessage = "Please enter a password.".localized()
             return false
         }
         if user.password.count < 6 {
-            passwordAlarmMessage = "Password should be more than 5 letters."
+            passwordAlarmMessage = "Password should be more than 5 letters.".localized()
             return false
         }
         if !containsCapitalLetter(user.password) {
-            passwordAlarmMessage = "Password should include at least one capital letter."
+            passwordAlarmMessage = "Password should include at least one capital letter.".localized()
             return false
         }
         if !containsNumber(user.password) {
-            passwordAlarmMessage = "Password should include at least one number."
+            passwordAlarmMessage = "Password should include at least one number.".localized()
             return false
         }
         passwordAlarmMessage = nil
@@ -110,11 +110,11 @@ class SignUpViewModel {
     
     func validateConfirmPassword() -> Bool {
         if user.confirmPassword.isEmpty {
-            confirmPasswordAlarmMessage = "Please confirm your password."
+            confirmPasswordAlarmMessage = "Please confirm your password.".localized()
             return false
         }
         if user.password != user.confirmPassword {
-            confirmPasswordAlarmMessage = "Passwords do not match."
+            confirmPasswordAlarmMessage = "Passwords do not match.".localized()
             return false
         }
         confirmPasswordAlarmMessage = nil
@@ -158,13 +158,13 @@ extension SignUpViewModel {
         var localizedDescription: String {
             switch self {
             case .fullName:
-                return "Invalid full name."
+                return "Invalid full name.".localized()
             case .email:
-                return "Invalid email."
+                return "Invalid email.".localized()
             case .password:
-                return "Invalid password."
+                return "Invalid password.".localized()
             case .confirmPassword:
-                return "Passwords do not match."
+                return "Passwords do not match.".localized()
             case .auth(let message):
                 return "Authentication error: \(message)"
             }

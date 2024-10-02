@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  Travel Memory
+
+  Created by Gio's Mac on 02.10.24.
+  
+*/
+
+"Welcome to travel Memory Journal!" = "მოგზაურობის ჟურნალი";
+"Sign In" = "შესვლა";
+"or" = "ან";
+"Sign Up" = "რეგისტრაცია";
+"TRAVEL MEMORY" = "მოგზაურობის ჩანაწერები";
+"JOURNAL" = "ჟურნალი";
+"Please fill in the following information to create your account:" = "გთხოოვთ შეაიყვანთ ყველა ინფორმაცია რომ შექმნათ ჯურნალი:";
+"Full name:" = "სახელი";
+"Email:" = "იმეილი";
+"Password:" = "პაროლი";
+"Confirm psw:" = "პაროლის გამეორება";
+"Create Account" = "პროფილის შექმნა";
+"Already have an account?" = "უკვე გაქვთ პროფილი?";
+"Please enter some text" = "გთხოვთ შეიყვანოთ ტექსტი";
+"Please enter English letters" = "გთხოვთ შეიყვანოთ ლათინური ასოები";
+"Enter email address." = "შეიყვანეთ იმეილი";
+"Please enter a valid email address." = "გთხოვთ შეიყვანოთ სწორი იმეილი";
+"Please enter a password." = "გთხოვთ შეიყვანოოთ პაროლი";
+"Password should be more than 5 letters." = "პაროლი უნდა იყოს 5 სიმბოლოზე მეტი";
+"Password should include at least one capital letter." = "პაროლი უნდა შეიცავდეს მინიმუმ ერთ ასოს";
+"Password should include at least one number." = "პაროლი უნდა შეიცვადეს მინიმუმ ერთ ციფრს";
+"Please confirm your password." = "გთხოვთ დაადასტუროტ პაროლი";
+"Passwords do not match." = "პაროლი არ ემთხვევა";
+"Invalid full name." = "სახელი არასწორია";
+"Invalid email." = "მეილი არასწრია";
+"Invalid password." = "პაროლი არასწორია";
+"Passwords do not match." = "პაროლი არ დაემთხვა";
+"Welcome" = "გამარჯობა";
+"This is your dashboard where you can start creating and managing your travel journals." = "აქ შეიგიძლიათ შექმნათ თქვენი მოგზაურობის ჯურნალი ჩანაწერები";
+"Your Journals:" = "თქვენი ჟურნალი:";
+
