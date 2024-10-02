@@ -28,7 +28,6 @@
 		E30234292C96E62700CB1795 /* DashboardBottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30234282C96E62700CB1795 /* DashboardBottomButtonView.swift */; };
 		E31261D42C86E66300E1DAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261D32C86E66300E1DAA9 /* AppDelegate.swift */; };
 		E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261D52C86E66300E1DAA9 /* SceneDelegate.swift */; };
-		E31261D82C86E66300E1DAA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261D72C86E66300E1DAA9 /* ViewController.swift */; };
 		E31261DE2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E31261DC2C86E66300E1DAA9 /* Travel_Memory.xcdatamodeld */; };
 		E31261E02C86E66600E1DAA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31261DF2C86E66600E1DAA9 /* Assets.xcassets */; };
 		E31261F12C86F33900E1DAA9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31261F02C86F33800E1DAA9 /* SignUpViewController.swift */; };
@@ -41,6 +40,9 @@
 		E34A57272C99E4B800E6592E /* AddContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34A57262C99E4B800E6592E /* AddContentController.swift */; };
 		E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */; };
 		E35DC5F92CA82115002FF1CC /* TapGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35DC5F82CA82115002FF1CC /* TapGestureManager.swift */; };
+		E3744A662CAD6D2D0009FD72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3744A682CAD6D2D0009FD72 /* Localizable.strings */; };
+		E3744A6B2CAD6E150009FD72 /* LocalizationDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3744A6A2CAD6E150009FD72 /* LocalizationDefaultManager.swift */; };
+		E3744A6D2CAD70310009FD72 /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3744A6C2CAD70310009FD72 /* String+Extention.swift */; };
 		E390302A2C8A3FB900E9BA6F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030292C8A3FB900E9BA6F /* SignInViewController.swift */; };
 		E396AAF72C899EB0004D7BE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF62C899EB0004D7BE5 /* User.swift */; };
 		E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */; };
@@ -108,7 +110,6 @@
 		E31261D02C86E66300E1DAA9 /* Travel Memory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Travel Memory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31261D32C86E66300E1DAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E31261D52C86E66300E1DAA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E31261D72C86E66300E1DAA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E31261DD2C86E66300E1DAA9 /* Travel_Memory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Travel_Memory.xcdatamodel; sourceTree = "<group>"; };
 		E31261DF2C86E66600E1DAA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E31261E42C86E66600E1DAA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,6 +122,10 @@
 		E34A57262C99E4B800E6592E /* AddContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentController.swift; sourceTree = "<group>"; };
 		E35A96A02C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryWelcomeView.swift; sourceTree = "<group>"; };
 		E35DC5F82CA82115002FF1CC /* TapGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGestureManager.swift; sourceTree = "<group>"; };
+		E3744A672CAD6D2D0009FD72 /* ka */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ka; path = ka.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E3744A692CAD6D320009FD72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E3744A6A2CAD6E150009FD72 /* LocalizationDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationDefaultManager.swift; sourceTree = "<group>"; };
+		E3744A6C2CAD70310009FD72 /* String+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
 		E39030292C8A3FB900E9BA6F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		E396AAF62C899EB0004D7BE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -285,7 +290,6 @@
 				E3AB905F2CA5C95D00E6A37F /* Share Email */,
 				E35A969F2C8AD02D00328BF4 /* TravelMemoryWelcome */,
 				CF001E222C9B2CD100A8556B /* More */,
-				E31261D72C86E66300E1DAA9 /* ViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -314,6 +318,7 @@
 		E31261EE2C86F14D00E1DAA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E3744A632CAD6CCE0009FD72 /* Localizatioon */,
 				CF054C142CA1886500EEC27D /* Utils */,
 			);
 			path = "Supporting Files";
@@ -368,6 +373,17 @@
 			);
 			name = TravelMemoryWelcome;
 			path = "New Group/TravelMemoryWelcome";
+			sourceTree = "<group>";
+		};
+		E3744A632CAD6CCE0009FD72 /* Localizatioon */ = {
+			isa = PBXGroup;
+			children = (
+				E3744A682CAD6D2D0009FD72 /* Localizable.strings */,
+				E3744A6A2CAD6E150009FD72 /* LocalizationDefaultManager.swift */,
+				E3744A6C2CAD70310009FD72 /* String+Extention.swift */,
+			);
+			name = Localizatioon;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		E384C00E2C8B54A800ADAA69 /* Models */ = {
@@ -477,6 +493,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ka,
 			);
 			mainGroup = E31261C72C86E66300E1DAA9;
 			packageReferences = (
@@ -499,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E31261FB2C8708E800E1DAA9 /* KronaOne-Regular.ttf in Resources */,
+				E3744A662CAD6D2D0009FD72 /* Localizable.strings in Resources */,
 				E31261E02C86E66600E1DAA9 /* Assets.xcassets in Resources */,
 				E396AAFB2C89C72B004D7BE5 /* GoogleService-Info.plist in Resources */,
 			);
@@ -519,14 +537,15 @@
 				E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */,
 				CF7216582C8733F400AAE830 /* WelcomeViewController.swift in Sources */,
 				E390302A2C8A3FB900E9BA6F /* SignInViewController.swift in Sources */,
+				E3744A6B2CAD6E150009FD72 /* LocalizationDefaultManager.swift in Sources */,
 				CF72165B2C8736DF00AAE830 /* LogoView.swift in Sources */,
-				E31261D82C86E66300E1DAA9 /* ViewController.swift in Sources */,
 				E35A96A12C8AD07B00328BF4 /* TravelMemoryWelcomeView.swift in Sources */,
 				E31261D42C86E66300E1DAA9 /* AppDelegate.swift in Sources */,
 				CF054C272CA7074A00EEC27D /* JournalDetailsViewController.swift in Sources */,
 				CF001E2B2C9DA3B200A8556B /* MyLabel.swift in Sources */,
 				E31261D62C86E66300E1DAA9 /* SceneDelegate.swift in Sources */,
 				CF054C1C2CA1B51400EEC27D /* String+Extantion.swift in Sources */,
+				E3744A6D2CAD70310009FD72 /* String+Extention.swift in Sources */,
 				CF054C182CA1896800EEC27D /* FullScreenLoader.swift in Sources */,
 				E30234292C96E62700CB1795 /* DashboardBottomButtonView.swift in Sources */,
 				E31261F82C87084E00E1DAA9 /* Constraints.swift in Sources */,
@@ -551,6 +570,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E3744A682CAD6D2D0009FD72 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3744A672CAD6D2D0009FD72 /* ka */,
+				E3744A692CAD6D320009FD72 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E31261E52C86E66600E1DAA9 /* Debug */ = {

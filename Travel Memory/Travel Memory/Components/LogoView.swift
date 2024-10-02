@@ -12,7 +12,7 @@ class LogoView: UIView {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 20)
         view.textAlignment = .center
-        view.text = "TRAVEL MEMORY"
+        view.text = "TRAVEL MEMORY".localized()
         return view
     }()
     
@@ -20,7 +20,7 @@ class LogoView: UIView {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
         view.textAlignment = .center
-        view.text = "JOURNAL"
+        view.text = "JOURNAL".localized()
         return view
     }()
     
@@ -28,6 +28,7 @@ class LogoView: UIView {
         super.init(frame: frame)
         setup()
         layout()
+        LocalizationDefaultManager.setAppLanguage(number: 1)
     }
     
     required init?(coder: NSCoder) {

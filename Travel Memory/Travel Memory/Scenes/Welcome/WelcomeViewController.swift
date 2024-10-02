@@ -22,7 +22,7 @@ class WelcomeViewController: UIViewController {
     
     private let titleLabel: MyLabel = {
         let label = MyLabel()
-        label.text = "Welcome to travel Memory Journal!"
+        label.text = "Welcome to travel Memory Journal!".localized()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = .black
@@ -31,13 +31,13 @@ class WelcomeViewController: UIViewController {
     
     private let signInButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle("Sign In".localized(), for: .normal)
         return button
     }()
     
     private let textLabel: MyLabel = {
         let label = MyLabel()
-        label.text = "or"
+        label.text = "or".localized()
         label.textAlignment = .center
         label.textColor = .black
         return label
@@ -45,7 +45,7 @@ class WelcomeViewController: UIViewController {
     
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle("Sign Up".localized(), for: .normal)
         return button
     }()
     
@@ -58,6 +58,7 @@ class WelcomeViewController: UIViewController {
         
         setup()
         layout()
+        LocalizationDefaultManager.setAppLanguage(number: 0)
     }
     
     private func setup() {
