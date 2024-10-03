@@ -12,7 +12,7 @@ class MoreViewController: UIViewController {
 
     private let themeLabel: MyLabel = {
         let label = MyLabel()
-        label.text = "Choose Theme:"
+        label.text = "Choose Theme:".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         return label
     }()

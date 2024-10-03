@@ -27,7 +27,7 @@ class TravelMemoryWelcomeView: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 20)
         view.textAlignment = .center
-        view.text = "TRAVEL MEMORY"
+        view.text = "TRAVEL MEMORY".localized()
         return view
     }()
     
@@ -35,7 +35,7 @@ class TravelMemoryWelcomeView: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
         view.textAlignment = .center
-        view.text = "Welcome to Travel Memory Journal!"
+        view.text = "Welcome to Travel Memory Journal!".localized()
         return view
     }()
     
@@ -44,7 +44,7 @@ class TravelMemoryWelcomeView: UIViewController {
         view.font = UIFont.KoronaOneRegular(size: 14)
         view.textAlignment = .center
         view.numberOfLines = 2
-        view.text = "Congratulations, your account has been successfully created"
+        view.text = "Congratulations, your account has been successfully created".localized()
         return view
     }()
     
@@ -53,7 +53,7 @@ class TravelMemoryWelcomeView: UIViewController {
         view.font = UIFont.KoronaOneRegular(size: 14)
         view.textAlignment = .center
         view.numberOfLines = 3
-        view.text = "You are now ready to start capturing, organizing, and sharing your travel memories with our app."
+        view.text = "You are now ready to start capturing, organizing, and sharing your travel memories with our app.".localized()
         return view
     }()
     
@@ -65,7 +65,7 @@ class TravelMemoryWelcomeView: UIViewController {
     
     private lazy var getStartedButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Get Started", for: .normal)
+        view.setTitle("Get Started".localized(), for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.titleLabel?.font = UIFont.KoronaOneRegular(size: 12)
         view.clipsToBounds = true

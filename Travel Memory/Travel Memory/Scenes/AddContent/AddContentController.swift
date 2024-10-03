@@ -46,7 +46,7 @@ class AddContentController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
         view.textAlignment = .center
-        view.text = "Add Content to Your Journal"
+        view.text = "Add Content to Your Journal".localized()
         return view
     }()
     
@@ -55,7 +55,7 @@ class AddContentController: UIViewController {
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .center
         view.numberOfLines = 2
-        view.text = "You can start adding memories and content to your journal, Let’s begin!"
+        view.text = "You can start adding memories and content to your journal, Let’s begin!".localized()
         return view
     }()
     
@@ -69,7 +69,7 @@ class AddContentController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .left
-        view.text = "Add Photo: "
+        view.text = "Add Photo: ".localized()
         return view
     }()
     
@@ -114,7 +114,7 @@ class AddContentController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 15)
         view.textAlignment = .left
-        view.text = "Add Note :"
+        view.text = "Add Note :".localized()
         return view
     }()
     
@@ -122,7 +122,7 @@ class AddContentController: UIViewController {
         let view = UITextField(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 11)
         view.backgroundColor = UIColor.init(hexString: "CDE3FC")
-        view.placeholder = "Type here...."
+        view.placeholder = "Type here....".localized()
         view.layer.cornerRadius = 8
         return view
     }()
@@ -135,7 +135,7 @@ class AddContentController: UIViewController {
     
     private lazy var createButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Create", for: .normal)
+        view.setTitle("Create".localized(), for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8

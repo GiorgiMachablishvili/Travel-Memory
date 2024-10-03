@@ -22,7 +22,7 @@ class JournalDetailsViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .center
-        view.text = "Take a moment to review your journal before saving it. You can make any edits or additions here."
+        view.text = "Take a moment to review your journal before saving it. You can make any edits or additions here.".localized()
         return view
     }()
     
@@ -49,7 +49,7 @@ class JournalDetailsViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .left
-        view.text = "Journal Title :"
+        view.text = "Journal Title :".localized()
         return view
     }()
     
@@ -64,7 +64,7 @@ class JournalDetailsViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .left
-        view.text = "Destination :"
+        view.text = "Destination :".localized()
         return view
     }()
     
@@ -80,7 +80,7 @@ class JournalDetailsViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .left
-        view.text = "Start Date :"
+        view.text = "Start Date :".localized()
         return view
     }()
     
@@ -96,7 +96,7 @@ class JournalDetailsViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .left
-        view.text = "End Date :"
+        view.text = "End Date :".localized()
         return view
     }()
     
@@ -116,7 +116,7 @@ class JournalDetailsViewController: UIViewController {
     
     private lazy var saveJournalButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Save Journal", for: .normal)
+        view.setTitle("Save Journal".localized(), for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
@@ -126,7 +126,7 @@ class JournalDetailsViewController: UIViewController {
     
     private lazy var editJournalButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Edit Journal", for: .normal)
+        view.setTitle("Edit Journal".localized(), for: .normal)
         view.setTitleColor(.skyBlue, for: .normal)
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressEditJournalButton), for: .touchUpInside)
@@ -135,7 +135,7 @@ class JournalDetailsViewController: UIViewController {
     
     private lazy var shareJournalButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Share journal", for: .normal)
+        view.setTitle("Share journal".localized(), for: .normal)
         view.setTitleColor(.skyBlue, for: .normal)
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressShareJournalButton), for: .touchUpInside)
@@ -144,7 +144,7 @@ class JournalDetailsViewController: UIViewController {
     
     private lazy var cancelButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Cancel", for: .normal)
+        view.setTitle("Cancel".localized(), for: .normal)
         view.setTitleColor(.skyBlue, for: .normal)
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressCancelButton), for: .touchUpInside)

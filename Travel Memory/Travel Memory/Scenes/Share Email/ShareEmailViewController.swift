@@ -43,7 +43,7 @@ class ShareEmailViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
         view.textAlignment = .center
-        view.text = "Share with friends"
+        view.text = "Share with friends".localized()
         return view
     }()
     
@@ -52,7 +52,7 @@ class ShareEmailViewController: UIViewController {
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .center
         view.numberOfLines = 2
-        view.text = "Share your travel journal or trip with friends and family."
+        view.text = "Share your travel journal or trip with friends and family.".localized()
         return view
     }()
     
@@ -72,21 +72,21 @@ class ShareEmailViewController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 14)
         view.textAlignment = .center
-        view.text = "To: "
+        view.text = "To: ".localized()
         return view
     }()
     
     private lazy var emailField: UITextField = {
         let view = UITextField(frame: .zero)
         view.backgroundColor = UIColor.skyBlue
-        view.placeholder = "type email...."
+        view.placeholder = "type email....".localized()
         view.keyboardType = .emailAddress
         return view
     }()
     
     private lazy var sendEmailButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Send Email", for: .normal)
+        view.setTitle("Send Email".localized(), for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 2
@@ -96,7 +96,7 @@ class ShareEmailViewController: UIViewController {
     
     private lazy var cancelButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Cancel", for: .normal)
+        view.setTitle("Cancel".localized(), for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 2

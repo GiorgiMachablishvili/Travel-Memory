@@ -5,23 +5,72 @@
   Created by Gio's Mac on 02.10.24.
   
 */
+"A" = "ა";
+"Already have an account?" = "უკვე გაქვთ პროფილი?";
+"All fields must be filled." = "ყველა ველი უნდა იყოს შევსებული.";
+"Add Content to Your Journal" = "დაამატე კონტენტი შენ ჟურნალს";
+"Add Photo: " = "სურათის დამატება";
+"Add Note :" = "ჩანაწერის დამატება";
 
-"Welcome to travel Memory Journal!" = "მოგზაურობის ჟურნალი";
-"Sign In" = "შესვლა";
-"or" = "ან";
-"Sign Up" = "რეგისტრაცია";
-"TRAVEL MEMORY" = "მოგზაურობის ჩანაწერები";
-"JOURNAL" = "ჟურნალი";
-"Please fill in the following information to create your account:" = "გთხოოვთ შეაიყვანთ ყველა ინფორმაცია რომ შექმნათ ჯურნალი:";
-"Full name:" = "სახელი";
-"Email:" = "იმეილი";
-"Password:" = "პაროლი";
+"B" = "ბ";
+
+"C" = "გ";
 "Confirm psw:" = "პაროლის გამეორება";
 "Create Account" = "პროფილის შექმნა";
-"Already have an account?" = "უკვე გაქვთ პროფილი?";
+"Create new journal" = "ახალი ჟურნალის შექმნა";
+"Continue" = "გაგრძელება";
+"Cancel" = "გაუქმება";
+"Create" = "შექმნა";
+"Congratulations, your account has been successfully created" = "თქვენი პროფილი შეიქმნა წარმატებით";
+"Choose Theme:" = "თემის არჩევა";
+
+"D" = "დ";
+"Destination" = "დანიშნ. ადგილი";
+"Destination :" = "დანიშნ. ადგილი :";
+
+"E" = "ე";
+"Email:" = "იმეილი";
+"Enter email address." = "შეიყვანეთ იმეილი";
+"End Date" = "დასრულების თარიღი";
+"End Date :" = "დასრულების თარიღი :";
+"Edit Journal" = "ჟურნალში დამატება";
+
+"F" = "ფ";
+"Full name:" = "სახელი";
+
+"G" = "გ";
+"Get Started" = "დაწყება";
+
+"H" = "ჰ";
+
+"I" = "ი";
+"Invalid full name." = "სახელი არასწორია";
+"Invalid email." = "მეილი არასწრია";
+"Invalid password." = "პაროლი არასწორია";
+"Invalid date format. Please select valid dates." = "უარყოფილია თარიღი, გთხოვთ შეიყვანოთ სწორი თარიღი";
+
+"J" = "ჯ";
+"JOURNAL" = "ჟურნალი";
+"Journal Title" = "ჟუბრალის სათაური";
+"Journal Title :" = "ჟუბრალის სათაური :";
+
+"K" = "კ";
+
+"L" = "ლ";
+"Let’s start creating your new travel journal!" = "შევქმნათ ახალი მოგზაურობის ჟურნალი!";
+
+"M" = "მ";
+
+"N" = "ნ";
+
+"O" = "ო";
+"or" = "ან";
+
+"P" = "პ";
+"Please fill in the following information to create your account:" = "გთხოოვთ შეაიყვანთ ყველა ინფორმაცია რომ შექმნათ ჯურნალი:";
+"Password:" = "პაროლი";
 "Please enter some text" = "გთხოვთ შეიყვანოთ ტექსტი";
 "Please enter English letters" = "გთხოვთ შეიყვანოთ ლათინური ასოები";
-"Enter email address." = "შეიყვანეთ იმეილი";
 "Please enter a valid email address." = "გთხოვთ შეიყვანოთ სწორი იმეილი";
 "Please enter a password." = "გთხოვთ შეიყვანოოთ პაროლი";
 "Password should be more than 5 letters." = "პაროლი უნდა იყოს 5 სიმბოლოზე მეტი";
@@ -29,11 +78,43 @@
 "Password should include at least one number." = "პაროლი უნდა შეიცვადეს მინიმუმ ერთ ციფრს";
 "Please confirm your password." = "გთხოვთ დაადასტუროტ პაროლი";
 "Passwords do not match." = "პაროლი არ ემთხვევა";
-"Invalid full name." = "სახელი არასწორია";
-"Invalid email." = "მეილი არასწრია";
-"Invalid password." = "პაროლი არასწორია";
-"Passwords do not match." = "პაროლი არ დაემთხვა";
-"Welcome" = "გამარჯობა";
-"This is your dashboard where you can start creating and managing your travel journals." = "აქ შეიგიძლიათ შექმნათ თქვენი მოგზაურობის ჯურნალი ჩანაწერები";
-"Your Journals:" = "თქვენი ჟურნალი:";
 
+"Q" = "ქ";
+
+"R" = "რ";
+
+"S" = "ს";
+"Sign In" = "შესვლა";
+"Sign Up" = "რეგისტრაცია";
+"Start Date" = "დაწყების თარიღი";
+"Start date must be earlier than end date." = "დაწყების დრო უნდა იყოს უფრო ადრე ვიდრე დასრულების";
+"Start Date :" = "დაწყების თარიღი :";
+"Save Journal" = "ჟურნალის შენახვა";
+"Share journal" = "ჟურნალის გაზიარება";
+"Share with friends" = "მეგობრებთან გაზიარება";
+"Share your travel journal or trip with friends and family." = "გაუზიარე ჟურნალი და მოგზაურება მეგობრებს და ოჯახს";
+"Send Email" = "გაგზავნე მეილი";
+
+"T" = "თ";
+"TRAVEL MEMORY" = "მოგზაურობის ჩანაწერები";
+"This is your dashboard where you can start creating and managing your travel journals." = "აქ შეიგიძლიათ შექმნათ თქვენი მოგზაურობის ჯურნალი ჩანაწერები";
+"Type here...." = "აქ აკრიფეთ....";
+"Take a moment to review your journal before saving it. You can make any edits or additions here." = "შეგიძლიაღ გადახედოთ ჯურნალს დამატოთ კიდევ ინფორმაცია სანამ შეინახავთ";
+"To: " = "ვის: ";
+"type email...." = "აკრიფე მეილი";
+
+"U" = "უ";
+
+"V" = "ვ";
+
+"W" = "წ";
+"Welcome to travel Memory Journal!" = "მოგზაურობის ჟურნალი";
+"Welcome" = "გამარჯობა";
+
+"X" = "ხ";
+
+"Y" = "ყ";
+"Your Journals:" = "თქვენი ჟურნალი:";
+"You can start adding memories and content to your journal, Let’s begin!" = "შენ შეგიძლია შთაბეჭდილებების და კონტეტის დამატება ჟურნალში";
+"You are now ready to start capturing, organizing, and sharing your travel memories with our app." = "თქვენ არ ხართ მზად რომ გაუზიაროთ თქვენი მონაცემები";
+"Z" = "ზ";

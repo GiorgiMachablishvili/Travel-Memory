@@ -67,7 +67,7 @@ class DashboardViewController: UIViewController, DashboardBottomButtonViewDelega
         
         if let user = Auth.auth().currentUser {
             let userName = user.displayName ?? "User"
-            view.text = "Welcome, \(userName)".localized()
+            view.text = "Welcome".localized() + " \(userName)"
         } else {
             view.text = "Welcome".localized()
         }

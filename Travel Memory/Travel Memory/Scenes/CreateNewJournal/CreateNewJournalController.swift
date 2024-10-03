@@ -21,7 +21,7 @@ class CreateNewJournalController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 24)
         view.textAlignment = .center
-        view.text = "Create new journal"
+        view.text = "Create new journal".localized()
         return view
     }()
     
@@ -29,14 +29,14 @@ class CreateNewJournalController: UIViewController {
         let view = MyLabel(frame: .zero)
         view.font = UIFont.KoronaOneRegular(size: 12)
         view.textAlignment = .center
-        view.text = "Let’s start creating your new travel journal!"
+        view.text = "Let’s start creating your new travel journal!".localized()
         return view
     }()
     
-    private let journalTitle = MyTextFieldView(label: "Journal Title")
-    private let destinationField = MyTextFieldView(label: "Destination")
-    private let startDateField = MyTextFieldView(label: "Start Date")
-    private let endDateField = MyTextFieldView(label: "End Date")
+    private let journalTitleTextField = MyTextFieldView(label: "Journal Title".localized())
+    private let destinationField = MyTextFieldView(label: "Destination".localized())
+    private let startDateField = MyTextFieldView(label: "Start Date".localized())
+    private let endDateField = MyTextFieldView(label: "End Date".localized())
     
     private var startDatePicker = UIDatePicker()
     private var endDatePicker = UIDatePicker()
@@ -49,7 +49,7 @@ class CreateNewJournalController: UIViewController {
     
     private lazy var continueButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Continue", for: .normal)
+        view.setTitle("Continue".localized(), for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.backgroundColor = .skyBlue
         view.layer.cornerRadius = 8
@@ -59,7 +59,7 @@ class CreateNewJournalController: UIViewController {
     
     private lazy var cancelButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Cancel", for: .normal)
+        view.setTitle("Cancel".localized(), for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.layer.cornerRadius = 8
         view.addTarget(self, action: #selector(pressCancelButton), for: .touchUpInside)
@@ -79,7 +79,7 @@ class CreateNewJournalController: UIViewController {
         view.addSubview(topColorView)
         topColorView.addSubview(nameLabel)
         topColorView.addSubview(sloganLabel)
-        view.addSubview(journalTitle)
+        view.addSubview(journalTitleTextField)
         view.addSubview(destinationField)
         view.addSubview(startDateField)
         view.addSubview(endDateField)
@@ -107,13 +107,13 @@ class CreateNewJournalController: UIViewController {
             make.height.equalTo(20)
         }
         
-        journalTitle.snp.makeConstraints { make in
+        journalTitleTextField.snp.makeConstraints { make in
             make.top.equalTo(topColorView.snp.bottom).offset(56)
             make.leading.trailing.equalToSuperview().inset(32)
         }
         
         destinationField.snp.makeConstraints { make in
-            make.top.equalTo(journalTitle.snp.bottom).offset(20)
+            make.top.equalTo(journalTitleTextField.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(32)
         }
         
@@ -147,14 +147,14 @@ class CreateNewJournalController: UIViewController {
     }
     
     @objc func pressContinueButton() {
-        let journalTitleText = journalTitle.getText()
+        let journalTitleText = journalTitleTextField.getText()
             let destinationText = destinationField.getText()
             let startDateText = startDateField.getText()
             let endDateText = endDateField.getText()
             
             // Check for empty fields
             if journalTitleText.isEmpty || destinationText.isEmpty || startDateText.isEmpty || endDateText.isEmpty {
-                showAlert(title: "Error", message: "All fields must be filled.")
+                showAlert(title: "Error", message: "All fields must be filled.".localized())
                 return
             }
 
@@ -164,13 +164,13 @@ class CreateNewJournalController: UIViewController {
 
             guard let startDate = dateFormatter.date(from: startDateText),
                   let endDate = dateFormatter.date(from: endDateText) else {
-                showAlert(title: "Error", message: "Invalid date format. Please select valid dates.")
+                showAlert(title: "Error", message: "Invalid date format. Please select valid dates.".localized())
                 return
             }
             
             // Validate if the start date is earlier than the end date
             if startDate > endDate {
-                showAlert(title: "Error", message: "Start date must be earlier than end date.")
+                showAlert(title: "Error", message: "Start date must be earlier than end date.".localized())
                 return
             }
 
@@ -192,7 +192,7 @@ class CreateNewJournalController: UIViewController {
     }
     
     @objc func pressCancelButton() {
-        journalTitle.clearText()
+        journalTitleTextField.clearText()
         destinationField.clearText()
         startDateField.clearText()
         endDateField.clearText()
