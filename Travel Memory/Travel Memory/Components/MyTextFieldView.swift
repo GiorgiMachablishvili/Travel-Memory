@@ -92,7 +92,6 @@ class MyTextFieldView: UIView {
     private func setupConstraints() {
         labelView.snp.remakeConstraints { make in
             make.leading.equalTo(self.snp.leading).offset(0)
-//            make.trailing.greaterThanOrEqualTo(textField.snp.leading).offset(5)
             make.bottom.equalTo(self.snp.bottom)
             make.top.equalTo(self.snp.top)
             make.height.equalTo(22)

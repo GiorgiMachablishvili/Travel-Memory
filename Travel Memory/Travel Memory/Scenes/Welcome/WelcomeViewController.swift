@@ -58,7 +58,7 @@ class WelcomeViewController: UIViewController {
         
         setup()
         layout()
-        LocalizationDefaultManager.setAppLanguage(number: 0)
+        LocalizationDefaultManager.setAppLanguage(number: 1)
     }
     
     private func setup() {

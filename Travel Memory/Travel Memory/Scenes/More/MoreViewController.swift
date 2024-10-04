@@ -2,6 +2,11 @@ import UIKit
 import SnapKit
 
 class MoreViewController: UIViewController {
+    
+    private lazy var pickerView: PickerViewController = {
+        let view = PickerViewController(frame: .zero)
+        return view
+    }()
 
     private let themeSegmentedControl: UISegmentedControl = {
         let items = ["Light", "Dark"]
@@ -16,18 +21,24 @@ class MoreViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         return label
     }()
+    
+    private let showPickerButton = UIButton(type: .system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background
         setupViews()
         setupThemeChanger()
+        
+//        presentPickerViewController()
     }
 
     private func setupViews() {
         view.addSubview(themeLabel)
         view.addSubview(themeSegmentedControl)
-
+        view.addSubview(showPickerButton)
+        view.addSubview(pickerView)
+        
         themeLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.leading.equalToSuperview().offset(20)
@@ -38,7 +49,26 @@ class MoreViewController: UIViewController {
             make.leading.equalTo(themeLabel)
             make.trailing.lessThanOrEqualToSuperview().offset(-20)
         }
+        
+        showPickerButton.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(120)
+            make.height.equalTo(44)
+        }
+        
+        pickerView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(250)
+            make.height.equalTo(150)
+        }
     }
+    
+//    private func presentPickerViewController() {
+//        let pickerVC = PickerViewController()
+//        pickerVC.modalPresentationStyle = .overCurrentContext
+//        pickerVC.modalTransitionStyle = .crossDissolve
+//        present(pickerVC, animated: true, completion: nil)
+//        }
 
     private func setupThemeChanger() {
         themeSegmentedControl.addTarget(self, action: #selector(themeChanged), for: .valueChanged)
