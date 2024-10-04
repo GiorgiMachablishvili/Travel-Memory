@@ -65,7 +65,14 @@ class PickerViewController: UIView, UIPickerViewDelegate, UIPickerViewDataSource
         print("selected \(languageManager.languageOptions[row])")
         
         let selectedItem = languageManager.languageOptions[row]
-        
         languageManager.currentLanguage = selectedItem
+        
+        switch selectedItem {
+        case .eng:
+            LocalizationDefaultManager.setAppLanguage(number: 0)
+        case .geo:
+            LocalizationDefaultManager.setAppLanguage(number: 1)
+        }
+        print("Selected language: \(selectedItem.title)")
     }
 }

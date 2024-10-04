@@ -30,7 +30,6 @@ class MoreViewController: UIViewController {
         setupViews()
         setupThemeChanger()
         
-//        presentPickerViewController()
     }
 
     private func setupViews() {
@@ -62,13 +61,7 @@ class MoreViewController: UIViewController {
             make.height.equalTo(150)
         }
     }
-    
-//    private func presentPickerViewController() {
-//        let pickerVC = PickerViewController()
-//        pickerVC.modalPresentationStyle = .overCurrentContext
-//        pickerVC.modalTransitionStyle = .crossDissolve
-//        present(pickerVC, animated: true, completion: nil)
-//        }
+
 
     private func setupThemeChanger() {
         themeSegmentedControl.addTarget(self, action: #selector(themeChanged), for: .valueChanged)
