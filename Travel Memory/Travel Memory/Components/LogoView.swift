@@ -28,7 +28,7 @@ class LogoView: UIView {
         super.init(frame: frame)
         setup()
         layout()
-        LocalizationDefaultManager.setAppLanguage(number: 1)
+
     }
     
     required init?(coder: NSCoder) {

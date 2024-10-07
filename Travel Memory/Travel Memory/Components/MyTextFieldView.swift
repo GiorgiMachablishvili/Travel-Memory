@@ -92,10 +92,10 @@ class MyTextFieldView: UIView {
     private func setupConstraints() {
         labelView.snp.remakeConstraints { make in
             make.leading.equalTo(self.snp.leading).offset(0)
-            make.trailing.greaterThanOrEqualTo(textField.snp.leading).offset(5)
             make.bottom.equalTo(self.snp.bottom)
             make.top.equalTo(self.snp.top)
             make.height.equalTo(22)
+            make.width.equalTo(160)
         }
         
         visibilityToggleButton.snp.makeConstraints { make in
@@ -106,7 +106,7 @@ class MyTextFieldView: UIView {
         
         textField.snp.remakeConstraints { make in
             make.width.equalTo(self.snp.width).multipliedBy(0.55)
-            make.trailing.equalTo(self.snp.trailing).offset(0)
+            make.leading.equalTo(labelView.snp.trailing).offset(10)
             make.bottom.equalTo(self.snp.bottom)
             make.top.equalTo(self.snp.top)
         }

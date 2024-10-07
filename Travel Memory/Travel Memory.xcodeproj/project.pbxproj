@@ -43,6 +43,8 @@
 		E3744A662CAD6D2D0009FD72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3744A682CAD6D2D0009FD72 /* Localizable.strings */; };
 		E3744A6B2CAD6E150009FD72 /* LocalizationDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3744A6A2CAD6E150009FD72 /* LocalizationDefaultManager.swift */; };
 		E3744A6D2CAD70310009FD72 /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3744A6C2CAD70310009FD72 /* String+Extention.swift */; };
+		E38974492CAECDCA001171B1 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38974482CAECDCA001171B1 /* PickerViewController.swift */; };
+		E389744B2CAEDC36001171B1 /* LanguageManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389744A2CAEDC36001171B1 /* LanguageManage.swift */; };
 		E390302A2C8A3FB900E9BA6F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030292C8A3FB900E9BA6F /* SignInViewController.swift */; };
 		E396AAF72C899EB0004D7BE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF62C899EB0004D7BE5 /* User.swift */; };
 		E396AAF92C899EEE004D7BE5 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */; };
@@ -126,6 +128,8 @@
 		E3744A692CAD6D320009FD72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E3744A6A2CAD6E150009FD72 /* LocalizationDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationDefaultManager.swift; sourceTree = "<group>"; };
 		E3744A6C2CAD70310009FD72 /* String+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
+		E38974482CAECDCA001171B1 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		E389744A2CAEDC36001171B1 /* LanguageManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManage.swift; sourceTree = "<group>"; };
 		E39030292C8A3FB900E9BA6F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		E396AAF62C899EB0004D7BE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E396AAF82C899EEE004D7BE5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				CF001E232C9B2CE500A8556B /* MoreViewController.swift */,
+				E38974482CAECDCA001171B1 /* PickerViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 			children = (
 				E396AB2B2C89D204004D7BE5 /* FireBaseManager.swift */,
 				CF001E202C9B293900A8556B /* ThemeManager.swift */,
+				E389744A2CAEDC36001171B1 /* LanguageManage.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -553,6 +559,7 @@
 				E3AB90612CA5C9A500E6A37F /* ShareEmailViewController.swift in Sources */,
 				CF054C162CA1887C00EEC27D /* AlertUtility.swift in Sources */,
 				E31261F32C8707B500E1DAA9 /* UIColor+Extantion.swift in Sources */,
+				E38974492CAECDCA001171B1 /* PickerViewController.swift in Sources */,
 				E396AAF72C899EB0004D7BE5 /* User.swift in Sources */,
 				E31261F52C8707C600E1DAA9 /* UIFont+Extansion.swift in Sources */,
 				CF001E2D2C9DC1DC00A8556B /* Journal.swift in Sources */,
@@ -563,6 +570,7 @@
 				E396AB2C2C89D204004D7BE5 /* FireBaseManager.swift in Sources */,
 				CF001E212C9B293A00A8556B /* ThemeManager.swift in Sources */,
 				E30234272C96E5FF00CB1795 /* DashboardCell.swift in Sources */,
+				E389744B2CAEDC36001171B1 /* LanguageManage.swift in Sources */,
 				CF054C1A2CA18DD700EEC27D /* ImagePickerUtility.swift in Sources */,
 				E34A57272C99E4B800E6592E /* AddContentController.swift in Sources */,
 				E3AB90632CA5CEAD00E6A37F /* ShareEmailCollectionViewCell.swift in Sources */,

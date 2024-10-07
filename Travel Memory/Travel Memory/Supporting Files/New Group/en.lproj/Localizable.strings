@@ -5,23 +5,74 @@
   Created by Gio's Mac on 02.10.24.
   
 */
+"A" = "A";
+"Already have an account?" = "Already have an account?";
+"All fields must be filled." = "All fields must be filled.";
+"Add Content to Your Journal" = "Add Content to Your Journal";
+"Add Photo: " = "Add Photo: ";
+"Add Note :" = "Add Note :";
 
-"Welcome to travel Memory Journal!" = "Welcome to travel Memory Journal!";
-"Sign In" = "Sign In";
-"or" = "or";
-"Sign Up" = "Sign Up";
-"TRAVEL MEMORY" = "TRAVEL MEMORY";
-"JOURNAL" = "JOURNAL";
-"Please fill in the following information to create your account:" = "Please fill in the following information to create your account:";
-"Full name:" = "Full name:";
-"Email:" = "Email:";
-"Password:" = "Password:";
+"B" = "B";
+
+"C" = "C";
+"Continue" = "Continue";
+"Cancel" = "Cancel";
 "Confirm psw:" = "Confirm psw:";
 "Create Account" = "Create Account";
-"Already have an account?" = "Already have an account?";
+"Create new journal" = "Create new journal";
+"Create" = "Create";
+"Congratulations, your account has been successfully created" = "Congratulations, your account has been successfully created";
+"Choose Theme:" = "Choose Theme:";
+
+"D" = "D";
+"Destination" = "Destination";
+"Destination :" = "Destination :";
+
+"E" = "E";
+"End Date" = "End Date";
+"Email:" = "Email:";
+"Enter email address." = "Enter email address.";
+"End Date :" = "End Date :";
+"Edit Journal" = "Edit Journal";
+"English" = "English";
+
+"F" = "F";
+"Full name:" = "Full name:";
+
+"G" = "G";
+"Get Started" = "Get Started";
+"Georgian" = "Georgian";
+
+"H" = "H";
+
+"I" = "I";
+"Invalid date format. Please select valid dates." = "Invalid date format. Please select valid dates.";
+"Invalid full name." = "Invalid full name.";
+"Invalid email." = "Invalid email.";
+"Invalid password." = "Invalid password.";
+
+"J" = "J";
+"JOURNAL" = "JOURNAL";
+"Journal Title" = "Journal Title";
+"Journal Title :" = "Journal Title :";
+
+"K" = "K";
+
+"L" = "L";
+"Let’s start creating your new travel journal!" = "Let’s start creating your new travel journal!";
+
+"M" = "M";
+
+"N" = "N";
+
+"O" = "O";
+"or" = "or";
+
+"P" = "P";
+"Please fill in the following information to create your account:" = "Please fill in the following information to create your account:";
+"Password:" = "Password:";
 "Please enter some text" = "Please enter some text";
 "Please enter English letters" = "Please enter English letters";
-"Enter email address." = "Enter email address.";
 "Please enter a valid email address." = "Please enter a valid email address.";
 "Please enter a password." = "Please enter a password.";
 "Password should be more than 5 letters." = "Password should be more than 5 letters.";
@@ -29,11 +80,44 @@
 "Password should include at least one number." = "Password should include at least one number.";
 "Please confirm your password." = "Please confirm your password.";
 "Passwords do not match." = "Passwords do not match.";
-"Invalid full name." = "Invalid full name.";
-"Invalid email." = "Invalid email.";
-"Invalid password." = "Invalid password.";
-"Passwords do not match." = "Passwords do not match.";
-"Welcome" = "Welcome";
-"This is your dashboard where you can start creating and managing your travel journals." = "This is your dashboard where you can start creating and managing your travel journals.";
-"Your Journals:" = "Your Journals:";
 
+"Q" = "Q";
+
+"R" = "R";
+
+"S" = "S";
+"Sign Up" = "Sign Up";
+"Sign In" = "Sign In";
+"Start Date" = "Start Date";
+"Start date must be earlier than end date." = "Start date must be earlier than end date.";
+"Start Date :" = "Start Date :";
+"Save Journal" = "Save Journal";
+"Share journal" = "Share journal";
+"Share with friends" = "Share with friends";
+"Share your travel journal or trip with friends and family." = "Share your travel journal or trip with friends and family.";
+"Send Email" = "Send Email";
+
+"T" = "T";
+"TRAVEL MEMORY" = "TRAVEL MEMORY";
+"This is your dashboard where you can start creating and managing your travel journals." = "This is your dashboard where you can start creating and managing your travel journals.";
+"Type here...." = "Type here....";
+"Take a moment to review your journal before saving it. You can make any edits or additions here." = "Take a moment to review your journal before saving it. You can make any edits or additions here.";
+"To: " = "To: ";
+"type email...." = "type email....";
+
+"U" = "U";
+
+"V" = "V";
+
+"W" = "W";
+"Welcome to travel Memory Journal!" = "Welcome to travel Memory Journal!";
+"Welcome" = "Welcome";
+
+"X" = "X";
+
+"Y" = "Y";
+"Your Journals:" = "Your Journals:";
+"You can start adding memories and content to your journal, Let’s begin!" = "You can start adding memories and content to your journal, Let’s begin!";
+"You are now ready to start capturing, organizing, and sharing your travel memories with our app." = "You are now ready to start capturing, organizing, and sharing your travel memories with our app.";
+
+"Z" = "Z";

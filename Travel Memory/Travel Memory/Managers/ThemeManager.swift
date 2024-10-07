@@ -17,17 +17,7 @@ final class ThemeManager {
             applyTheme(newValue)
         }
     }
-    
-//    var currentTextColor: UIColor {
-//        switch currentTheme {
-//        case .dark:
-//            return .white
-//        case .light, .unspecified:
-//            return .black
-//        @unknown default:
-//            return .black
-//        }
-//    }
+
     
     func applyTheme(_ theme: UIUserInterfaceStyle?) {
         let theme = theme ?? currentTheme
